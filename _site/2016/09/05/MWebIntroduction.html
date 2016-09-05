@@ -1,0 +1,401 @@
+<h1 id="markdown-syntax-guide-and-writing-on-mweb">Markdown syntax guide and writing on MWeb</h1>
+
+<h2 id="philosophy">Philosophy</h2>
+
+<blockquote>
+  <p>Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+Readability, however, is emphasized above all else. A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.
+Markdown’s syntax is intended for one purpose: to be used as a format for <em>writing</em> for the web.</p>
+</blockquote>
+
+<!-- more -->
+
+<h2 id="notice">Notice</h2>
+
+<p>You can use  <code class="highlighter-rouge">CMD + 4</code> or <code class="highlighter-rouge">CMD + R</code> to preview the result.</p>
+
+<h2 id="headers">Headers</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># This is an `&lt;h1&gt;` tag
+## This is an `&lt;h2&gt;` tag
+###### This is an `&lt;h6&gt;` tag
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<h1 id="this-is-an-h1-tag">This is an <code class="highlighter-rouge">&lt;h1&gt;</code> tag</h1>
+<h2 id="this-is-an-h2-tag">This is an <code class="highlighter-rouge">&lt;h2&gt;</code> tag</h2>
+<h6 id="this-is-an-h6-tag">This is an <code class="highlighter-rouge">&lt;h6&gt;</code> tag</h6>
+
+<h2 id="emphasis">Emphasis</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+*You **can** combine them*
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">CMD + U</code>、<code class="highlighter-rouge">CMD + I</code>、<code class="highlighter-rouge">CMD + B</code>
+<strong>Result:</strong></p>
+
+<p><em>This text will be italic</em>
+<em>This will also be italic</em></p>
+
+<p><strong>This text will be bold</strong>
+<strong>This will also be bold</strong></p>
+
+<p><em>You <strong>can</strong> combine them</em></p>
+
+<h2 id="newlines">Newlines</h2>
+
+<p>End a line with two or more spaces + enter.
+Just typing enter to newline,please set：<code class="highlighter-rouge">Preferences</code> - <code class="highlighter-rouge">Themes</code> - <code class="highlighter-rouge">Translate newlines to &lt;br&gt; tags</code>  enable ( default is enable )</p>
+
+<h2 id="lists">Lists</h2>
+
+<h3 id="unordered">Unordered</h3>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* Item 1 unordered list `* + SPACE`
+* Item 2
+* Item 2a unordered list `TAB + * + SPACE`
+* Item 2b
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">Option + U</code>
+<strong>Result:</strong></p>
+
+<ul>
+  <li>Item 1 unordered list <code class="highlighter-rouge">* + SPACE</code></li>
+  <li>Item 2</li>
+  <li>Item 2a unordered list <code class="highlighter-rouge">TAB + * + SPACE</code></li>
+  <li>Item 2b</li>
+</ul>
+
+<h3 id="ordered">Ordered</h3>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. Item 1 ordered list `Number + . + SPACE`
+2. Item 2 
+3. Item 3
+1. Item 3a ordered list `TAB + Number + . + SPACE`
+2. Item 3b
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<ol>
+  <li>Item 1 ordered list <code class="highlighter-rouge">Number + . + SPACE</code></li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 3a ordered list <code class="highlighter-rouge">TAB + Number + . + SPACE</code></li>
+  <li>Item 3b</li>
+</ol>
+
+<h3 id="task-lists">Task lists</h3>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>- [ ] task one not finish `- + SPACE + [ ]`
+- [x] task two finished `- + SPACE + [x]`
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<ul>
+  <li>[ ] task one not finish <code class="highlighter-rouge">- + SPACE + [ ]</code></li>
+  <li>[x] task two finished <code class="highlighter-rouge">- + SPACE + [x]</code></li>
+</ul>
+
+<h2 id="images">Images</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>![GitHub set up](https://help.github.com/assets/images/site/set-up-git.gif)
+Format: ![Alt Text](url)
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">Control + Shift + I</code>
+The Library’s document support drag &amp; drop or <code class="highlighter-rouge">CMD + V</code> paste or <code class="highlighter-rouge">CMD + Option + I</code> to insert  the picture.
+<strong>Result:</strong></p>
+
+<p><img src="https://help.github.com/assets/images/site/set-up-git.gif" alt="GitHub set up" /></p>
+
+<p>In MWeb, you can use <code class="highlighter-rouge">-w + Number</code> to control image width, for example, set the image width 140px:</p>
+
+<p><img src="https://help.github.com/assets/images/site/set-up-git.gif" alt="GitHub set up-w140" /></p>
+
+<h2 id="links">Links</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>email &lt;example@example.com&gt;
+[GitHub](http://github.com)
+autolink  &lt;http://www.github.com/&gt;
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">Control + Shift + L</code>
+The Library’s document support drag &amp; drop or <code class="highlighter-rouge">CMD + Option + I</code> to insert attachment.
+<strong>Result:</strong></p>
+
+<p>An email <a href="mailto:example@example.com">example@example.com</a> link.
+<a href="http://github.com">GitHub</a>
+Automatic linking for URLs
+Any URL (like <a href="http://www.github.com/">http://www.github.com/</a>) will be automatically converted into a clickable link.</p>
+
+<h2 id="blockquotes">Blockquotes</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>As Kanye West said:
+&gt; We're living the future so
+&gt; the present is our past.
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">CMD + Shift + B</code>
+<strong>Result:</strong></p>
+
+<p>As Kanye West said:</p>
+<blockquote>
+  <p>We’re living the future so
+the present is our past.</p>
+</blockquote>
+
+<h2 id="inline-code">Inline code</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>I think you should use an
+`&lt;addr&gt;` `code` element here instead.
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">CMD + K</code>
+<strong>Result:</strong></p>
+
+<p>I think you should use an
+<code class="highlighter-rouge">&lt;addr&gt;</code> <code class="highlighter-rouge">code</code> element here instead.</p>
+
+<h2 id="multi-line-code">Multi-line code</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>```js
+function fancyAlert(arg) {
+    if(arg) {
+        $.facebox({div:'#foo'})
+    }
+
+}
+```
+</code></pre>
+</div>
+
+<p><strong>Shortcuts:</strong>  <code class="highlighter-rouge">CMD + Shift + K</code>
+<strong>Result:</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">fancyAlert</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">facebox</span><span class="p">({</span><span class="na">div</span><span class="p">:</span><span class="s1">'#foo'</span><span class="p">})</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h2 id="sequence-and-flow-chart">Sequence and Flow chart</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>```sequence
+Andrew-&gt;China: Says Hello
+Note right of China: China thinks about it
+China--&gt;Andrew: How are you?
+Andrew-&gt;&gt;China: I am good thanks!
+```
+
+```flow
+st=&gt;start: Start:&gt;http://www.google.com[blank]
+e=&gt;end:&gt;http://www.google.com
+op1=&gt;operation: My Operation
+sub1=&gt;subroutine: My Subroutine
+cond=&gt;condition: Yes
+or No?:&gt;http://www.google.com
+io=&gt;inputoutput: catch something...
+
+st-&gt;op1-&gt;cond
+cond(yes)-&gt;io-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op1
+```
+</code></pre>
+</div>
+
+<p><strong>Result:</strong> ( Please enable  <code class="highlighter-rouge">Preferences</code> - <code class="highlighter-rouge">Themes</code> - <code class="highlighter-rouge">Enable sequence &amp; flow chart</code>, default is enable. )</p>
+
+<pre><code class="language-sequence">Andrew-&gt;China: Says Hello
+Note right of China: China thinks about it
+China--&gt;Andrew: How are you?
+Andrew-&gt;&gt;China: I am good thanks!
+</code></pre>
+
+<pre><code class="language-flow">st=&gt;start: Start:&gt;http://www.google.com[blank]
+e=&gt;end:&gt;http://www.google.com
+op1=&gt;operation: My Operation
+sub1=&gt;subroutine: My Subroutine
+cond=&gt;condition: Yes
+or No?:&gt;http://www.google.com
+io=&gt;inputoutput: catch something...
+
+st-&gt;op1-&gt;cond
+cond(yes)-&gt;io-&gt;e
+cond(no)-&gt;sub1(right)-&gt;op1
+</code></pre>
+
+<p>More info: <a href="http://bramp.github.io/js-sequence-diagrams/">http://bramp.github.io/js-sequence-diagrams/</a>, <a href="http://adrai.github.io/flowchart.js/">http://adrai.github.io/flowchart.js/</a></p>
+
+<h2 id="tables">Tables</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+</code></pre>
+</div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>You can create tables by assembling a list of words and dividing them with hyphens - (for the first row), and then separating each column with a pipe</td>
+      <td>:</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Result:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Header</th>
+      <th>Second Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content from cell 1</td>
+      <td>Content from cell 2</td>
+    </tr>
+    <tr>
+      <td>Content in the first column</td>
+      <td>Content in the second column</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="strikethrough">Strikethrough</h2>
+
+<p><strong>Example:</strong></p>
+
+<p>(like <del>this</del>)</p>
+
+<p><strong>Result:</strong></p>
+
+<p>Any word wrapped with two tildes (like <del>this</del>) will appear crossed out.</p>
+
+<h2 id="horizontal-rules">Horizontal Rules</h2>
+
+<p>Following lines will produce a horizontal rule:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>***
+
+*****
+
+- - -
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<hr />
+
+<hr />
+
+<hr />
+
+<h2 id="latex">LaTex</h2>
+
+<p>Use double US dollars sign pair for Block level Math formula, and one US dollar sign pair for Inline Level.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>For example this is a Block level $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ formula, and this is an inline Level $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ formula.
+
+\\[ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =
+1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
+{1+\frac{e^{-8\pi}} {1+\ldots} } } } \\]
+
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<p>For example this is a Block level <script type="math/tex">x = {-b \pm \sqrt{b^2-4ac} \over 2a}</script> formula, and this is an inline Level $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ formula.</p>
+
+<p>\[ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =
+1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
+{1+\frac{e^{-8\pi}} {1+\ldots} } } } \]</p>
+
+<h2 id="footnote">Footnote</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>This is a footnote:[^sample_footnote]
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<p>This is a footnote:<sup id="fnref:sample_footnote"><a href="#fn:sample_footnote" class="footnote">1</a></sup></p>
+
+<h2 id="comment-and-read-more">Comment And Read More..</h2>
+
+<!-- comment -->
+<!-- more -->
+<p>Actions-&gt;Insert Read More Comment <em>OR</em> <code class="highlighter-rouge">CMD + .</code></p>
+
+<h2 id="toc">TOC</h2>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[TOC]
+</code></pre>
+</div>
+
+<p><strong>Result:</strong></p>
+
+<p>[TOC]</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:sample_footnote">
+      <p>footnote text detail… <a href="#fnref:sample_footnote" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

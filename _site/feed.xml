@@ -5,9 +5,420 @@
     <description>Cambria's blog,use Jekyll and github pages.</description>
     <link>https://cambriayang.github.io///</link>
     <atom:link href="https://cambriayang.github.io///feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 05 Sep 2016 12:37:43 +0800</pubDate>
-    <lastBuildDate>Mon, 05 Sep 2016 12:37:43 +0800</lastBuildDate>
+    <pubDate>Mon, 05 Sep 2016 13:48:52 +0800</pubDate>
+    <lastBuildDate>Mon, 05 Sep 2016 13:48:52 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Mwebintroduction</title>
+        <description>&lt;h1 id=&quot;markdown-syntax-guide-and-writing-on-mweb&quot;&gt;Markdown syntax guide and writing on MWeb&lt;/h1&gt;
+
+&lt;h2 id=&quot;philosophy&quot;&gt;Philosophy&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown is intended to be as easy-to-read and easy-to-write as is feasible.
+Readability, however, is emphasized above all else. A Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.
+Markdown’s syntax is intended for one purpose: to be used as a format for &lt;em&gt;writing&lt;/em&gt; for the web.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;notice&quot;&gt;Notice&lt;/h2&gt;
+
+&lt;p&gt;You can use  &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + 4&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + R&lt;/code&gt; to preview the result.&lt;/p&gt;
+
+&lt;h2 id=&quot;headers&quot;&gt;Headers&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# This is an `&amp;lt;h1&amp;gt;` tag
+## This is an `&amp;lt;h2&amp;gt;` tag
+###### This is an `&amp;lt;h6&amp;gt;` tag
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;this-is-an-h1-tag&quot;&gt;This is an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tag&lt;/h1&gt;
+&lt;h2 id=&quot;this-is-an-h2-tag&quot;&gt;This is an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h2&amp;gt;&lt;/code&gt; tag&lt;/h2&gt;
+&lt;h6 id=&quot;this-is-an-h6-tag&quot;&gt;This is an &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; tag&lt;/h6&gt;
+
+&lt;h2 id=&quot;emphasis&quot;&gt;Emphasis&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+*You **can** combine them*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + U&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + I&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + B&lt;/code&gt;
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This text will be italic&lt;/em&gt;
+&lt;em&gt;This will also be italic&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This text will be bold&lt;/strong&gt;
+&lt;strong&gt;This will also be bold&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You &lt;strong&gt;can&lt;/strong&gt; combine them&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;newlines&quot;&gt;Newlines&lt;/h2&gt;
+
+&lt;p&gt;End a line with two or more spaces + enter.
+Just typing enter to newline,please set：&lt;code class=&quot;highlighter-rouge&quot;&gt;Preferences&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;Themes&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;Translate newlines to &amp;lt;br&amp;gt; tags&lt;/code&gt;  enable ( default is enable )&lt;/p&gt;
+
+&lt;h2 id=&quot;lists&quot;&gt;Lists&lt;/h2&gt;
+
+&lt;h3 id=&quot;unordered&quot;&gt;Unordered&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* Item 1 unordered list `* + SPACE`
+* Item 2
+* Item 2a unordered list `TAB + * + SPACE`
+* Item 2b
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;Option + U&lt;/code&gt;
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Item 1 unordered list &lt;code class=&quot;highlighter-rouge&quot;&gt;* + SPACE&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 2a unordered list &lt;code class=&quot;highlighter-rouge&quot;&gt;TAB + * + SPACE&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Item 2b&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ordered&quot;&gt;Ordered&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. Item 1 ordered list `Number + . + SPACE`
+2. Item 2 
+3. Item 3
+1. Item 3a ordered list `TAB + Number + . + SPACE`
+2. Item 3b
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Item 1 ordered list &lt;code class=&quot;highlighter-rouge&quot;&gt;Number + . + SPACE&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+  &lt;li&gt;Item 3&lt;/li&gt;
+  &lt;li&gt;Item 3a ordered list &lt;code class=&quot;highlighter-rouge&quot;&gt;TAB + Number + . + SPACE&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Item 3b&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;task-lists&quot;&gt;Task lists&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;- [ ] task one not finish `- + SPACE + [ ]`
+- [x] task two finished `- + SPACE + [x]`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[ ] task one not finish &lt;code class=&quot;highlighter-rouge&quot;&gt;- + SPACE + [ ]&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;[x] task two finished &lt;code class=&quot;highlighter-rouge&quot;&gt;- + SPACE + [x]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;![GitHub set up](https://help.github.com/assets/images/site/set-up-git.gif)
+Format: ![Alt Text](url)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;Control + Shift + I&lt;/code&gt;
+The Library’s document support drag &amp;amp; drop or &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + V&lt;/code&gt; paste or &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + Option + I&lt;/code&gt; to insert  the picture.
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://help.github.com/assets/images/site/set-up-git.gif&quot; alt=&quot;GitHub set up&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In MWeb, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;-w + Number&lt;/code&gt; to control image width, for example, set the image width 140px:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://help.github.com/assets/images/site/set-up-git.gif&quot; alt=&quot;GitHub set up-w140&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;links&quot;&gt;Links&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;email &amp;lt;example@example.com&amp;gt;
+[GitHub](http://github.com)
+autolink  &amp;lt;http://www.github.com/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;Control + Shift + L&lt;/code&gt;
+The Library’s document support drag &amp;amp; drop or &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + Option + I&lt;/code&gt; to insert attachment.
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;An email &lt;a href=&quot;mailto:example@example.com&quot;&gt;example@example.com&lt;/a&gt; link.
+&lt;a href=&quot;http://github.com&quot;&gt;GitHub&lt;/a&gt;
+Automatic linking for URLs
+Any URL (like &lt;a href=&quot;http://www.github.com/&quot;&gt;http://www.github.com/&lt;/a&gt;) will be automatically converted into a clickable link.&lt;/p&gt;
+
+&lt;h2 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;As Kanye West said:
+&amp;gt; We're living the future so
+&amp;gt; the present is our past.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + Shift + B&lt;/code&gt;
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As Kanye West said:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;We’re living the future so
+the present is our past.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;inline-code&quot;&gt;Inline code&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I think you should use an
+`&amp;lt;addr&amp;gt;` `code` element here instead.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + K&lt;/code&gt;
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think you should use an
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;addr&amp;gt;&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt; element here instead.&lt;/p&gt;
+
+&lt;h2 id=&quot;multi-line-code&quot;&gt;Multi-line code&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```js
+function fancyAlert(arg) {
+    if(arg) {
+        $.facebox({div:'#foo'})
+    }
+
+}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Shortcuts:&lt;/strong&gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + Shift + K&lt;/code&gt;
+&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;fancyAlert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;facebox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;sequence-and-flow-chart&quot;&gt;Sequence and Flow chart&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;```sequence
+Andrew-&amp;gt;China: Says Hello
+Note right of China: China thinks about it
+China--&amp;gt;Andrew: How are you?
+Andrew-&amp;gt;&amp;gt;China: I am good thanks!
+```
+
+```flow
+st=&amp;gt;start: Start:&amp;gt;http://www.google.com[blank]
+e=&amp;gt;end:&amp;gt;http://www.google.com
+op1=&amp;gt;operation: My Operation
+sub1=&amp;gt;subroutine: My Subroutine
+cond=&amp;gt;condition: Yes
+or No?:&amp;gt;http://www.google.com
+io=&amp;gt;inputoutput: catch something...
+
+st-&amp;gt;op1-&amp;gt;cond
+cond(yes)-&amp;gt;io-&amp;gt;e
+cond(no)-&amp;gt;sub1(right)-&amp;gt;op1
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt; ( Please enable  &lt;code class=&quot;highlighter-rouge&quot;&gt;Preferences&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;Themes&lt;/code&gt; - &lt;code class=&quot;highlighter-rouge&quot;&gt;Enable sequence &amp;amp; flow chart&lt;/code&gt;, default is enable. )&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-sequence&quot;&gt;Andrew-&amp;gt;China: Says Hello
+Note right of China: China thinks about it
+China--&amp;gt;Andrew: How are you?
+Andrew-&amp;gt;&amp;gt;China: I am good thanks!
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-flow&quot;&gt;st=&amp;gt;start: Start:&amp;gt;http://www.google.com[blank]
+e=&amp;gt;end:&amp;gt;http://www.google.com
+op1=&amp;gt;operation: My Operation
+sub1=&amp;gt;subroutine: My Subroutine
+cond=&amp;gt;condition: Yes
+or No?:&amp;gt;http://www.google.com
+io=&amp;gt;inputoutput: catch something...
+
+st-&amp;gt;op1-&amp;gt;cond
+cond(yes)-&amp;gt;io-&amp;gt;e
+cond(no)-&amp;gt;sub1(right)-&amp;gt;op1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More info: &lt;a href=&quot;http://bramp.github.io/js-sequence-diagrams/&quot;&gt;http://bramp.github.io/js-sequence-diagrams/&lt;/a&gt;, &lt;a href=&quot;http://adrai.github.io/flowchart.js/&quot;&gt;http://adrai.github.io/flowchart.js/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;You can create tables by assembling a list of words and dividing them with hyphens - (for the first row), and then separating each column with a pipe&lt;/td&gt;
+      &lt;td&gt;:&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;First Header&lt;/th&gt;
+      &lt;th&gt;Second Header&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Content from cell 1&lt;/td&gt;
+      &lt;td&gt;Content from cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Content in the first column&lt;/td&gt;
+      &lt;td&gt;Content in the second column&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;strikethrough&quot;&gt;Strikethrough&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;(like &lt;del&gt;this&lt;/del&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Any word wrapped with two tildes (like &lt;del&gt;this&lt;/del&gt;) will appear crossed out.&lt;/p&gt;
+
+&lt;h2 id=&quot;horizontal-rules&quot;&gt;Horizontal Rules&lt;/h2&gt;
+
+&lt;p&gt;Following lines will produce a horizontal rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;***
+
+*****
+
+- - -
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;latex&quot;&gt;LaTex&lt;/h2&gt;
+
+&lt;p&gt;Use double US dollars sign pair for Block level Math formula, and one US dollar sign pair for Inline Level.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For example this is a Block level $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ formula, and this is an inline Level $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ formula.
+
+\\[ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =
+1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
+{1+\frac{e^{-8\pi}} {1+\ldots} } } } \\]
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For example this is a Block level &lt;script type=&quot;math/tex&quot;&gt;x = {-b \pm \sqrt{b^2-4ac} \over 2a}&lt;/script&gt; formula, and this is an inline Level $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$ formula.&lt;/p&gt;
+
+&lt;p&gt;\[ \frac{1}{\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{\frac25 \pi}} =
+1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {1+\frac{e^{-6\pi}}
+{1+\frac{e^{-8\pi}} {1+\ldots} } } } \]&lt;/p&gt;
+
+&lt;h2 id=&quot;footnote&quot;&gt;Footnote&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is a footnote:[^sample_footnote]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a footnote:&lt;sup id=&quot;fnref:sample_footnote&quot;&gt;&lt;a href=&quot;#fn:sample_footnote&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;comment-and-read-more&quot;&gt;Comment And Read More..&lt;/h2&gt;
+
+&lt;!-- comment --&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;Actions-&amp;gt;Insert Read More Comment &lt;em&gt;OR&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;CMD + .&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc&quot;&gt;TOC&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Example:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[TOC]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Result:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;[TOC]&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:sample_footnote&quot;&gt;
+      &lt;p&gt;footnote text detail… &lt;a href=&quot;#fnref:sample_footnote&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 05 Sep 2016 00:00:00 +0800</pubDate>
+        <link>https://cambriayang.github.io///2016/09/05/MWebIntroduction.html</link>
+        <guid isPermaLink="true">https://cambriayang.github.io///2016/09/05/MWebIntroduction.html</guid>
+        
+        
+      </item>
     
   </channel>
 </rss>
