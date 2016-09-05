@@ -1,7 +1,7 @@
 # Welcome to Jekyll!
 
 # Website settings
-title: "Cambria"
+title: "Cambria Yang"
 description: "Cambria's blog,use Jekyll and github pages."
 keywords: "Cambria,blog,Jekyll,github,gh-pages"
 baseurl: "/"
@@ -63,7 +63,7 @@ index:
 # donate
 donate:
   wechat: 'static/img/pay/wechat.png'
-  alipay: 'static/img/pay/alipay.png'
+  alipay: 'static/img/pay/alipay.jpg'
 
 # comment
 changyan:
