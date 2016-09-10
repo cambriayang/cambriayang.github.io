@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Yummy Theme</title>
+    <title>Argost&#39;s Home</title>
     <description>description_of_your_web_site</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Sep 2016 01:09:24 +0800</pubDate>
-    <lastBuildDate>Sun, 11 Sep 2016 01:09:24 +0800</lastBuildDate>
+    <link>https://cambriayang.github.io/</link>
+    <atom:link href="https://cambriayang.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 11 Sep 2016 01:37:59 +0800</pubDate>
+    <lastBuildDate>Sun, 11 Sep 2016 01:37:59 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -16,8 +16,8 @@
 &lt;p&gt;You just need to set &lt;strong&gt;no-post-nav: true&lt;/strong&gt; for your post&lt;/p&gt;
 </description>
         <pubDate>Fri, 13 May 2016 19:25:35 +0800</pubDate>
-        <link>http://localhost:4000/jekyll/update/2016/05/13/Example-No-Sidebar-Nav.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2016/05/13/Example-No-Sidebar-Nav.html</guid>
+        <link>https://cambriayang.github.io/jekyll/update/2016/05/13/Example-No-Sidebar-Nav.html</link>
+        <guid isPermaLink="true">https://cambriayang.github.io/jekyll/update/2016/05/13/Example-No-Sidebar-Nav.html</guid>
         
         
         <category>jekyll</category>
@@ -37,8 +37,8 @@
 &lt;h2 id=&quot;licence&quot;&gt;Licence&lt;/h2&gt;
 </description>
         <pubDate>Fri, 13 May 2016 19:25:35 +0800</pubDate>
-        <link>http://localhost:4000/jekyll/update/2016/05/13/welcome-to-yummy.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2016/05/13/welcome-to-yummy.html</guid>
+        <link>https://cambriayang.github.io/jekyll/update/2016/05/13/welcome-to-yummy.html</link>
+        <guid isPermaLink="true">https://cambriayang.github.io/jekyll/update/2016/05/13/welcome-to-yummy.html</guid>
         
         
         <category>jekyll</category>
@@ -250,8 +250,8 @@
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 22 Apr 2016 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/css/2016/04/22/CSS-Animation.html</link>
-        <guid isPermaLink="true">http://localhost:4000/css/2016/04/22/CSS-Animation.html</guid>
+        <link>https://cambriayang.github.io/css/2016/04/22/CSS-Animation.html</link>
+        <guid isPermaLink="true">https://cambriayang.github.io/css/2016/04/22/CSS-Animation.html</guid>
         
         <category>css</category>
         

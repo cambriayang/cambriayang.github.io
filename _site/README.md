@@ -1,12 +1,12 @@
-# Yummy Jekyll Theme
+# Jekyll Theme
 
 A Simple, Bootstrap Based Theme. Especially for developers who like to show their projects on website and like to take notes. There are also some magical features to discover. 
 
-## [Live Demo](http://dongchuan.github.io/)
+## [Live Demo](https://cambriayang.github.io/)
 
 Open issues if you find bugs or even have trouble installing jekyll or dependencies. :D
 
-Or contact: dongchuan55@gmail.com
+Or contact: flyingabovethesky@gmail.com
 
 > Strongly suggest to fork and change project name to create your GitHub Pages instead of downloading it directly. Because in the future, I will develop many funny modules like 'footprint' to show your world wide trip. Could be easier to merge new features in the future.
 
@@ -133,6 +133,8 @@ Feel free to customize about.me page to show yourself. You only need to modify [
 
 The Apache License 2.0
 
-Copyright (c) 2016 DONG Chuan
+Copyright (c) 2016 Cambria Yang
 
-Check [LICENSE](https://github.com/DONGChuan/DONGChuan.github.io/blob/master/LICENSE) file and [official website](http://www.apache.org/licenses/LICENSE-2.0) for details
+Check [LICENSE](https://github.com/cambriayang/cambriayang.github.io/blob/master/LICENSE) file and [official website](http://www.apache.org/licenses/LICENSE-2.0) for details
+
+
