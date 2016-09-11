@@ -2,7 +2,7 @@
 layout: page
 title: About Me
 menu: about
-subtitle:   <h3>Download My CV</h3>
+subtitle:   ###Download My CV###
             <a role="button" class="btn btn-primary hvr-grow-shadow" href="/assets/files/xxxx.pdf" target="_blanks">
                 <span class="flag-icon flag-icon-gb"></span> English
             </a>

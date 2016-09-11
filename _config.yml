@@ -12,10 +12,10 @@ email: cambriayang@qq.com
 location: Shang Hai # ex. Nice, France
 company: Yeio
 company_url: my_company_website
-github_url: https://github.com/cambriayang# ex. https://github.com/DONGChuan
+github_url: https://github.com/cambriayang
 description: description_of_your_web_site
 favicon: favicon.png # Image must be in assets/images
-repository: cambriayang/cambriayang.github.io # ex. DONGChuan/DONGChuan.github.io
+repository: cambriayang/cambriayang.github.io 
 
 # The base hostname & protocol for your site
 # For local test, please use http://localhost:4000
