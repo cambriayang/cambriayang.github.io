@@ -3,10 +3,10 @@
   <channel>
     <title>Argost&#39;s Home</title>
     <description>description_of_your_web_site</description>
-    <link>https://cambriayang.github.io/</link>
-    <atom:link href="https://cambriayang.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Sep 2016 17:29:22 +0800</pubDate>
-    <lastBuildDate>Sun, 11 Sep 2016 17:29:22 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 11 Sep 2016 17:42:07 +0800</pubDate>
+    <lastBuildDate>Sun, 11 Sep 2016 17:42:07 +0800</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -68,8 +68,8 @@
 
 </description>
         <pubDate>Sun, 11 Sep 2016 16:04:00 +0800</pubDate>
-        <link>https://cambriayang.github.io/poetry/2016/09/11/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html</link>
-        <guid isPermaLink="true">https://cambriayang.github.io/poetry/2016/09/11/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html</guid>
+        <link>http://localhost:4000/poetry/2016/09/11/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html</link>
+        <guid isPermaLink="true">http://localhost:4000/poetry/2016/09/11/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html</guid>
         
         <category>Poetry</category>
         
@@ -282,8 +282,8 @@
 
 </description>
         <pubDate>Sun, 11 Sep 2016 16:04:00 +0800</pubDate>
-        <link>https://cambriayang.github.io/css/2016/09/11/CSS-Animation-Quoted.html</link>
-        <guid isPermaLink="true">https://cambriayang.github.io/css/2016/09/11/CSS-Animation-Quoted.html</guid>
+        <link>http://localhost:4000/css/2016/09/11/CSS-Animation-Quoted.html</link>
+        <guid isPermaLink="true">http://localhost:4000/css/2016/09/11/CSS-Animation-Quoted.html</guid>
         
         <category>css</category>
         
@@ -300,8 +300,8 @@
 
 </description>
         <pubDate>Sun, 11 Sep 2016 16:00:00 +0800</pubDate>
-        <link>https://cambriayang.github.io/quote/2016/09/11/Example-No-Sidebar-Nav.html</link>
-        <guid isPermaLink="true">https://cambriayang.github.io/quote/2016/09/11/Example-No-Sidebar-Nav.html</guid>
+        <link>http://localhost:4000/quote/2016/09/11/Example-No-Sidebar-Nav.html</link>
+        <guid isPermaLink="true">http://localhost:4000/quote/2016/09/11/Example-No-Sidebar-Nav.html</guid>
         
         
         <category>Quote</category>
