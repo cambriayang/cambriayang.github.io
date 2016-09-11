@@ -1,7 +1,8 @@
 ---
 layout: post
-title: CSS Animation
+title: CSS Animation(Quoted)
 category: CSS
+date: 2016-09-11 16:04:00 +0800
 tags: [css]
 ---
 
@@ -155,3 +156,4 @@ div {
 * [Imooc 十天精通CSS3](http://www.imooc.com/learn/33)
 * [CSS Animation for Beginners](https://robots.thoughtbot.com/css-animation-for-beginners#animation-iteration-count)
 * [CSS3 animation-timing-function Property](http://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp)
+

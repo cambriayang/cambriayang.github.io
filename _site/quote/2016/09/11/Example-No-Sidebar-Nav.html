@@ -9,11 +9,11 @@
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png">
 
-    <title>All My Blogs</title>
+    <title>Welcome to Jekyll!</title>
     <meta name="description"
-          content="description_of_your_web_site">
+          content="This is post no right side bar to nav posts.">
 
-    <link rel="canonical" href="https://cambriayang.github.io/blog.html">
+    <link rel="canonical" href="https://cambriayang.github.io/quote/2016/09/11/Example-No-Sidebar-Nav.html">
     <link rel="alternate" type="application/rss+xml" title="Argost's Home" href="https://cambriayang.github.io/feed.xml">
 
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -30,10 +30,10 @@
 
     <!-- CSS set in page -->
     
-    <link rel="stylesheet" href="/assets/css/blog-page.css">
-    
 
     <!-- CSS set in layout -->
+    
+    <link rel="stylesheet" href="/assets/css/sidebar-post-nav.css">
     
 
     <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -91,14 +91,14 @@
 
 
         <div class="content">
-            <section class="jumbotron geopattern" data-pattern-id="All My Blogs">
+            <section class="jumbotron geopattern" data-pattern-id="Welcome to Jekyll!">
     <div class="container">
         <div id="jumbotron-meta-info">
-            <h1>All My Blogs</h1>
+            <h1>Welcome to Jekyll!</h1>
             <span class="meta-info">
                 
-                    <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; Take notes about everything new
                 
+                <span class="octicon octicon-calendar"></span> 2016/09/11
                 
             </span>
         </div>
@@ -113,47 +113,21 @@
 
     });
 </script>
-<article class="post container">
+<article class="post container" itemscope itemtype="http://schema.org/BlogPosting">
 
     <div class="row">
 
-    <div class="col-md-8">
-
-        <!-- Blog list -->
-        <ul id="posts-list">
-            
-            <li class="posts-list-item">
-                <div class="posts-content">
-                    <span class="posts-list-meta">2016-09-11</span>
-                    <a class="posts-list-name bubble-float-left" href="https://cambriayang.github.io/poetry/2016/09/11/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html">偶来无聊, 鄙人拙笔涂鸦几首</a>
-                    <span class="circle"></span>
-                </div>
-            </li>
-            
-            <li class="posts-list-item">
-                <div class="posts-content">
-                    <span class="posts-list-meta">2016-09-11</span>
-                    <a class="posts-list-name bubble-float-left" href="https://cambriayang.github.io/css/2016/09/11/CSS-Animation-Quoted.html">CSS Animation(Quoted)</a>
-                    <span class="circle"></span>
-                </div>
-            </li>
-            
-            <li class="posts-list-item">
-                <div class="posts-content">
-                    <span class="posts-list-meta">2016-09-11</span>
-                    <a class="posts-list-name bubble-float-left" href="https://cambriayang.github.io/quote/2016/09/11/Example-No-Sidebar-Nav.html">Welcome to Jekyll!</a>
-                    <span class="circle"></span>
-                </div>
-            </li>
-            
-        </ul>
-
-        <!-- Pagination -->
         
+        <div class="col-md-12 markdown-body">
+
+            <p>This is post no right side bar to nav posts.</p>
+
+<p>You just need to set <strong>no-post-nav: true</strong> for your post</p>
 
 
-        <!-- Comments -->
-        
+
+            <!-- Comments -->
+            
 <div class="comments">
     <div id="disqus_thread"></div>
     <script>
@@ -180,51 +154,10 @@
 </div>
 
 
+        </div>
+        
 
     </div>
-
-    <div class="col-md-4">
-        <h3 class="sidebar-title">Blog Categories</h3>
-<div id="blog-categories">
-    <ul class="list-group">
-        
-        <li class="list-group-item">
-            Quote
-            <span class="badge">1</span>
-        </li>
-        
-        <li class="list-group-item">
-            CSS
-            <span class="badge">1</span>
-        </li>
-        
-        <li class="list-group-item">
-            Poetry
-            <span class="badge">1</span>
-        </li>
-        
-    </ul>
-</div>
-<script type="text/javascript">
-
-    $(document).ready(function(){
-        $("#blog-categories li").css('text-transform','capitalize')
-    });
-
-</script>
-    </div>
-
-</div>
-<script>
-    $(document).ready(function(){
-
-        // Enable bootstrap tooltip
-        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-
-    });
-</script>
-
-
 
 </article>
 
