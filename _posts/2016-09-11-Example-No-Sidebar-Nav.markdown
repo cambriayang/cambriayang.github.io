@@ -7,7 +7,7 @@ tag: []
 no-post-nav: true
 ---
 
-This is post no right side bar to nav posts.
+This is post no right side bar to nav posts
 
 You just need to set **no-post-nav: true** for your post
 

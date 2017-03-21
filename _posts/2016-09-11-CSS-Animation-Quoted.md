@@ -6,7 +6,7 @@ date: 2016-09-11 16:04:00 +0800
 tags: [css]
 ---
 
-Quick note about CSS animation. 
+Quick note about CSS animation
 
 ## CSS Animation
 
