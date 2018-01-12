@@ -24,7 +24,7 @@ WKWebView 是苹果在 WWDC 2014 上推出的新一代 webView 组件，用以�
 ![]({{ site.url }}/assets/images/posts/webview_2.jpg)
 其实刚进去的时候，内存很小，大概几十兆，此时webview是白屏，等load完就是图一的大小了，可见UIWebView确实是内存大户。
 
-```objective-c
+```swift
     int cacheSizeMemory = 4*1024*1024; // 4MB
     int cacheSizeDisk = 32*1024*1024; // 32MB
 
@@ -136,5 +136,17 @@ WKWebView 是苹果在 WWDC 2014 上推出的新一代 webView 组件，用以�
 ![]({{ site.url }}/assets/images/posts/webview_5.jpg)
 
 毫无违和感，滚动条也完美
+
+## WKWebView
+简单的适配方法本文不再赘述，主要来说说适配 WKWebView 过程中填过的坑以及善待解决的技术难题。
+
+### WKWebView的白屏问题
+WKWebView 自诩拥有更快的加载速度，更低的内存占用，但实际上 WKWebView 是一个多进程组件，Network Loading 以及 UI Rendering 在其它进程中执行。初次适配 WKWebView 的时候，我们也惊讶于打开 WKWebView 后，App 进程内存消耗反而大幅下降，但是仔细观察会发现，Other Process 的内存占用会增加。在一些用 webGL 渲染的复杂页面，使用 WKWebView 总体的内存占用（App Process Memory + Other Process Memory）不见得比 UIWebView 少很多。
+
+在 UIWebView 上当内存占用太大的时候，App Process 会 crash；而在 WKWebView 上当总体的内存占用比较大的时候，WebContent Process 会 crash，从而出现白屏现象。
+
+### WKWebView Cookie 问题
+Cookie 问题是目前 WKWebView 的一大短板
+
 
 
