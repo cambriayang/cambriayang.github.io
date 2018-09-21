@@ -241,7 +241,7 @@ WKWebView的相关的代理方法分别在WKNavigationDelegate和WKUIDelegate以
 
 感谢[Time_for](https://www.jianshu.com/p/9513d101e582)同学的实践，本人打算去写一个demo验证下，稍后更新。
 
-## 参考文件
+## 参考
 * http://blog.csdn.net/Tencent_Bugly/article/details/54668721
 * https://danleechina.github.io/things-to-know-about-WKWebView-UIWebView/
 * http://liuyanwei.jumppo.com/2015/10/17/ios-webView.html
