@@ -29,5 +29,4 @@
 
 .col-md-4 {
     position: static; /* fix strange behavior */
-    overflow: scroll
 }
