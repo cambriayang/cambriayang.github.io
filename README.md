@@ -1,140 +1,104 @@
-# Jekyll Theme
+# Hydrogen
+轻盈、干净
 
-A Simple, Bootstrap Based Theme. Especially for developers who like to show their projects on website and like to take notes. There are also some magical features to discover. 
+跟随她的脚步，开始你的博客之旅
 
-## [Live Demo](https://cambriayang.github.io/)
+>厌倦了无止境的加载以及繁杂的页面内容？那您很幸运，因为您发现了Hydrogen
+><br>我们避免繁杂 使用轻量化的模块来渲染在您屏幕上展示出来的一切 
+><br>当您使用过后就知道，她带给你的不仅仅只有简洁极速的阅读体验...
 
-Open issues if you find bugs or even have trouble installing jekyll or dependencies. :D
+语言：简体中文 | [English](README-en.md)
 
-Or contact: flyingabovethesky@gmail.com
+![hydrogen](/theme/logo-h.svg)
 
-> Strongly suggest to fork and change project name to create your GitHub Pages instead of downloading it directly. Because in the future, I will develop many funny modules like 'footprint' to show your world wide trip. Could be easier to merge new features in the future.
+~~点点~~Star~~来一个好吗！秋梨膏！！~~
 
-## Notable Features
+# #快速开始
 
-* Compatible with Jekyll 3.x and GitHub Pages
-* Based on Bootstrap
-* [Github Module](http://dongchuan.github.io/open-source) to show your popular projects in a single page and on sidebar automatically. (Datas are retreived by github metadata instead of by api calls, so no delay) 
-* [Post Module](http://dongchuan.github.io/blog) to show all your posts with timeline
-* [Bookmark Module](http://dongchuan.github.io/bookmark) to establish a quick mark about all libs/tools/books you like to use.
-* [Post Navigation Module](http://dongchuan.github.io/css/2016/04/22/CSS-Animation.html) to generat a quick directory of your post by titles/subtitles automatically.
-* Support [Disqus Comment](https://disqus.com/home/explore/)
-* Support [Google Analytics](https://analytics.google.com/analytics/web/)
+![hydrogen](/theme/a-h.png)
 
-Features in future:
-* A Footprint module to show all your travel around the world
-* Feature to share. (Facebook, twitter, evernote and so on)
-* (Not sure) A embeded todo list. (Not sure) to travel, to complete, to do for your parents, etc. To do in life!
-* Creative ideas to discuss with you :P
+## #准备
 
-## Install and setup
+打开主题根目录下的`_config.yml`
 
-Before using it, you may need [Bower](http://bower.io/) and [Bundler](http://bundler.io/) on your local to install dependencies.
+根据需求修改以下选项：
 
-1. Fork code and clone
-2. Run `bower install` to install all dependencies in [bower.json](https://github.com/DONGChuan/DONGChuan.github.io/blob/master/bower.json)
-3. Run `bundle install` to install all dependencies in [Gemfile](https://github.com/DONGChuan/DONGChuan.github.io/blob/master/Gemfile)
-4. Update `_config.yml` with your own settings.
-5. Add posts in `/_posts`
-6. Commit to your own Username.github.io repository.
-7. Then come back to star this theme!
+`title` : 更改你的博客名字
 
-> When install dependencies by bundler or gem, you may have some errors depending on your environment.
+`description` : 更改你的博客描述
 
-> Error about `json`. Check response of [Massimo Fazzolari on Stackoverflow](http://stackoverflow.com/questions/8100891/the-json-native-gem-requires-installed-build-tools) to quick fix your problem. (Please also use latest version instead of 1.9.3 mentioned in the response)
-  
-> Error about `jekyll-paginate`. Please check [here](http://stackoverflow.com/questions/35401566/dont-have-jekyll-paginate-or-one-of-its-dependencies-installed)
+`keywords` : 博客关键词(SEO相关)
 
-> Error about `SSL_connect`. Please check [here](http://stackoverflow.com/questions/15305350/gem-install-fails-with-openssl-failure) and [here](http://railsapps.github.io/openssl-certificate-verify-failed.html)
+`baseurl` : 博客所在的目录文件夹，开头需带上`/`，如果为根目录请留空(建议将博客放置在根目录)
 
-> For the moment, when you test on your local, you need to keep internet connection. Bug will be fixed soon.
+`url` : 你的域名，如`atlinker.cn`无需加`http/https://`
 
-## How to use
+`bulidtime` : 博客建立时的时间戳，填写后将自动计算博客建立时间并显示在页脚. [日期转时间戳](https://tool.lu/timestamp/)
 
-#### Create a new post
+`paginate` : 主页中显示的最大文章数，超过设定的数值文章自动归入下一页
 
-Create a `.md` file inside `_posts` folder.
+`background` : 博客首页主题图片路径
 
-Name the file according to the standard jekyll format.
+`theme_color` : 博客顶部栏颜色，填颜色代码**但不要带上#号**
 
-```
-2016-01-19-i-love-yummy.md
-```
+`MathJax` : 是否开启MathJax(布尔值)
 
-Write the Front Matter and content in the file.
+`author` : 作者名
 
-```
+> 开发者选项
+>> `PJAX` : PJAX无刷新加载(布尔值)
+
+## #设置域名
+
+修改根目录下的CNAME文件为你的域名即可
+
+#### 关于主题的基本设置已经完毕~
+
 ---
-layout: post
-title: Post title
-category: Category
-tags: [tag1, tag2]
+
+## #友链添加
+
+打开`_data`目录下的`friends.yml`文件，根据文件中模板新添代码即可
+
 ---
-```
 
-Please find examples [here](https://github.com/DONGChuan/DONGChuan.github.io/tree/master/_posts)
+## #文章置顶
 
-> Jekyll supports different structure of repository. You could just create as many folders as you want under _posts. Then jekyll will look through all folders/subfolders to find your posts. So cool, right? :D
+在文章Front Matter添加stickie: true即可
 
-#### [Post Navigation Module](http://dongchuan.github.io/css/2016/04/22/CSS-Animation.html)
-
-When writing post, please always follow this format:
+如：
 
 ```
-Description about this post, blablabla
-
-## Title A
-
-### Title A-1
-
-### Title A-2
-
-## Title B
-
-### Title B-1
-
+ ---
+ layout: post
+ title: Hi
+ stickie: true
+ ---
 ```
 
-So, Title A, A-1, A-2, Title B, B-1 will be detected and created as a directory
+## #评论
 
-For example, [a demo post](https://github.com/DONGChuan/DONGChuan.github.io/edit/master/_posts/2016-04-22-CSS-Animation.md)
+#### #前提
 
-But if you do not like it or your post is quite short. You want to hide this navigation to make your post occupy your full screen. You just need to set **no-post-nav:true** in the Front Matter of the post where you want to hide this feature :D
+> 必须确定已阅读[Valine](https://valine.js.org/quickstart.html)文档
 
-#### [Github Module](http://dongchuan.github.io/open-source)
+配置文件:
 
-This module will get automatically all your repository information from github. But to test on your local, you must keep internet connection. 
-In the future, it will also show the repositories you contributed a lot and the ones of your organization.
+`_data/social.yml` : 填写app id和key以及评论的相关信息
 
-#### [Bookmark Module](http://dongchuan.github.io/bookmark)
+`_includes/comments.html` : 评论设置
 
-To add new marks, you only need to edit [bookmark.md](https://github.com/DONGChuan/Yummy-Jekyll/blob/master/bookmark.md).
+确保配置无误后修改`_data/social.yml`中的`enable`值由`false`改为`ture`即可
 
-#### [Customize About Page](http://dongchuan.github.io/about)
+## #写在最后
 
-Feel free to customize about.me page to show yourself. You only need to modify [about.md](https://github.com/DONGChuan/Yummy-Jekyll/blob/master/about.md) and [about.html](https://github.com/DONGChuan/Yummy-Jekyll/blob/master/_includes/about.html)
+请花10分钟时间**认真**阅读文档，如还有疑难之处，请提[issues](https://github.com/link9596/hydrogen/issues/new)，我会尽力帮忙
 
-## ToDo
+如使用过程有任何疑难Bug，也请提出[issues](https://github.com/link9596/hydrogen/issues/new)！ :+1:
 
-- [ ] List posts by a specified tag
-- [ ] New module FootPrint to show your world around trips
-- [ ] Show projects from your orgnization on github. (Siderbar, in open-source page)
-- [ ] To fix bug - could only test on local with internet connected.
+最后，如果喜欢~请给项目点个star:wink:(点star的dalao都超级靓的)
 
-## Contributor
+![hydrogen](/theme/author.svg)
 
-* [DONGChuan](https://github.com/DONGChuan)
-* [Mojtaba Koosej](https://github.com/mkoosej)
-* [shahsaurabh0605](https://github.com/shahsaurabh0605)
-* [Z-Beatles](http://www.waynechu.cn/)
-* [LM450N](https://github.com/LM450N)
-
-## License
-
-The Apache License 2.0
-
-Copyright (c) 2016 Cambria Yang
-
-Check [LICENSE](https://github.com/cambriayang/cambriayang.github.io/blob/master/LICENSE) file and [official website](http://www.apache.org/licenses/LICENSE-2.0) for details
-
-
+![](https://img.shields.io/github/repo-size/link9596/hydrogen?color=%23F8BBD0)
+![](https://img.shields.io/github/release/link9596/hydrogen?color=%235C6BC0&label=Version)
