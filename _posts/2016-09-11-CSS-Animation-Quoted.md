@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CSS Animation(Quoted)
 category: CSS
 date: 2016-09-11 16:04:00 +0800
