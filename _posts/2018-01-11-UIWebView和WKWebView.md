@@ -1,4 +1,6 @@
 ---
+layout: article
+mathjax: true
 title: UIWebView和WKWebView的一些比较
 category: iOS
 date: 2018-01-11 18:00:00 +0800
