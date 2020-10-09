@@ -1,68 +1,104 @@
-# MatJek
+# Hydrogen
+轻盈、干净
 
-A responsive [Material](https://material.io/) theme based on [Materialize.css](http://materializecss.com/) for jekyll sites.
+跟随她的脚步，开始你的博客之旅
 
-## Features
+>厌倦了无止境的加载以及繁杂的页面内容？那您很幸运，因为您发现了Hydrogen
+><br>我们避免繁杂 使用轻量化的模块来渲染在您屏幕上展示出来的一切 
+><br>当您使用过后就知道，她带给你的不仅仅只有简洁极速的阅读体验...
 
-* Google Analytics
-* Disqus
-* [GitHub project page](https://shawnteoh.github.io/matjek/projects/)
-* [Tags](https://shawnteoh.github.io/matjek/tags/) and [Categories](https://shawnteoh.github.io/matjek/categories/)
-* Modular CSS and JS includes ([example](https://github.com/ShawnTeoh/matjek/blob/gh-pages/projects.md/))
-* [Fancy "About" page](https://shawnteoh.github.io/matjek/about)
+语言：简体中文 | [English](README-en.md)
 
-## Installation
+![hydrogen](/theme/logo-h.svg)
 
-Clone or fork this repo and edit `_config.yml` as needed.
+~~点点~~Star~~来一个好吗！秋梨膏！！~~
 
-## Configuration
+# #快速开始
 
-Most of the configurations can be found in `_config.yml`. The configurations listed below are specific to MatJek. If you are not using `google_tracking_id` or `disqus_shortname`, just remove them completely.
+![hydrogen](/theme/a-h.png)
 
-```yaml
-github_profile: "github_profile_url"
-user: "your_name" # Appears at sidebar
-user_email: "your_email" # Appears at sidebar, remove whole variable if unwanted
-contact_url: "google_form_link"
-google_tracking_id: "google_analytics_ID"
-disqus_shortname: "shortname_given_by_Disqus"
+## #准备
+
+打开主题根目录下的`_config.yml`
+
+根据需求修改以下选项：
+
+`title` : 更改你的博客名字
+
+`description` : 更改你的博客描述
+
+`keywords` : 博客关键词(SEO相关)
+
+`baseurl` : 博客所在的目录文件夹，开头需带上`/`，如果为根目录请留空(建议将博客放置在根目录)
+
+`url` : 你的域名，如`atlinker.cn`无需加`http/https://`
+
+`bulidtime` : 博客建立时的时间戳，填写后将自动计算博客建立时间并显示在页脚. [日期转时间戳](https://tool.lu/timestamp/)
+
+`paginate` : 主页中显示的最大文章数，超过设定的数值文章自动归入下一页
+
+`background` : 博客首页主题图片路径
+
+`theme_color` : 博客顶部栏颜色，填颜色代码**但不要带上#号**
+
+`MathJax` : 是否开启MathJax(布尔值)
+
+`author` : 作者名
+
+> 开发者选项
+>> `PJAX` : PJAX无刷新加载(布尔值)
+
+## #设置域名
+
+修改根目录下的CNAME文件为你的域名即可
+
+#### 关于主题的基本设置已经完毕~
+
+---
+
+## #友链添加
+
+打开`_data`目录下的`friends.yml`文件，根据文件中模板新添代码即可
+
+---
+
+## #文章置顶
+
+在文章Front Matter添加stickie: true即可
+
+如：
+
+```
+ ---
+ layout: post
+ title: Hi
+ stickie: true
+ ---
 ```
 
-Edit the images in `assets/res` to suit your liking, but try to stick to the original resolutions.
+## #评论
 
-If you would like to enable comments in a post (disqus_shortname must be provided), add this line to the front matter of the post.
+#### #前提
 
-```yaml
-comments: 1
-```
+> 必须确定已阅读[Valine](https://valine.js.org/quickstart.html)文档
 
-Add tags and categories to your posts in the front matter as well. Multiple tags/categories can be assigned but need to be separated by spaces.
+配置文件:
 
-```yaml
-categories: default default2
-tags: test test2
-```
+`_data/social.yml` : 填写app id和key以及评论的相关信息
 
-## Contributing
+`_includes/comments.html` : 评论设置
 
-Bug reports and pull requests are welcomed on GitHub at https://github.com/shawnteoh/matjek. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+确保配置无误后修改`_data/social.yml`中的`enable`值由`false`改为`ture`即可
 
-## Development
+## #写在最后
 
-To set up your environment to develop this theme, clone/fork the repo and run `bundle install`.
+请花10分钟时间**认真**阅读文档，如还有疑难之处，请提[issues](https://github.com/link9596/hydrogen/issues/new)，我会尽力帮忙
 
-To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000/matjek/`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+如使用过程有任何疑难Bug，也请提出[issues](https://github.com/link9596/hydrogen/issues/new)！ :+1:
 
-## License
+最后，如果喜欢~请给项目点个star:wink:(点star的dalao都超级靓的)
 
-The theme is available as open source under the terms of the [GPL v3 License](https://www.gnu.org/licenses/gpl-3.0.en.html).
+![hydrogen](/theme/author.svg)
 
-## Libraries
-* [Materialize.css](http://materializecss.com/)
-* [GeoPattern](https://github.com/btmills/geopattern/)
-* [Animate.css](https://daneden.github.io/animate.css/)
-* [Morphtext](http://morphext.fyianlai.com/)
-
-## References
-* https://github.com/DONGChuan/Yummy-Jekyll/
-* https://github.com/codinfox/codinfox-lanyon/
+![](https://img.shields.io/github/repo-size/link9596/hydrogen?color=%23F8BBD0)
+![](https://img.shields.io/github/release/link9596/hydrogen?color=%235C6BC0&label=Version)

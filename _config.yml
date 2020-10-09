@@ -1,48 +1,45 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+title: Argost's Home #博客标题
+description: Just 4 Fun. #博客描述
+keywords: blog,css,html,php #博客关键字
+author: Cambriayang
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: Argost
-description: > # this means to ignore newlines until "baseurl:"
-  Material theme based on <a href="http://materializecss.com">Materialize.css</a> for jekyll sites
-baseurl: "/ayeio.com"
-url: "https://ayeio.com"
-permalink: /:year/:month/:day/:title
-repository: cambriayang/cambriayang.github.io
-paginate: 5
+#title hide and show
+hide: (つェ⊂)我藏好啦
+show: ´∇｀ 呀被发现啦~ 
 
-# MatJek specific configurations
-github_profile: "https://github.com/cambriayang"
-user: "Cambria Yang"
-user_email: "cambriayang@qq.com"
-contact_url: "https://cambriayang@qq.com"
-google_tracking_id: "UA-96359860-1"
-google_site_verification: "UA-96359860-1"
-disqus_shortname: "matjek"
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
-comments: 1
+baseurl: "" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
+url: "https://cambriayang.github.io" # change this to the base hostname & protocol for your site
+buildtime: "1514736000" #博客建立时的时间戳 可进入https://tool.lu/timestamp/将博客建立时的日期转换成时间戳
+           #The timestamp at the time of blog establishment can be entered at https://tool.lu/timestamp/to convert the date at the time of blog establishment into a timestamp.
 
-# Build settings
-markdown: kramdown
-gems:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-seo-tag
-  - jekyll-sitemap
-exclude:
-  - Gemfile
-  - Gemfile.lock
-sass:
-  style: compressed
-future: true
+PJAX: true #启用PJAX，会与评论系统冲突（如不用评论系统建议开启）
+
+paginate: 8 #同时显示的最大文章数，超过自动分页
+paginate_path: "page:num"
+
+background: https://api.dujin.org/bing/1920.php
+theme_color: 546E7A
+
+# hydrogen-blog date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+hydrogen-blog:
+  date_format: "%b %-d, %Y"
+
+#MathJax switch
+MathJax: false
+
+#install emoji
+plugins:
+  - jemoji
+
+# social account
+image:
+twitter:
+  username:
+#  site:
+facebook:
+  #publisher: null
+  #profile_id: null
+  app_id: null
+  #authors: null
+#  admins:
