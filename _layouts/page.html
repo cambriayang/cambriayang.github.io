@@ -1,9 +1,10 @@
 ---
 layout: default
+css: ["page.css"]
 ---
-{% include jumbotron.html %}
-<article class="post container">
-
-    {{ content }}
-
-</article>
+<div id="page-info">
+  <h3>{{page.title}}</h3>
+</div>
+<div class="row">
+  {{ content }}
+</div>

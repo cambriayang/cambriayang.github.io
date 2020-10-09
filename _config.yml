@@ -1,26 +1,48 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
 # Site settings
-name: Argost's Home
-email: cambriayang@qq.com
-author: Cambria Yang
-url: https://ayeio.com
-resume_site: http:/cambriayang/
-github: https://github.com/cambriayang
-baseurl: "/ayeio"
-description: Actually, less is more!
-meta_description: 叶林萧;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
-motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Argost
+description: > # this means to ignore newlines until "baseurl:"
+  Material theme based on <a href="http://materializecss.com">Materialize.css</a> for jekyll sites
+baseurl: "/ayeio.com"
+url: "https://ayeio.com"
+permalink: /:year/:month/:day/:title
+repository: cambriayang/cambriayang.github.io
+paginate: 5
 
-#permalink: /:categories/:year/:month/:day/:title/
-permalink: /:year/:month/:day/:title/
-paginate: 10
-
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
-
-github_username: cambriayang
+# MatJek specific configurations
+github_profile: "https://github.com/cambriayang"
+user: "Cambria Yang"
+user_email: "cambriayang@qq.com"
+contact_url: "https://cambriayang@qq.com"
+google_tracking_id: "UA-96359860-1"
+google_site_verification: "UA-96359860-1"
+disqus_shortname: "matjek"
+baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+comments: 1
 
 # Build settings
 markdown: kramdown
-
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
-
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - Gemfile
+  - Gemfile.lock
+sass:
+  style: compressed
+future: true
