@@ -1,0 +1,90 @@
+<p>简单介绍一下这次模块化实践以及所遇到的一些问题</p>
+
+<h2 id="楔子">楔子</h2>
+<p>任何一个工程都会经历从无到有，从小到大的过程，这其中会遇到种种问题。譬如，工程成长到一定的阶段，势必想要进行模块化，一来可以让自己的工程看起来层次更清晰，不同模块独立性也更好，同时等工程到了一定规模，想要对外开放，实现开放平台，那么模块化就是必经之路。本文选择的模块化是cocoapods私有库+spec，同样也提供了二进制化方案，方便2中方式，一种是源码形式，一直是framework形式。
+本文简洁明了，适合已近对cocoapods有一定基础的读者，如何安装，怎样使用，这边就不赘述了，直接进入主题，一切都是从简单实用为出发点，都是本人自己实践过的。</p>
+
+<h2 id="podspec以及一些常用命令">Podspec以及一些常用命令</h2>
+<blockquote>
+  <p>pod lib lint –allow-warnings –verbose</p>
+</blockquote>
+
+<p>链接验证命令，即验证路径，语法等是否合法，可达。
+当然还可以加一些参数，比如：</p>
+<blockquote>
+  <p>–source “git@xxx.yyy.net，https://zzz.com”</p>
+</blockquote>
+
+<p>有些库的验证可能用到外部的url资源，需要添加</p>
+
+<blockquote>
+  <p>–use-libraries</p>
+</blockquote>
+
+<p>有静态库lint时</p>
+
+<p>由于一般来说，我们制作私有库，还有可能希望编译快一点，所以就有了binary的要求，这里简单介绍下<code class="language-plaintext highlighter-rouge">pod package</code>这个命令， 这个命令是根据写好的podspec文件，生成framework或者library，节约编译时间，也可以做成看不见源码的私有库。</p>
+<blockquote>
+  <p>pod package yyyy.podspec –force –no-mangle –exclude-deps</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">--exclude-deps</code>这个参数，是我试验了很久，老是报a的symbols和b的symbols重复定义的错，试出来的选项，很有用，可以注意下。</p>
+
+<p>具体参数可以通过pod package –help查阅。
+还有，默认是framework，如果需要library，则使用<code class="language-plaintext highlighter-rouge">--library</code></p>
+
+<h2 id="一些小技巧">一些小技巧</h2>
+<h3 id="更新方式">更新方式</h3>
+<ul>
+  <li>
+    <p>较快的方式更新（有可能会有spec更新，所以repo update需要，如果没有spec的更新，可以直接install，如果怕忘记，可以进行repo update操作，单个速度很快）：
+pod repo update ~/.cocoapods/repos/xxx(xxx是你们本地私有库的spec)（只更新特定的repo）
+pod install</p>
+  </li>
+  <li>
+    <p>稍微慢一点的方式：
+直接pod update （因为pod1.1.1版本后，update命令会执行repo update命令，不过不是针对具体repo去更新的）</p>
+  </li>
+</ul>
+
+<p><strong>有时候删除了tag，修改了代码然后重新添加了跟之前一样的tag的时候，如果pod spec lint可能会报错： 
+因为它验证的时候会重远程下载下来新的代码，然后进行验证，但是如果~/Library/Caches/CocoaPods/里有对应tag的源代码缓存的话，是不会再重新下载覆盖这个缓存的，所以在验证的时候还是验证的老代码，导致可能的报错。 
+所以一般最好是不要删除tag，而要更新tag。如果要删除tag的话需要去删除~/Library/Caches/CocoaPods/里的缓存</strong>。</p>
+
+<h2 id="pod-install和pod-update的注意点">pod install和pod update的注意点</h2>
+<p>这个cocoapods官网说的很清楚，我就不赘述了，请各位看官移步
+https://guides.cocoapods.org/using/pod-install-vs-update.html</p>
+<h2 id="subspec的使用">subspec的使用</h2>
+<p>这是个好东西，必须要单独来说，我们去看cocoapods官方源去看，可以发现很多podspec有这个subspec，比如SDWebimage，AFNetwork等等。这个是何方神圣呢？其实，可以简单理解，它就是一个分割器，当然这其中有一个默认值，以SDWebImage为例</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">s</span><span class="p">.</span><span class="nf">default_subspec</span> <span class="o">=</span> <span class="s1">'Core'</span>
+
+    <span class="n">s</span><span class="p">.</span><span class="nf">subspec</span> <span class="s1">'Core'</span> <span class="k">do</span> <span class="o">|</span><span class="n">core</span><span class="o">|</span>
+    <span class="n">core</span><span class="p">.</span><span class="nf">source_files</span> <span class="o">=</span> <span class="s1">'SDWebImage/{NS,SD,UI}*.{h,m}'</span>
+    <span class="n">core</span><span class="p">.</span><span class="nf">exclude_files</span> <span class="o">=</span> <span class="s1">'SDWebImage/UIImage+WebP.{h,m}'</span><span class="p">,</span> <span class="s1">'SDWebImage/SDWebImageWebPCoder.{h,m}'</span>
+    <span class="n">core</span><span class="p">.</span><span class="nf">tvos</span><span class="p">.</span><span class="nf">exclude_files</span> <span class="o">=</span> <span class="s1">'SDWebImage/MKAnnotationView+WebCache.*'</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+
+<p>其中default表明通常的写法，<code class="language-plaintext highlighter-rouge">pod SDWebimage</code>会获取到的代码，当然了，它还有其他的subspec，如GIF，WebP等，如果需要使用，需要<code class="language-plaintext highlighter-rouge">pod SDWebimage/GIF</code>就可以了。
+subspec是可以指定依赖关系的，比如</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">s</span><span class="p">.</span><span class="nf">subspec</span> <span class="s1">'GIF'</span> <span class="k">do</span> <span class="o">|</span><span class="n">gif</span><span class="o">|</span>
+    <span class="n">gif</span><span class="p">.</span><span class="nf">ios</span><span class="p">.</span><span class="nf">deployment_target</span> <span class="o">=</span> <span class="s1">'7.0'</span>
+    <span class="n">gif</span><span class="p">.</span><span class="nf">source_files</span> <span class="o">=</span> <span class="s1">'SDWebImage/FLAnimatedImage/*.{h,m}'</span>
+    <span class="n">gif</span><span class="p">.</span><span class="nf">dependency</span> <span class="s1">'SDWebImage/Core'</span>
+    <span class="n">gif</span><span class="p">.</span><span class="nf">dependency</span> <span class="s1">'FLAnimatedImage'</span><span class="p">,</span> <span class="s1">'~&gt; 1.0'</span>
+    <span class="n">gif</span><span class="p">.</span><span class="nf">xcconfig</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">'USER_HEADER_SEARCH_PATHS'</span> <span class="o">=&gt;</span> <span class="s1">'$(inherited) $(SRCROOT)/FLAnimatedImage/FLAnimatedImage'</span>
+    <span class="p">}</span>
+  <span class="k">end</span>
+</code></pre></div></div>
+<p>GIF模块依赖core模块，所以，即使你只写<code class="language-plaintext highlighter-rouge">pod SDWebimage/GIF</code>也依然会拉取到相应的代码的。</p>
+
+<p>子模块还可以为不同的资源（plist，配置表，图片等）服务，也就是说，你可以定义一些子模块，source是一样的，但是resource不同，这样可以根据不同写法，选择不同的样式，目前我自己做的私有库也采用了这一套，还挺方便的。</p>
+<h2 id="参考">参考</h2>
+<ul>
+  <li>https://imfong.com/post/Talk-iOS-Library-Binary-Practice</li>
+  <li>https://www.jianshu.com/p/5338bc626eaf</li>
+</ul>
+

@@ -1,0 +1,247 @@
+I"�x<p>介绍一下UIWebView和WKWebView</p>
+
+<h2 id="楔子">楔子</h2>
+<p>在我们使用UIWebView的过程中应该有发现UIWebView可是个吃内存的大户，动辄就是上百兆的内存，虽说现在iPhone的性能越来越好，但是也经不住如此折腾啊，况且，一个APP如果占用的系统内存超过整机内存总数的一半时是会被优先kill掉的。
+WKWebView 是苹果在 WWDC 2014 上推出的新一代 webView 组件，用以替代 UIKit 中笨重难用、内存泄漏的 UIWebView。WKWebView 拥有60fps滚动刷新率、和 safari 相同的 JavaScript 引擎等优势。</p>
+
+<p>下面就简单讲讲</p>
+
+<h2 id="uiwebview的内存问题以及一些改进方式">UIWebView的内存问题以及一些改进方式</h2>
+<p>部分App（好吧，可能说很多）喜欢将UIWebView的frame根据内容自适配，因为他们需要在下面添加一些自定义的view，如tableview（需要滚动）等。这种方式正常情况下是没有什么问题的，但是需要考虑一下一些变态情况，如：</p>
+<blockquote>
+  <p>http://m.thepaper.cn/wifiKey_detail.jsp?contid=1913999&amp;from=wifiKey&amp;fromId=1966555810873344&amp;newsId=26~2490337347993600&amp;docId=26~249033743474688</p>
+</blockquote>
+
+<p>这个link如果全展开的话，高度超过30000px，最要命的是，如果将webview也进行展开的话，内存直接会飙升到500MB左右，如果说只是将其frame固定，内容滚动的话，比如下图的样式：
+<img src="http://localhost:4000/assets/images/posts/webview_1.jpg" alt="" /></p>
+
+<p>此时的内存大小如下图所示:
+<img src="http://localhost:4000/assets/images/posts/webview_2.jpg" alt="" />
+其实刚进去的时候，内存很小，大概几十兆，此时webview是白屏，等load完就是图一的大小了，可见UIWebView确实是内存大户。</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">int</span> <span class="n">cacheSizeMemory</span> <span class="o">=</span> <span class="mf">4*1024*</span><span class="mi">1024</span><span class="p">;</span> <span class="c1">// 4MB</span>
+    <span class="n">int</span> <span class="n">cacheSizeDisk</span> <span class="o">=</span> <span class="mf">32*1024*</span><span class="mi">1024</span><span class="p">;</span> <span class="c1">// 32MB</span>
+
+    <span class="kt">NSURLCache</span> <span class="o">*</span><span class="n">sharedCache</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">NSURLCache</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithMemoryCapacity</span><span class="p">:</span><span class="n">cacheSizeMemory</span> <span class="nv">diskCapacity</span><span class="p">:</span><span class="n">cacheSizeDisk</span> <span class="nv">diskPath</span><span class="p">:</span><span class="kc">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="kt">NSURLCache</span> <span class="nv">setSharedURLCache</span><span class="p">:</span><span class="n">sharedCache</span><span class="p">];</span>
+</code></pre></div></div>
+<p>这段代码相信大家在很多 ` AppDelegate ` 里应该都看过，能起到一定作用，但是效果不是非常大。
+这里需要注意一下 <code class="language-plaintext highlighter-rouge">diskPath:nil</code> 经过和我同事的讨论，是使用默认的path去建立disk缓存，如果你使用自己的path，系统会递归去命中缓存，不过这块我还需要自己去实践一下，待考。</p>
+
+<p><strong>下面提供另一种思路：</strong>
+其实大家想将webview展开到全尺寸，无非就是想让下面的view能够实现自己的业务逻辑，以uitableview为例。实际上，我们可以将tableview进行全展开，虽然也会有些内存浪费，当时绝对比webview全展开来的少，毕竟tableview更加成熟。</p>
+
+<p>其实webview之所以能够滚动，也是因为内部有UIScrollView。</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/webview_3.jpg" alt="" /></p>
+
+<p>那么很自然的，我们可以取到这个srollview，将自己的view添加到这上面不就可以了么。</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">self</span><span class="o">.</span><span class="n">webView</span> <span class="o">=</span> <span class="n">web</span><span class="p">;</span>
+  
+    <span class="kt">NSString</span> <span class="o">*</span><span class="n">urlStr</span> <span class="o">=</span> <span class="s">@"http://m.thepaper.cn/wifiKey_detail.jsp?contid=1913999&amp;from=wifiKey&amp;fromId=1966555810873344&amp;newsId=26~2490337347993600&amp;docId=26~249033743474688"</span><span class="p">;</span>
+    
+    <span class="kt">NSString</span> <span class="o">*</span><span class="n">encodedString</span> <span class="o">=</span> <span class="p">[</span><span class="n">urlStr</span> <span class="nv">stringByAddingPercentEncodingWithAllowedCharacters</span><span class="p">:[</span><span class="kt">NSCharacterSet</span> <span class="kt">URLQueryAllowedCharacterSet</span><span class="p">]];</span>
+    
+    <span class="kt">NSURL</span> <span class="o">*</span><span class="n">weburl</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSURL</span> <span class="kt">URLWithString</span><span class="p">:</span><span class="n">encodedString</span><span class="p">];</span>
+    
+    <span class="kt">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">NSURLRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithURL</span><span class="p">:</span><span class="n">weburl</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">web</span> <span class="nv">loadRequest</span><span class="p">:</span><span class="n">request</span><span class="p">];</span>
+    
+    <span class="n">web</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
+    
+    <span class="kt">UIScrollView</span> <span class="o">*</span><span class="n">myScrollView</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">webView</span><span class="o">.</span><span class="n">scrollView</span><span class="p">;</span>
+    
+    <span class="kt">UIView</span> <span class="o">*</span><span class="n">containerView</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UIView</span> <span class="k">new</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">myScrollView</span> <span class="nv">addSubview</span><span class="p">:</span><span class="n">containerView</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="n">containerView</span> <span class="nv">mas_makeConstraints</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">MASConstraintMaker</span> <span class="o">*</span><span class="n">make</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">myScrollView</span><span class="p">);</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="nf">mas_equalTo</span><span class="p">([</span><span class="kt">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">);</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="nf">mas_equalTo</span><span class="p">(</span><span class="n">defaultTableH</span><span class="p">);</span>
+    <span class="p">}];</span>
+    
+    <span class="k">self</span><span class="o">.</span><span class="n">containerView</span> <span class="o">=</span> <span class="n">containerView</span><span class="p">;</span>
+    
+    <span class="kt">UITableView</span> <span class="o">*</span><span class="n">tableview</span> <span class="o">=</span> <span class="p">[</span><span class="kt">UITableView</span> <span class="k">new</span><span class="p">];</span>
+    
+    <span class="p">[</span><span class="k">self</span><span class="o">.</span><span class="n">containerView</span> <span class="nv">addSubview</span><span class="p">:</span><span class="n">tableview</span><span class="p">];</span>
+    
+    <span class="k">self</span><span class="o">.</span><span class="n">tableView</span> <span class="o">=</span> <span class="n">tableview</span><span class="p">;</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">tableView</span><span class="o">.</span><span class="n">scrollEnabled</span> <span class="o">=</span> <span class="kt">NO</span><span class="p">;</span>
+    
+    <span class="n">tableview</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
+    <span class="n">tableview</span><span class="o">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="k">self</span><span class="p">;</span>
+    <span class="n">tableview</span><span class="o">.</span><span class="n">showsVerticalScrollIndicator</span> <span class="o">=</span> <span class="kt">NO</span><span class="p">;</span>
+</code></pre></div></div>
+<p>由于scrollview的autolayout比较特殊，所以这里采用了拉出一个containerView的原因，具体参见：</p>
+
+<blockquote>
+  <p>http://mokagio.github.io/tech-journal/2015/06/24/ios-scroll-view-and-interface-builder.html</p>
+</blockquote>
+
+<p>这里tableview只是添加上去，真正布局在下面的方法里：</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">webViewDidFinishLoad</span><span class="p">:(</span><span class="kt">UIWebView</span> <span class="o">*</span><span class="p">)</span><span class="n">webView</span> <span class="p">{</span>
+    <span class="c1">//获取页面高度（像素）</span>
+    <span class="kt">NSString</span> <span class="o">*</span> <span class="n">clientheight_str</span> <span class="o">=</span> <span class="p">[</span><span class="n">webView</span> <span class="nv">stringByEvaluatingJavaScriptFromString</span><span class="p">:</span> <span class="s">@"document.body.offsetHeight"</span><span class="p">];</span>
+    <span class="n">float</span> <span class="n">contentH</span> <span class="o">=</span> <span class="p">[</span><span class="n">clientheight_str</span> <span class="n">floatValue</span><span class="p">];</span>
+
+    <span class="p">[</span><span class="k">self</span> <span class="nv">resizeWebContentHeight</span><span class="p">:</span><span class="n">contentH</span><span class="p">];</span>
+    
+    <span class="kd">@weakify</span><span class="p">(</span><span class="k">self</span><span class="p">);</span>
+    <span class="nf">dispatch_after</span><span class="p">(</span><span class="nf">dispatch_time</span><span class="p">(</span><span class="kt">DISPATCH_TIME_NOW</span><span class="p">,</span> <span class="p">(</span><span class="n">int64_t</span><span class="p">)(</span><span class="mi">5</span> <span class="o">*</span> <span class="kt">NSEC_PER_SEC</span><span class="p">)),</span> <span class="nf">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{</span>
+        <span class="kd">@strongify</span><span class="p">(</span><span class="k">self</span><span class="p">);</span>
+        <span class="n">defaultRowCount</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">defaultRowHeight</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+        <span class="p">[</span><span class="k">self</span><span class="o">.</span><span class="n">tableView</span> <span class="n">reloadData</span><span class="p">];</span>
+        
+        <span class="p">[</span><span class="k">self</span> <span class="nv">resizeWebContentHeight</span><span class="p">:</span><span class="n">contentH</span><span class="p">];</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这里的 <code class="language-plaintext highlighter-rouge">dispatch_after</code> 实际上模拟数据源变好，tableview的刷新过程。
+<code class="language-plaintext highlighter-rouge">resizeWebContentHeight</code> 如下：</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">resizeWebContentHeight</span><span class="p">:(</span><span class="kt">CGFloat</span><span class="p">)</span><span class="n">contentHeight</span> <span class="p">{</span>
+    <span class="p">[</span><span class="k">self</span><span class="o">.</span><span class="n">containerView</span> <span class="nv">mas_updateConstraints</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">MASConstraintMaker</span> <span class="o">*</span><span class="n">make</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="nf">mas_equalTo</span><span class="p">(</span><span class="n">contentHeight</span><span class="o">+</span><span class="n">defaultTableH</span><span class="p">);</span>
+    <span class="p">}];</span>
+    
+    <span class="p">[</span><span class="k">self</span><span class="o">.</span><span class="n">tableView</span> <span class="nv">mas_updateConstraints</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">MASConstraintMaker</span> <span class="o">*</span><span class="n">make</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="nf">mas_equalTo</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">containerView</span><span class="o">.</span><span class="n">mas_width</span><span class="p">);</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="nf">mas_equalTo</span><span class="p">(</span><span class="n">defaultTableH</span><span class="p">);</span>
+        <span class="n">make</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">mas_equalTo</span><span class="p">(</span><span class="k">self</span><span class="o">.</span><span class="n">containerView</span><span class="o">.</span><span class="n">mas_bottom</span><span class="p">);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这样就模拟的整个的滚动事件，贴两张实际效果图，一张是没更新数据源的图片，一张是更新后的样式：</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/webview_4.jpg" alt="" /></p>
+
+<p>以及</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/webview_5.jpg" alt="" /></p>
+
+<p>毫无违和感，滚动条也完美</p>
+
+<h2 id="wkwebview">WKWebView</h2>
+<p>简单的适配方法本文不再赘述，主要来说说适配 WKWebView 过程中填过的坑以及善待解决的技术难题。</p>
+
+<h3 id="wkwebview的白屏问题">WKWebView的白屏问题</h3>
+<p>WKWebView 自诩拥有更快的加载速度，更低的内存占用，但实际上 WKWebView 是一个多进程组件，Network Loading 以及 UI Rendering 在其它进程中执行。初次适配 WKWebView 的时候，我们也惊讶于打开 WKWebView 后，App 进程内存消耗反而大幅下降，但是仔细观察会发现，Other Process 的内存占用会增加。在一些用 webGL 渲染的复杂页面，使用 WKWebView 总体的内存占用（App Process Memory + Other Process Memory）不见得比 UIWebView 少很多。</p>
+
+<p>在 UIWebView 上当内存占用太大的时候，App Process 会 crash；而在 WKWebView 上当总体的内存占用比较大的时候，WebContent Process 会 crash，从而出现白屏现象。</p>
+
+<h3 id="wkwebview的cookie问题">WKWebView的Cookie问题</h3>
+<p>Cookie 问题是目前 WKWebView 的一大短板，因为UIWebView的cookie和NSHTTPCookieStorage是共通的。所以说NSHTTPCookieStorage 的单例对象会自动将 cookie 添加到相应的 UIWebView 的 request 上。每次加载完页面以后 UIWebView 上生成的 cookie 也会自动保存到 NSHTTPCookieStorage 单例对象。</p>
+
+<p>WKWebView 的 cookie 处理起来就很麻烦了。为了将 NSHTTPCookieStorage 单例对象的 cookie 设置到 WKWebView，需要在 loadRequest 的时候将 cookie 设置到 request 的 http 头上。代码如下：</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span><span class="nv">loadRequest</span><span class="p">:(</span><span class="kt">NSURLRequest</span> <span class="o">*</span><span class="p">)</span><span class="n">req</span> <span class="p">{</span>
+    <span class="kt">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">mutableCopy</span><span class="p">;</span>
+    <span class="kt">NSString</span> <span class="o">*</span><span class="n">urlString</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="kt">URL</span><span class="o">.</span><span class="n">absoluteString</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">urlString</span> <span class="o">&amp;&amp;</span> <span class="p">[</span><span class="n">urlString</span> <span class="nv">rangeOfString</span><span class="p">:</span><span class="s">@"www.xxx.com"</span><span class="p">]</span><span class="o">.</span><span class="n">location</span> <span class="o">!=</span> <span class="kt">NSNotFound</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">NSHTTPCookie</span> <span class="o">*</span><span class="n">cookie</span> <span class="o">=</span> <span class="c1">// specific cookie to be set;</span>
+        <span class="kt">NSArray</span><span class="o">*</span> <span class="n">cookies</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSArray</span> <span class="nv">arrayWithObjects</span><span class="p">:</span> <span class="n">cookie</span><span class="p">,</span> <span class="kc">nil</span><span class="p">];</span>
+        <span class="kt">NSDictionary</span> <span class="o">*</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="kt">NSHTTPCookie</span> <span class="nv">requestHeaderFieldsWithCookies</span><span class="p">:</span><span class="n">cookies</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">request</span> <span class="nv">setAllHTTPHeaderFields</span><span class="p">:</span><span class="n">headers</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="p">[(</span><span class="kt">WKWebView</span> <span class="o">*</span><span class="p">)</span><span class="k">self</span><span class="o">.</span><span class="n">wkWebView</span> <span class="nv">loadRequest</span><span class="p">:</span><span class="n">request</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>如果有 AJAX 的 request 的话需要设置脚本（原理就是将本地 cookie 通过 js 设置到页面的 document.cookie）：</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">WKUserContentController</span><span class="o">*</span> <span class="n">userContentController</span> <span class="o">=</span> <span class="kt">WKUserContentController</span><span class="o">.</span><span class="k">new</span><span class="p">;</span>
+<span class="kt">WKUserScript</span> <span class="o">*</span> <span class="n">cookieScript</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">WKUserScript</span> <span class="n">alloc</span><span class="p">]</span> 
+    <span class="nv">initWithSource</span><span class="p">:</span> <span class="s">@"document.cookie = 'TeskCookieKey1=TeskCookieValue1';document.cookie = 'TeskCookieKey2=TeskCookieValue2';"</span>
+    <span class="nv">injectionTime</span><span class="p">:</span><span class="kt">WKUserScriptInjectionTimeAtDocumentStart</span> <span class="nv">forMainFrameOnly</span><span class="p">:</span><span class="kt">NO</span><span class="p">];</span>
+<span class="c1">// again, use stringWithFormat: in the above line to inject your values programmatically</span>
+<span class="p">[</span><span class="n">userContentController</span> <span class="nv">addUserScript</span><span class="p">:</span><span class="n">cookieScript</span><span class="p">];</span>
+<span class="kt">WKWebViewConfiguration</span><span class="o">*</span> <span class="n">webViewConfig</span> <span class="o">=</span> <span class="kt">WKWebViewConfiguration</span><span class="o">.</span><span class="k">new</span><span class="p">;</span>
+<span class="n">webViewConfig</span><span class="o">.</span><span class="n">userContentController</span> <span class="o">=</span> <span class="n">userContentController</span><span class="p">;</span>
+<span class="kt">WKWebView</span> <span class="o">*</span> <span class="n">webView</span> <span class="o">=</span> <span class="p">[[</span><span class="kt">WKWebView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nv">initWithFrame</span><span class="p">:</span><span class="kt">CGRectMake</span><span class="p">(</span><span class="cm">/*set your values*/</span><span class="p">)</span> <span class="nv">configuration</span><span class="p">:</span><span class="n">webViewConfig</span><span class="p">];</span>
+
+</code></pre></div></div>
+
+<p>由于采用了新的实现机制，WKWebView 获取的 cookie 不会被设置到 NSHTTPCookieStorage 单例对象上。如果想要获取 WKWebView 上面的 cookie，同样可以是用 document.cookie。但是这种方式无法获取到 httpOnly 的 cookie。为了获取到所有的 WKWebView 上的 cookie。可以使用 NSURLProtocol，在 NSURLProtocol 得到调用的时候去取所有的相关 cookie。但是 WKWebView 默认并不走 NSURLProtocol，需要使用自定义protocol（私有API)：</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Class</span> <span class="n">cls</span> <span class="o">=</span> <span class="kt">NSClassFromString</span><span class="p">(</span><span class="s">@"WKBrowsingContextController"</span><span class="p">);</span>
+    <span class="kt">SEL</span> <span class="n">sel</span> <span class="o">=</span> <span class="kt">NSSelectorFromString</span><span class="p">(</span><span class="s">@"registerSchemeForCustomProtocol:"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">([(</span><span class="n">id</span><span class="p">)</span><span class="n">cls</span> <span class="nv">respondsToSelector</span><span class="p">:</span><span class="n">sel</span><span class="p">])</span> <span class="p">{</span>
+        <span class="c1">// 把 http 和 https 请求交给 NSURLProtocol 处理</span>
+<span class="cp">#pragma clang diagnostic push</span>
+<span class="cp">#pragma clang diagnostic ignored "-Warc-performSelector-leaks"</span>
+        <span class="p">[(</span><span class="n">id</span><span class="p">)</span><span class="n">cls</span> <span class="nv">performSelector</span><span class="p">:</span><span class="n">sel</span> <span class="nv">withObject</span><span class="p">:</span><span class="s">@"http"</span><span class="p">];</span>
+        <span class="p">[(</span><span class="n">id</span><span class="p">)</span><span class="n">cls</span> <span class="nv">performSelector</span><span class="p">:</span><span class="n">sel</span> <span class="nv">withObject</span><span class="p">:</span><span class="s">@"https"</span><span class="p">];</span>
+<span class="cp">#pragma clang diagnostic pop</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="kt">NSURLProtocol</span> <span class="nv">registerClass</span><span class="p">:[</span><span class="kt">CustomURLProtocol</span> <span class="kd">class</span><span class="p">]];</span>
+</code></pre></div></div>
+<p>所以，各位看官可以看出，目前最大的问题就是<strong>WKWebView 发起的请求不会自动带上存储于 NSHTTPCookieStorage 容器中的 Cookie。</strong> 这就很尴尬了啊。比如我有一个这样的cookie：</p>
+<blockquote>
+  <p>name=yy;value=yy;domain=yy.qq.com;expires=Sat, 02 May 2019 23:38:25 GMT；</p>
+</blockquote>
+
+<p>通过 UIWebView 发起请求，则会自动带上，但是WKWebView则不会。。。</p>
+
+<p>不过这有牵扯到另一个问题了：</p>
+
+<h3 id="wkwebview-nsurlprotocol问题">WKWebView NSURLProtocol问题</h3>
+
+<p>这个方法不仅危险，而且也被腾讯的同学证明了有2个致命的缺陷：post 请求 body 数据被清空和对ATS支持不足（这一点我觉得目前应该不紧迫）</p>
+
+<ul>
+  <li>post 请求 body 数据被清空
+由于 WKWebView 在独立进程里执行网络请求。一旦注册 http(s) scheme 后，网络请求将从 Network Process 发送到 App Process，这样 NSURLProtocol 才能拦截网络请求。在 webkit2 的设计里使用 MessageQueue 进行进程之间的通信，Network Process 会将请求 encode 成一个 Message,然后通过 IPC 发送给 App Process。出于性能的原因，encode 的时候 HTTPBody 和 HTTPBodyStream 这两个字段被丢弃掉了(参考苹果源码： 
+https://github.com/WebKit/webkit/blob/fe39539b83d28751e86077b173abd5b7872ce3f9/Source/WebKit2/Shared/mac/WebCoreArgumentCodersMac.mm#L61-L88 及bug report: https://bugs.webkit.org/show_bug.cgi?id=138169)。
+<strong>因此，如果通过 registerSchemeForCustomProtocol 注册了 http(s) scheme, 那么由 WKWebView 发起的所有 http(s)请求都会通过 IPC 传给主进程 NSURLProtocol 处理，导致 post 请求 body 被清空；</strong></li>
+</ul>
+
+<p><strong>这个问题在<code class="language-plaintext highlighter-rouge">loadRequest</code>的过程中，一样会有问题</strong>
+一种解决思路是：
+中间做个映射，简单来说就是自己生成自定义的schema，将post的body先copy到header中（不会丢失），然后注册custom schema，用<code class="language-plaintext highlighter-rouge">NSUrlProtocol</code>拦截请求，进行重组装.</p>
+
+<h2 id="wkwebview的使用">WKWebView的使用</h2>
+<p>WKWebVIew是UIWebView的代替品，新的WebKit框架把原来的功能拆分成许多小类。本例中主要用到了WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler三个委托和配置类WKWebViewConfiguration去实现webView的request控制，界面控制，js交互，alert重写等功能。 使用WKWebView需要引入 <code class="language-plaintext highlighter-rouge">#import &lt;WebKit/WebKit.h&gt;</code></p>
+
+<h3 id="js中alert的拦截">js中alert的拦截</h3>
+<p>在WKWebview中，js的alert是不会出现任何内容的，你必须重写WKUIDelegate委托的<code class="language-plaintext highlighter-rouge">runJavaScriptAlertPanelWithMessage message</code>方法，自己处理alert。类似的还有Confirm和prompt也和alert类似。</p>
+
+<h3 id="app调js方法">app调js方法</h3>
+<p>没什么区别</p>
+
+<h3 id="config">Config</h3>
+<p>WKWebView的config需要在初始化之前设置好</p>
+
+<h3 id="wkwebview的相关的代理方法">WKWebView的相关的代理方法</h3>
+<p>WKWebView的相关的代理方法分别在WKNavigationDelegate和WKUIDelegate以及WKScriptMessageHandler这个与JavaScript交互相关的代理方法。</p>
+
+<ul>
+  <li>WKNavigationDelegate: 此代理方法中除了原有的UIWebView的四个代理方法，还增加了其他的一些方法。</li>
+  <li>WKUIDelegate: 此代理方法在使用中最好实现，否则遇到网页alert的时候，如果此代理方法没有实现，则不会出现弹框提示。</li>
+  <li>WKScriptMessageHandler: 此代理方法就是和JavaScript交互相关，具体介绍参考下面的专门讲解。</li>
+</ul>
+
+<h3 id="wkwebview下面添加自定义view">WKWebView下面添加自定义View</h3>
+<blockquote>
+  <p>因为我们有个需求是在网页下面在添加一个View，用来展示此链接内容的相关评论。在使用UIWebView的时候，做法非常简单粗暴，在UIWebView的ScrollView后面添加一个自定义View，然后根据View的高度，在改变一下scrollView的contentSize属性。以为WKWebView也可以这样简单粗暴的去搞一下，结果却并不是这样。
+首先改变WKWebView的scrollView的contentSize属性，系统会在下一次帧率刷新的时候，再给你改变回原有的，这样这条路就行不通了。我马上想到了另一个办法，改变scrollView的contentInset这个系统倒不会在变化回原来的，自以为完事大吉。后来过了两天，发现有些页面的部分区域的点击事件无法响应，百思不得其解，最后想到可能是设置的contentInset对其有了影响，事实上正是如此。查来查去，最后找到了一个解决办法是，就是当页面加载完成时，在网页下面拼一个空白的div，高度就是你添加的View的高度，让网页多出一个空白区域，自定义的View就添加在这个空白的区域上面。这样就完美解决了此问题。具体可参考Demo所写，核心代码如下:</p>
+</blockquote>
+
+<p>感谢<a href="https://www.jianshu.com/p/9513d101e582">Time_for</a>同学的实践，本人打算去写一个demo验证下，稍后更新。</p>
+
+<h2 id="参考">参考</h2>
+<ul>
+  <li>http://blog.csdn.net/Tencent_Bugly/article/details/54668721</li>
+  <li>https://danleechina.github.io/things-to-know-about-WKWebView-UIWebView/</li>
+  <li>http://liuyanwei.jumppo.com/2015/10/17/ios-webView.html</li>
+</ul>
+
+:ET

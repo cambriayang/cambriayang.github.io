@@ -1,0 +1,215 @@
+<p>本篇博客记录一下自己对Weex的一些学习过程</p>
+
+<h2 id="什么是weexweex能做什么">什么是Weex？Weex能做什么？</h2>
+<p>Weex是阿里巴巴集团开源的一个动态化方案。</p>
+
+<blockquote>
+  <p>在我们对移动开发最佳实践的思考中，我们认为移动开发的未来是更平衡的方案，一定是性能和动态性兼得。第二个，它一定是开放互联的，PC端一直也是这样的， 也是非常好的状态。我们觉得移动互联网将来肯定也是基于更大众化的技术体系，没有平台之间的隔阂，简单直接易用，这是我们最希望看到的。基于这些设想，我 们有了Weex方案。</p>
+</blockquote>
+
+<p>Weex编写的页面天然的支持组件化，首先，我们的界面可以是一个组件化的，把一个复杂界面分成每个组件，刚才演示的都是简单的组件，每个组件都可以看成是一段 template，style，script，放到模型里，对应到界面的结构，样式细节，行为定义。在view里面我们倾向于把数据和视图当中需要展示和 需要有动态变化的部分做一个数据绑定，绑定之后我如果想更改界面的话，通过改变数据就可以做到。</p>
+
+<p>Weex 表面上是一个客户端技术，但实际上它串联起了从本地开发环境到云端部署和分发的整个链路。开发者首先可以在本地像撰写 web 页面一样撰写一个 app 的页面，然后编译成一段 JavaScript 代码，形成 Weex 的一个 JS bundle；在云端，开发者可以把生成的 JS bundle 部署上去，然后通过网络请求或预下发的方式传递到用户的移动应用客户端；在移动应用客户端里，WeexSDK 会准备好一个 JavaScript 引擎，并且在用户打开一个 Weex 页面时执行相应的 JS bundle，并在执行过程中产生各种命令发送到 native 端进行的界面渲染或数据存储、网络通信、调用设备功能、用户交互响应等移动应用的场景实践；同时，如果用户没有安装移动应用，他仍然可以在浏览器里打开一个相同的 web 页面，这个页面是使用相同的页面源代码，通过浏览器里的 JavaScript 引擎运行起来的。</p>
+
+<p>附 Weex 基本原理图2张：</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/weex_work.png" alt="weex_work" /></p>
+
+<p>week架构：
+<img src="http://localhost:4000/assets/images/posts/weex_framework.png" alt="weex_framework" /></p>
+
+<h2 id="weex的一些相关网站">Weex的一些相关网站</h2>
+<ul>
+  <li>https://github.com/weexteam/article/issues （问题交流）</li>
+  <li>https://github.com/apache/incubator-weex （孵化器）</li>
+  <li>https://weex.incubator.apache.org/cn/ （孵化器）</li>
+  <li>http://weex.help/ （社区）</li>
+  <li>http://dotwe.org/vue/ （Playground）</li>
+</ul>
+
+<h2 id="weex环境">Weex环境</h2>
+<p>weex的环境安装很简单：
+https://weex.incubator.apache.org/cn/guide/set-up-env.html</p>
+
+<p>集成到iOS的方法也很简单：
+https://open.taobao.com/doc2/detail?spm=a219a.7629140.0.0.tFddsV&amp;&amp;docType=1&amp;articleId=104829</p>
+
+<h2 id="简单的说明">简单的说明</h2>
+<ul>
+  <li>
+    <p>WXSDKEngine：SDK开放的绝大多数接口都在此有声明。</p>
+  </li>
+  <li>
+    <p>WXLog: 控制Log输出的级别，包括Verbose、Debug、Info、Warning、Error，开发者可以按需来设置输出级别。</p>
+  </li>
+  <li>
+    <p>WXDebugTool: weex提供的对外调试工具。</p>
+  </li>
+  <li>
+    <p>WXAppConfiguration: 使用weex开发的业务性配置。</p>
+  </li>
+</ul>
+
+<h2 id="weex页面渲染">Weex页面渲染</h2>
+
+<p>weex支持全页面以及页面局部两种不同的渲染模式。在iOS中使用方法很简单，只需要将weex渲染所得的view添加到父容器中即可。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)viewDidLoad 
+{
+    [super viewDidLoad];
+ 
+    _instance = [[WXSDKInstance alloc] init];
+    _instance.viewController = self;
+    _instance.frame = self.view.frame; //必需
+    [_instance renderWithURL:self.url options:@{@"bundleUrl":[self.url absoluteString]} data:nil];
+ 
+    __weak typeof(self) weakSelf = self;
+    _instance.onCreate = ^(UIView *view) {
+        [weakSelf.weexView removeFromSuperview];
+        [weakSelf.view addSubview:weakSelf.weexView];
+    };
+ 
+    _instance.onFailed = ^(NSError *error) {
+        //处理失败回调的逻辑。
+    };
+ 
+    _instance.renderFinish = ^ (UIView *view) {
+        //处理页面渲染完成的逻辑。
+    };
+}
+</code></pre></div></div>
+
+<p>instance.viewController: 一般情况下，iOS的运行环境都是基于不同viewController的，很多底层操作需要知晓当前所处的viewController对象，因此需要向instance知会当前的viewController。</p>
+
+<p>instance.frame: 根据weex对instance的设计规范，需要渲染中知道最外层body的位置和尺寸。这个frame值的设置，跟最终在回调中获取的view.frame一致。</p>
+
+<p>当然，在很多场景下，仅需要在一个native页面的局部渲染weex区块。很简单，您只需要将instance.frame设置为目标区块的位置尺寸即可。</p>
+
+<p>renderWithURL：常用的渲染方式：其一，直接输入URL（可以是file://或 http(s)://）；其二，sourceCode，即JavaScript源码。options参数，表示开发者可以通过WeexSDK向前端透传的参数，如bundleURL。data参数，表示向weex的模板注入的页面数据，它一般来源于native的数据请求，当然也可以在前端逻辑中完成请求后将数据注入。</p>
+
+<p>_instance.onCreate：weex页面最外层body渲染完成后的回调。在此回调中，weex渲染所得的rootView已确定，可以输出并添加到父容器中。</p>
+
+<p>_instance.renderFinish：和onCreate不同，renderFinish表示所有weex的页面元素都已渲染完毕，整个渲染过程至此结束。</p>
+
+<p><strong><em>切记在viewController的销毁的同时，将weex实例一并销毁，否则会出现内存泄露。</em></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)dealloc
+{
+    [_instance destroyInstance];
+}
+</code></pre></div></div>
+
+<h2 id="weex的使用">Weex的使用</h2>
+
+<p>在 <code class="language-plaintext highlighter-rouge">didFinishLaunchingWithOptions</code> 中</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//业务配置，非必需
+[WXAppConfiguration setAppGroup:@"ACYApp"];
+[WXAppConfiguration setAppName:@"WeexTry"];
+[WXAppConfiguration setAppVersion:@"1.0.0"];
+
+//初始化SDK环境
+[WXSDKEngine initSDKEnvironment];
+
+//注册自定义module和component，非必需
+//    [WXSDKEngine registerComponent:@"MyView" withClass:[MyViewComponent class]];
+//    [WXSDKEngine registerModule:@"event" withClass:[WXEventModule class]];
+
+//注册协议的实现类，非必需
+//    [WXSDKEngine registerHandler:[WXNavigationDefaultImpl new] withProtocol:@protocol(WXNavigationProtocol)];
+
+//设置Log输出等级：调试环境默认为Debug，正式发布会自动关闭。
+[WXLog setLogLevel:WXLogLevelDebug];
+</code></pre></div></div>
+
+<h2 id="weex的3种集成方式">Weex的3种集成方式</h2>
+
+<h3 id="全页模式">全页模式</h3>
+<p>目前支持单页使用或整个app使用weex开发（还不完善，需要开发router和生命周期管理）这是主推的模式，可以类比RN。</p>
+
+<h3 id="native-component模式大多数app可能会采用的方式">Native Component模式（大多数App可能会采用的方式）</h3>
+<ul>
+  <li>把weex当作一个iOS/Android组件来使用，类比ImageView。这类需求遍布手淘主链路，如首页、主搜结果、交易组件化等，和业务同学沟 通下来这类Native页面主体已经很稳定，但是局部动态化需求旺盛导致频繁发版，解决这类问题也是Weex的重点。</li>
+  <li>这也涉及到如何让Native同学快速上手“准Web”开发，有意思的话题，大家多给些建议。</li>
+</ul>
+
+<h3 id="h5-component模式">H5 Component模式</h3>
+<ul>
+  <li>在H5种使用Weex，类比WVC。一些较复杂或特殊的H5页面短期内无法完全转为Weex全页模式（或RN），比如猫超、互动类页面、一些复杂频道页 等。针对这个痛点我发起过WVC项目，并在实际业务中验证了这样的想法：在现有的H5页面上做微调，引入Native解决长列表内存暴增、滚动不流畅、动 画/手势体验差等问题。</li>
+  <li>WVC将会融入到Weex中，成为Weex的H5 Components模式。
+这3种模式几乎涵盖了淘系业务上的动态化需求（针对Native）或体验提升需求（针对H5）。更有趣的是这3种模式的技术基础是一致的，这非常重要，意 味着：业务方可以使用Native或H5 Component模式 解决实际的业务痛点，同时平滑过渡到Weex全页模式。期待Weex成长壮大到AppFramework的那天。</li>
+</ul>
+
+<h2 id="wxinstance">WXInstance</h2>
+<p>相当于UIView，组成界面</p>
+
+<h2 id="wxcomponentmanager">WXComponentManager</h2>
+<p>renderView(instance)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_layoutAndSyncUI
+_syncUITasks
+</code></pre></div></div>
+
+<h2 id="通过预加载提供渲染效率">通过预加载提供渲染效率</h2>
+<p>主要讲解提前预下载JS文件的逻辑（当然也可以不预下载，直接使用js链接即可）
+为了提升渲染效率，我们会提前把js文件下载到本地，使用时直接加载本地文件，下载逻辑如下：
+首先我们会有一个地方录入如下格式的json数据：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[
+    {
+    "page":"order",
+    "url":"https://dshdjshjbx.js",
+    "md5":"323827382huwhdjshdjs",
+    "h5":"http://dsds.html"
+    "v":"1.5.0"
+    },
+    {
+    "page":"detail",
+    "url":"https://dsdsds.js",
+    "md5":"323827382huwhdjshdjs",
+    "h5":"http://dsds.html"
+    "v":"1.5.0"
+    }
+]
+</code></pre></div></div>
+
+<p>page: 对应统一跳转的 path(暂为页面名称)</p>
+
+<p>url: 需要渲染的js</p>
+
+<p>md5: js文件的md5值用于校验</p>
+
+<p>h5: 渲染失败后的降级方案</p>
+
+<p>v: 最低支持的版本号</p>
+
+<ul>
+  <li>每次更新完配置文件，遍历，查看是否存在md5一致的page_xxx.js文件，如果不存在则更新</li>
+  <li>下载完成后，保存格式为xxx.js，校验md5
+相同的话，记录文件的最后修改时间
+不同的话，删除已下载文件，重新下载，重复校验流程
+支持统一跳转协议，page对应目前app端的统一跳转协议里的page，有必要的时候可以替换原来的native页面，解决native页面</li>
+  <li>支持统一跳转协议，page对应目前app端的统一跳转协议里的page，有必要的时候可以替换原来的native页面，解决native页面错误不能及时修复的问题。加载失败的话，打开h5页面</li>
+  <li>
+    <p>每次打开指定页面的时候，先检查本地是否有对应page文件，再检验最后修改时间是否跟记录的一致
+一致就加载
+不一致就用线上url</p>
+  </li>
+  <li>
+    <p>在当前的js环境中(jsContext)中注册 ‘callNative’回调，该回调调用参数由三部分组成instance (String) 表示调用的instance实例tasks (Array) 封装task的数组，数组元素由字典构成，以module 为例{module: moduleName method: methodName}callback:(NSString) callback的标识符</p>
+  </li>
+  <li>在bridgeContext中执行- (NSInteger)invokeNative:(NSString <em>)instanceId tasks:(NSArray *)tasks callback:(NSString __unused</em>)callback</li>
+</ul>
+
+<p>校验代码执行是否在Bridge线程
+根据 instanceId 找到 WXSDKInstance 的注册实例
+遍历tasks数组，解析每一个task元素 根据task是属于 componet 还是 module类型 构造method实例，调用invoke方法</p>
+
+<ul>
+  <li>WXModuleMethod 中的invoke 方法， 继承自WXBridgeMethod
+在WXModuleFactory 根据moduleName 找到对应的moduleClass
+在当前的SDKInstance中找对应module的实例，如果没有则新建module实例并且缓存
+根据moduleName 和方法名找到对应的 selector 并且返回调用方法是异步还是同步的状态
+根据module实例和selector 构建 NSInvocation 对象， 调用方法</li>
+</ul>
+
