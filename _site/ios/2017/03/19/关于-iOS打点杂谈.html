@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="cn">
+<!DOCTYPE html><html lang="zh-Hans">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>iOS打点杂谈 - Argost's Home</title>
 
 <meta name="description" content="本篇博客简单的介绍一下埋点以及埋点的一些功用，以及一些粗浅的认识什么是打点？首先简单介绍下什么是打点以及打点有什么作用，打点英文其实就是 Record作用其实就是对想要关心的业务或者关键路径进行记录上传到特定的服务器便于后期分析。打点分类为了解决前端埋点的准确性、及时性、开发效率等问题，业内各家公司从不同角度，提...">
-<link rel="canonical" href="http://localhost:4000/ios/2017/03/19/%E5%85%B3%E4%BA%8E-iOS%E6%89%93%E7%82%B9%E6%9D%82%E8%B0%88.html"><link rel="alternate" type="application/rss+xml" title="Argost's Home" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="http://localhost:4000/ios/2017/03/19/%E5%85%B3%E4%BA%8E-iOS%E6%89%93%E7%82%B9%E6%9D%82%E8%B0%88.html"><link rel="alternate" type="application/rss+xml" title="Argost's Home" href="/feed.xml# "/feed.xml" (default)"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -266,9 +266,9 @@
 <path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
 	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
 </svg>
-<a title="Your Site Description
-" href="/">Argost's Home</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+<a title="My personal Blog Site
+" href="/blog# title link url, "/" (default)">Argost's Home</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/archive.html">归档</a></li><li class="navigation__item"><a href="/about.html">关于</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
@@ -281,13 +281,13 @@
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>iOS打点杂谈</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
-            title="Edit on Github"
+            title="在 Github 上修改"
             href="https://github.com/cambriayang/cambriayang.github.io/tree/master/_posts/2017-03-19-关于 iOS打点杂谈.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="iOS打点杂谈"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86">业务处理</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 19, 2017</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2017-03-19T23:10:00+08:00">
+                href="/blog/archive.html# "/archive.html" (default)?tag=%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86">业务处理</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2017年 03月19日</span>
+            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2017-03-19T15:10:00+00:00">
     <meta itemprop="keywords" content="业务处理"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
@@ -496,18 +496,18 @@ return retVal;
 }
 </code></pre></div></div>
 
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2017-03-19T23:10:00+08:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2017-03-19T15:10:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
-<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml# "/feed.xml" (default)">订阅</a></div>
 </div><div class="article__license"><div class="license">
-    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike 4.0 International</a> license.
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-        <img alt="Attribution-ShareAlike 4.0 International" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+    <p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 许可协议。
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="next"><span>NEXT</span><a href="/ios/2017/03/29/Weex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">Weex学习笔记</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="next"><span>下篇</span><a href="/ios/2017/03/29/Weex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">Weex学习笔记</a></div></div></div>
 
 </div>
 
@@ -544,7 +544,7 @@ return retVal;
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
-  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="Send me an Email.">
+  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="给我发邮件。">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:cambriayang@qq.com" target="_blank">
         <i class="fas fa-envelope"></i>
       </a></ul>
@@ -711,7 +711,7 @@ return retVal;
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">Search</div>
+    <div class="search__header">搜索</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -721,7 +721,7 @@ return retVal;
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        Cancel</button>
+        取消</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>

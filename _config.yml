@@ -22,13 +22,13 @@ url     : https://cambriayang.github.io # the base hostname & protocol for your 
 baseurl : ""# does not include hostname
 title   : Argost's Home
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
+  My personal Blog Site
 
 
 ## => Language and Timezone
 ##############################
-lang: cn # the language of your site, default as "en"
-timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+lang: zh-Hans # the language of your site, default as "en"
+timezone: Asia/Shanghai# see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 theme: jekyll-text-theme
 
 ## => Author and Social
@@ -62,10 +62,10 @@ repository_tree: master
 ## => Paths
 ##############################
 paths:
-  root    : # title link url, "/" (default)
-  home    : # home layout url, "/" (default)
-  archive : # "/archive.html" (default)
-  rss     : # "/feed.xml" (default)
+  root    : /blog# title link url, "/" (default)
+  home    : /blog# home layout url, "/" (default)
+  archive : /blog/archive.html# "/archive.html" (default)
+  rss     : /feed.xml# "/feed.xml" (default)
 
 
 ## => Post
@@ -75,7 +75,7 @@ excerpt_separator: <!--more-->
 excerpt_type: html # text (default), html
 
 ## license
-license: CC-BY-SA-4.0 # "CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-ND-4.0"
+license: CC-BY-NC-4.0 # "CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-ND-4.0"
 
 ## TOC
 toc:
@@ -215,6 +215,8 @@ defaults:
       show_edit_on_github: true
       show_subscribe: true
       pageview: true
+      
+  
 
 
 ## => Plugins

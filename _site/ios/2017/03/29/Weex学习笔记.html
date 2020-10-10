@@ -1,10 +1,10 @@
-<!DOCTYPE html><html lang="cn">
+<!DOCTYPE html><html lang="zh-Hans">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Weex学习笔记 - Argost's Home</title>
 
 <meta name="description" content="本篇博客记录一下自己对Weex的一些学习过程什么是Weex？Weex能做什么？Weex是阿里巴巴集团开源的一个动态化方案。  在我们对移动开发最佳实践的思考中，我们认为移动开发的未来是更平衡的方案，一定是性能和动态性兼得。第二个，它一定是开放互联的，PC端一直也是这样的， 也是非常好的状态。我们觉得移动互联网将来...">
-<link rel="canonical" href="http://localhost:4000/ios/2017/03/29/Weex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"><link rel="alternate" type="application/rss+xml" title="Argost's Home" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="http://localhost:4000/ios/2017/03/29/Weex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"><link rel="alternate" type="application/rss+xml" title="Argost's Home" href="/feed.xml# "/feed.xml" (default)"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -266,9 +266,9 @@
 <path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
 	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
 </svg>
-<a title="Your Site Description
-" href="/">Argost's Home</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/archive.html">Archive</a></li><li class="navigation__item"><a href="/about.html">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+<a title="My personal Blog Site
+" href="/blog# title link url, "/" (default)">Argost's Home</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/archive.html">归档</a></li><li class="navigation__item"><a href="/about.html">关于</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
@@ -281,13 +281,13 @@
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Weex学习笔记</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
-            title="Edit on Github"
+            title="在 Github 上修改"
             href="https://github.com/cambriayang/cambriayang.github.io/tree/master/_posts/2017-03-29-Weex学习笔记.md">
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Weex学习笔记"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0">学习</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 29, 2017</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2017-03-29T19:50:00+08:00">
+                href="/blog/archive.html# "/archive.html" (default)?tag=%E5%AD%A6%E4%B9%A0">学习</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2017年 03月29日</span>
+            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2017-03-29T11:50:00+00:00">
     <meta itemprop="keywords" content="学习"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
@@ -506,18 +506,18 @@ _syncUITasks
 根据module实例和selector 构建 NSInvocation 对象， 调用方法</li>
 </ul>
 
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2017-03-29T19:50:00+08:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2017-03-29T11:50:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
-<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml# "/feed.xml" (default)">订阅</a></div>
 </div><div class="article__license"><div class="license">
-    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike 4.0 International</a> license.
-      <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-        <img alt="Attribution-ShareAlike 4.0 International" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+    <p>本文遵守 <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> 许可协议。
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/ios/2017/03/19/%E5%85%B3%E4%BA%8E-iOS%E6%89%93%E7%82%B9%E6%9D%82%E8%B0%88.html">iOS打点杂谈</a></div><div class="next"><span>NEXT</span><a href="/ios/2018/01/11/UIWebView%E5%92%8CWKWebView.html">UIWebView和WKWebView的一些比较</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>上篇</span><a href="/ios/2017/03/19/%E5%85%B3%E4%BA%8E-iOS%E6%89%93%E7%82%B9%E6%9D%82%E8%B0%88.html">iOS打点杂谈</a></div><div class="next"><span>下篇</span><a href="/ios/2018/01/11/UIWebView%E5%92%8CWKWebView.html">UIWebView和WKWebView的一些比较</a></div></div></div>
 
 </div>
 
@@ -554,7 +554,7 @@ _syncUITasks
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
-  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="Send me an Email.">
+  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="给我发邮件。">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:cambriayang@qq.com" target="_blank">
         <i class="fas fa-envelope"></i>
       </a></ul>
@@ -721,7 +721,7 @@ _syncUITasks
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">Search</div>
+    <div class="search__header">搜索</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -731,7 +731,7 @@ _syncUITasks
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        Cancel</button>
+        取消</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
