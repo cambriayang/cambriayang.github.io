@@ -72,13 +72,14 @@ paths:
 ##############################
 ## excerpt
 excerpt_separator: <!--more-->
+excerpt_type: html # text (default), html
 
 ## license
 license: CC-BY-NC-4.0 # "CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-ND-4.0"
 
 ## TOC
 toc:
-  selectors: # "h1,h2,h3" (default)
+  selectors: "h1,h2,h3"# "h1,h2,h3" (default)
 
 
 ## => Markdown Enhancements
@@ -147,7 +148,7 @@ comments:
 ## => Pageview
 ##############################
 pageview:
-  provider: leancloud # false (default), "leancloud", "custom"
+  provider: false # false (default), "leancloud", "custom"
 
   ## Leancloud
   leancloud:
