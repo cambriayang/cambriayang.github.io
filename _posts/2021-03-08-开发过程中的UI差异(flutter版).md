@@ -1,13 +1,13 @@
 ---
 layout: article
 mathjax: true
-title: 开发过程中的UI差异（flutter版）
+title: 开发过程中的UI差异(flutter版)
 category: flutter
 date: 2021-03-08 15:09:00 +0800
 tags: [flutter]
 ---
 
-## 开发过程中的UI差异（flutter版）
+## 开发过程中的UI差异(flutter版)
 
 一个App的从无到有一定绕不开UI的还原问题，通常有设计师设计好根据时下主流的机型产出UI稿交于开发人员去还原视觉稿。比如设计稿的规范为：375(width)*667(height)。通常开发人员按照设计稿设置的控件（100*40）以及字体fontSize：18。但是经常会有设计师来说，怎么Android和iOS上面的表现形式不一样呢？或者怎么oppo上面的字号显得比较大呢？其实，底层逻辑都是由于物理设备到开发语言的映射差异化导致的。
 
