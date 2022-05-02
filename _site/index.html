@@ -280,7 +280,7 @@
 
 <!-- end custom main top snippet -->
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="Cambria Yang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/poetry/2022/05/01/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html"><h2 itemprop="headline" class="item__header">偶来无聊, 拙笔涂鸦几首</h2></a></header>
+          <header><a href="/poetry/2022/05/02/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html"><h2 itemprop="headline" class="item__header">偶来无聊, 拙笔涂鸦几首</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">此篇博客纯属个人兴趣爱好, 突然兴起, 胡乱涂鸦之作, 止增笑耳
 
 灼夏
@@ -320,12 +320,42 @@ BUG何时得挂。
 以梦为马，不负韶华
 十年望飘影，踟蹰未前行，后母方穷转银河，
 断了金盾，知了冷暖，梦已难成，
-风雨故人情，一载难稳定，云滇船头倾沧...</div><p><a href="/poetry/2022/05/01/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+风雨故人情，一载难稳定，云滇船头倾沧...</div><p><a href="/poetry/2022/05/02/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=Poetry">Poetry</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 05月02日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-05-02T02:00:00+00:00">
+    <meta itemprop="keywords" content="Poetry"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2022/05/01/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">贪心算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
+
+分糖果
+LeetCode 455，有孩子序列和糖果序列，每个孩子需求一定数量的糖果，如果他得到了满足，则满足他的糖果会被消耗。求最多能满足的孩子数量。
+
+  示例
+    孩子序列：[3,10,10,6,16,11]
+糖果序列：[9,4,2,7,21]
+最大能满足孩子的数量：3
+    
+  
+  思路
+
+
+首先将孩子和糖果都排好序，从小到大，然后用最小的糖果堆依次去尝试满足孩子序列，如果满足则消耗孩子当前节点和当前糖果堆，依次去尝试下一个孩子和糖果堆；如果当前糖果堆不能满足当前孩子，则尝试下一个糖果堆。
+
+由于已经排好序，如果当前糖果堆不能满足当前孩子，则它一定不能满足后续孩子
+
+
+  实现
+
+
+func allocationCandies(children: ino...</div><p><a href="/algorithm/2022/05/01/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 05月01日</span>
             </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-05-01T02:00:00+00:00">
-    <meta itemprop="keywords" content="Poetry"></div>
+    <meta itemprop="keywords" content="算法"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/algorithm/2022/04/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html"><h2 itemprop="headline" class="item__header">动态规划</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
@@ -537,56 +567,8 @@ func findTheMidNumber(_ data: [Int...</div><p><a href="/algorithm/2022/03/08/%E6
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
             </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T03:00:00+00:00">
     <meta itemprop="keywords" content="算法"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/algorithm/2022/03/08/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">排序算法</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
-
-排序算法
-首先看一张图：
-
-
-
-这里就不多解释了，下面抽几个排序简单讲下。
-
-成功
-
-信息
-
-Warning Text.
-
-Error Text.
-
-success info warning error
-
-冒泡排序
-
-  算法步骤
-
-
-比较相邻的元素。如果第一个比第二个大，就交换他们两个。
-对每一对相邻元素作同样的工作，从开始第一队到结尾的最后一对。这步做完后，最后的元素会是最大的数。
-针对所有的元素重复以上的步骤，除了最后一个。
-持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
-
-
-  动图演示
-
-
-
-
-
-  代码实现：
-
-
-    func bubleSort(source: inout [Int]) -&gt; [Int] {
-    pri...</div><p><a href="/algorithm/2022/03/08/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
-            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T02:00:00+00:00">
-    <meta itemprop="keywords" content="算法"></div>
       </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 18 篇文章，3 页。</p>
+</div><div class="layout--home"><div class="pagination"><p>共计 19 篇文章，3 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
             <i class="fas fa-angle-left"></i>
