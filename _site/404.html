@@ -279,7 +279,7 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>404</h1></header><meta itemprop="headline" content="404"><meta itemprop="author" content="cambria Yang"/><div class="js-article-content"><div class="layout--404">
+<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>404</h1></header><meta itemprop="headline" content="404"><meta itemprop="author" content="Cambria Yang"/><div class="js-article-content"><div class="layout--404">
   <div class="sign">
     <h1>404</h1>
     <p>Page not found :(</p>
@@ -294,7 +294,7 @@
             </div></div></div><div class="page__footer d-print-none">
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+      <meta itemprop="name" content="Cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an Amazing person."><div class="footer__author-links"><div class="author-links">
   <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="给我发邮件。">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:cambriayang@qq.com" target="_blank">
         <i class="fas fa-envelope"></i>
@@ -827,7 +827,34 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  window.Lazyload.js(['https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js', 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js'], function() {
+    var $canvas = null, $this = null, _ctx = null, _text = '';
+    $('.language-chart').each(function(){
+      $this = $(this);
+      $canvas = $('<canvas></canvas>');
+      _text = $this.text();
+      $this.text('').append($canvas);
+      _ctx = $canvas.get(0).getContext('2d');
+      (_ctx && _text) && (new Chart(_ctx, JSON.parse(_text)) && $this.attr('data-processed', true));
+    });
+  });
 </script>
+<script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];

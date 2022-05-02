@@ -279,73 +279,182 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="cambria Yang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9.html"><h2 itemprop="headline" class="item__header">一些相关知识点</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">对称加密
+<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="Cambria Yang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">杂项算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
 
-定义
+杂项
 
-对称加密是指加密和解密的密匙为同一个，用来加密数据的密匙也可以用来解密
-
-特点
+产生不重复的随机数
 
 
-  加密速度快，使用简单
-  对称加密的破解难度是随着钥匙的大小增加而增加的，钥匙越大就越难破解，但是钥匙越大相应的解密的时间也会越长
+  思路
 
 
-对称加密的问题
+设想一下，有n个苹果，有不同的编号，从1-n，每次拿一个出来。来产生不同的随机数
 
 
-  双方都必须先约定好加密规则
-  秘钥数目难于管理。因为对于每一个合作者都需要使用不同的秘钥，很难适应开放互联网中的大量的合作者交流。
-  无法适用于陌生的网络的环境，双方都必须是可信任的才可进行。
+  实现
 
 
-非对称加密
+func randomNumberWithoutDuplication(_ number: Int) -&gt; [Int] {
+  var resultArr = Array(repeating: 0, count: number)
+  var startArr = Array(1...number)
 
-定义
-
-非对称加密的秘钥是成对的（公钥和私钥）。私钥由自己安全保管不外泄，而公钥则可以发给网络中的任何人。
-
-非对称加密适用这对秘钥中的一个进行加密，而解密则需要另一个秘钥。根据公钥是无法推导出私钥的。
-
-特点...</div><p><a href="/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+  for i in 0..&lt;startArr.count {
+    let currentCount = UInt32(startArr.count-i)
+    let index = Int(arc4rando...</div><p><a href="/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E9%9D%A2%E8%AF%95">面试</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 08月18日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2020-08-18T07:39:00+00:00">
-    <meta itemprop="keywords" content="面试"></div>
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T07:00:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/interview/2020/08/11/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95.html"><h2 itemprop="headline" class="item__header">面试总结</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些iOS的面试记录
+          <header><a href="/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">树算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
 
-如何访问并修改一个类的私有属性
+树
 
-
-  KVC
-  runtime
+树是最常用且非常有用的数据结构之一，通过下图可以很容易理解树的概念。
 
 
-创建一个Father类,声明一个私有属性name,并重写description打印name的值,在另外一个类中通过runtime来获取并修改Father中的属性
 
-#import &lt;objc/runtime.h&gt;
+上图展示的是一个拥有5个层级数的树结构。树根root是第0层，从树最外层开始每深入一层，其层级树相应的减1。
+树能帮你解决很多问题，包括：
 
-@interface Father : NSObject
-@property(nonatomic, copy) NSString *name;
-@end
 
-@implementation Father
+  表示对象的层级关系
+  使查询快速高效
+  能提供有序的数据链
+  文本的前缀匹配搜索
 
-- (NSString *)description {
-    return [NSString stringWithFormat:@"name: %@", _nam...</div><p><a href="/interview/2020/08/11/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+
+swift构造树
+
+class TreeNode&lt;T&gt; {
+    var value: T
+    var children: [TreeNode] = []
+    weak var parent: TreeNode?
+    
+    init(value: T) {
+        self.value = value
+    }
+ ...</div><p><a href="/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E9%9D%A2%E8%AF%95">面试</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 08月11日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2020-08-11T14:01:00+00:00">
-    <meta itemprop="keywords" content="面试"></div>
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T06:00:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/algorithm/2020/07/20/%E7%AE%97%E6%B3%95%E4%B8%BE%E4%BE%8B.html"><h2 itemprop="headline" class="item__header">算法举例</h2></a></header>
+          <header><a href="/algorithm/2022/03/08/%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">链表算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
+
+链表
+合并两个排过序的链表，并将其作为新链表
+
+示例：
+输入：1-＞2-＞4,1-＞3-＞4
+输出：1-＞1-＞2-＞3-＞4-＞4
+
+
+思路：
+很简单，就是链表遍历，然后变换next就可以了
+
+代码实现：
+
+链表构造
+class Node&lt;T&gt; {
+    var value: T
+    var next: Node&lt;T&gt;?
+    init(_ val: T) {
+        self.value = val
+        self.next = nil
+    }
+}
+
+class IntLinkList {
+    var head: Node&lt;Int&gt;?
+    var tail: Node&lt;Int&gt;?
+...</div><p><a href="/algorithm/2022/03/08/%E9%93%BE%E8%A1%A8%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T05:00:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2022/03/08/%E6%95%B0%E7%BB%84%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">数组算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
+
+数组
+
+寻找中间数
+
+给出一个无序数组，求出一个数，使得其左边的数都小于它，右边的数都大于等于它。要求时间复杂度为n
+
+
+  示例
+
+
+输入：[4,3,2,7,9,10,11,10]
+输出：7,9
+
+
+
+  思路
+
+
+两次遍历，第一次遍历，记录下每个位置和它之后的那个元素的最小值（当然这个最小值会一直更新，所以这一次遍历完，就是整个数组的最小值），需要一个n的数组，存放的是这个位置和它后面一个位置的较小值，当然如果已经遇到了，最小值，因为会和最小值进行判断，所以后续这个新的数组里存放的都是这个最小值了。
+
+第二次遍历是正常的从左向右遍历，寻找左边大且比右边小的数，也会记住一个最大值。
+
+
+  解法
+
+
+func findTheMidNumber(_ data: [Int...</div><p><a href="/algorithm/2022/03/08/%E6%95%B0%E7%BB%84%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T04:00:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2022/03/08/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">字符串算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
+
+字符串
+
+复原IP地址
+
+给定一个只包含数字的字符串，复原它并返回所有可能的IP地址格式。
+
+有效的IP地址正好由四个整数（0到255之间组成），整数之间用’.’分隔。
+
+
+  示例
+
+
+输入： "25525511135"
+输出：["255.255.11.135", "255.255.111.35"]
+
+
+
+  思路
+
+
+回溯法
+
+1、一开始，字符串的长度小于 4 或者大于 12 ，一定不能拼凑出合法的 ip 地址（这一点可以一般化到中间结点的判断中，以产生剪枝行为）；
+
+2、每一个结点可以选择截取的方法只有 3 种：截 1 位、截 2 位、截 3 位，因此每一个结点可以生长出的分支最多只有 3 条分支；
+
+根据截取出来的字符串判断是否是合理的 ip 段，这里写法比较多...</div><p><a href="/algorithm/2022/03/08/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T03:00:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2022/03/08/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">排序算法</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">一些算法举例
 
 排序算法
@@ -385,96 +494,15 @@ success info warning error
   代码实现：
 
 
-    func bubbleSort(arr: inout [Int]) {
-        for i in 0..&...</div><p><a href="/algorithm/2020/07/20/%E7%AE%97%E6%B3%95%E4%B8%BE%E4%BE%8B.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+    func bubleSort(source: inout [Int]) -&gt; [Int] {
+    pri...</div><p><a href="/algorithm/2022/03/08/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 07月20日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2020-07-20T12:33:00+00:00">
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-03-08T02:00:00+00:00">
     <meta itemprop="keywords" content="算法"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/algorithm/2020/07/19/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">基础算法</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">基础算法介绍
-
-时间复杂度分析
-算法思想
-贪心算法
-分治
-动态规划
-回溯法
-枚举法
-元算法
-排序算法
-排序算法是一种元算法。
-
-O （N^2）
-
-  插入排序
-  选择排序
-  希尔排序
-  冒泡排序
-
-
-O（nlogn）
-
-  快排
-  归并排序
-  堆排序
-
-
-O（n）
-
-  桶排序
-  计数排序
-  基数排序
-
-
-查找算法
-
-  线性查找
-  树查找
-  散列表查找
-
-
-二叉树的遍历算法
-概述
-二叉树作为一个基础的数据结构，遍历算法作为一个基础的算法，两者结合当然是经典的组合了。有直接问二叉树的遍历的，有间接问的。比如要你找到书中满足条件的节点，就是间接考察树的遍历，因为你要找到书中满足条件的点，就需要遍历。
-
-  如果掌握了二叉树的遍历，那么其他复杂的树相对于你来说，也并不遥远...</div><p><a href="/algorithm/2020/07/19/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 07月19日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2020-07-19T06:24:00+00:00">
-    <meta itemprop="keywords" content="算法"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/algorithm/2020/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"><h2 itemprop="headline" class="item__header">数据结构的简单介绍</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">简单介绍一下这次模块化实践以及所遇到的一些问题
-
-数据结构
-分类
-数据结构是算法基础，线性结构有 数组，栈，链表等，非线性结构有树，图等（树可以被看作半线性的）
-需要注意的湿，线性和非线性不代表存储结构湿线性和非线性的，这两者没有任何关系，它只是一种逻辑上的划分。比如我们可以用数组去存储二叉树
-一般而言，有前驱和后继的就是线性数据结构比如数组和链表。其实一叉树就是链表
-几种特殊数据结构的简单讲解
-默认大家是有一定基础的，所以讲的比较简单
-
-
-  队列
-  队列是一种受限的序列，它只能操作队首和队尾，并且只能在队尾添加元素，在队首删除元素
-    
-      “队列”这个名称,可类比为现实生活中排队（不插队的那种）
-    
-  
-  
-    栈
-  栈也是一种受限的序列，它只能够操...</div><p><a href="/algorithm/2020/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 07月16日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2020-07-16T07:41:00+00:00">
-    <meta itemprop="keywords" content="算法"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/poetry/2018/08/15/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html"><h2 itemprop="headline" class="item__header">偶来无聊, 拙笔涂鸦几首</h2></a></header>
+          <header><a href="/poetry/2022/02/22/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html"><h2 itemprop="headline" class="item__header">偶来无聊, 拙笔涂鸦几首</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">此篇博客纯属个人兴趣爱好, 突然兴起, 胡乱涂鸦之作, 止增笑耳
 
 灼夏
@@ -514,47 +542,36 @@ BUG何时得挂。
 以梦为马，不负韶华
 十年望飘影，踟蹰未前行，后母方穷转银河，
 断了金盾，知了冷暖，梦已难成，
-风雨故人情，一载难稳定，云滇船头倾沧...</div><p><a href="/poetry/2018/08/15/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+风雨故人情，一载难稳定，云滇船头倾沧...</div><p><a href="/poetry/2022/02/22/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=Poetry">Poetry</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2018年 08月15日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2018-08-15T10:06:00+00:00">
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 02月22日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2022-02-22T02:00:00+00:00">
     <meta itemprop="keywords" content="Poetry"></div>
       </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/ios/2018/02/15/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9E%E8%B7%B5%E4%BB%A5%E5%8F%8A%E7%A7%81%E6%9C%89%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D.html"><h2 itemprop="headline" class="item__header">模块化实践以及私有库相关介绍</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">简单介绍一下这次模块化实践以及所遇到的一些问题
+          <header><a href="/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88).html"><h2 itemprop="headline" class="item__header">开发过程中的UI差异(flutter版)</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">开发过程中的UI差异(flutter版)
 
-楔子
-任何一个工程都会经历从无到有，从小到大的过程，这其中会遇到种种问题。譬如，工程成长到一定的阶段，势必想要进行模块化，一来可以让自己的工程看起来层次更清晰，不同模块独立性也更好，同时等工程到了一定规模，想要对外开放，实现开放平台，那么模块化就是必经之路。本文选择的模块化是cocoapods私有库+spec，同样也提供了二进制化方案，方便2中方式，一种是源码形式，一直是framework形式。
-本文简洁明了，适合已近对cocoapods有一定基础的读者，如何安装，怎样使用，这边就不赘述了，直接进入主题，一切都是从简单实用为出发点，都是本人自己实践过的。
+一个App的从无到有一定绕不开UI的还原问题，通常有设计师设计好根据时下主流的机型产出UI稿交于开发人员去还原视觉稿。比如设计稿的规范为：375(width)667(height)。通常开发人员按照设计稿设置的控件（10040）以及字体fontSize：18。但是经常会有设计师来说，怎么Android和iOS上面的表现形式不一样呢？或者怎么oppo上面的字号显得比较大呢？其实，底层逻辑都是由于物理设备到开发语言的映射差异化导致的。
 
-Podspec以及一些常用命令
+原理介绍
 
-  pod lib lint –allow-w...</div><p><a href="/ios/2018/02/15/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9E%E8%B7%B5%E4%BB%A5%E5%8F%8A%E7%A7%81%E6%9C%89%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+几个名词
+
+屏幕尺寸
+
+屏幕尺寸(screen size)，是屏幕的对角线长度，一般讲的大小单位都是英寸。
+
+DPI (dots per inch)
+
+　　dpi 是（英文Dots Per Inch）...</div><p><a href="/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88).html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E6%A8%A1%E5%9D%97%E5%8C%96">模块化</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2018年 02月15日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2018-02-15T12:00:00+00:00">
-    <meta itemprop="keywords" content="模块化"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/ios/2018/01/11/UIWebView%E5%92%8CWKWebView.html"><h2 itemprop="headline" class="item__header">UIWebView和WKWebView的一些比较</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">介绍一下UIWebView和WKWebView
-
-楔子
-在我们使用UIWebView的过程中应该有发现UIWebView可是个吃内存的大户，动辄就是上百兆的内存，虽说现在iPhone的性能越来越好，但是也经不住如此折腾啊，况且，一个APP如果占用的系统内存超过整机内存总数的一半时是会被优先kill掉的。
-WKWebView 是苹果在 WWDC 2014 上推出的新一代 webView 组件，用以替代 UIKit 中笨重难用、内存泄漏的 UIWebView。WKWebView 拥有60fps滚动刷新率、和 safari 相同的 JavaScript 引擎等优势。
-
-下面就简单讲讲
-
-UIWebView的内存问题以及一些改进方式
-部分App（好吧，可能说很多）喜欢将UIWebView的fr...</div><p><a href="/ios/2018/01/11/UIWebView%E5%92%8CWKWebView.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0">学习</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2018年 01月11日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2018-01-11T10:00:00+00:00">
-    <meta itemprop="keywords" content="学习"></div>
+                href="/archive.html?tag=flutter">flutter</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2021年 03月08日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2021-03-08T07:09:00+00:00">
+    <meta itemprop="keywords" content="flutter"></div>
       </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 10 篇文章，2 页。</p>
+</div><div class="layout--home"><div class="pagination"><p>共计 17 篇文章，3 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
             <i class="fas fa-angle-left"></i>
@@ -562,6 +579,8 @@ UIWebView的内存问题以及一些改进方式
               <div class="button button--primary button--circle focus"><span>1</span></div>
             </li><li>
                 <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
+              </li><li>
+                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
               </li><li><a class="button button--secondary button--circle" href="/page2">
             <i class="fas fa-angle-right"></i>
           </a></li></ul>
@@ -581,7 +600,7 @@ UIWebView的内存问题以及一些改进方式
             </div></div></div><div class="page__footer d-print-none">
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+      <meta itemprop="name" content="Cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an Amazing person."><div class="footer__author-links"><div class="author-links">
   <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="给我发邮件。">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:cambriayang@qq.com" target="_blank">
         <i class="fas fa-envelope"></i>
@@ -1114,7 +1133,34 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  window.Lazyload.js(['https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js', 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js'], function() {
+    var $canvas = null, $this = null, _ctx = null, _text = '';
+    $('.language-chart').each(function(){
+      $this = $(this);
+      $canvas = $('<canvas></canvas>');
+      _text = $this.text();
+      $this.text('').append($canvas);
+      _ctx = $canvas.get(0).getContext('2d');
+      (_ctx && _text) && (new Chart(_ctx, JSON.parse(_text)) && $this.attr('data-processed', true));
+    });
+  });
 </script>
+<script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];

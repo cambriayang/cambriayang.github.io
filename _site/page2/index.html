@@ -279,7 +279,207 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="cambria Yang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>主页</h1></header><meta itemprop="headline" content="主页"><meta itemprop="author" content="Cambria Yang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/flutter/2021/01/14/flutter%E5%BC%80%E5%8F%91%E5%88%9D%E6%8E%A2.html"><h2 itemprop="headline" class="item__header">flutter开发初探</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">flutter开发初探
+
+作为时下最火的跨端技术，虽然现在才能才入局有点晚的感觉，但是本人是喜欢稳定版的，目前1.22.x也已经官方release了，这篇初探就简单记录下，一枚小白的使用心得和入门吧
+
+国际惯例
+
+
+
+摆出这张图，还是简单从整体上来先认识了一下什么是 Flutter，否则容易陷入“盲人摸象”的境地。
+
+
+  Embedder 操作系统适配层，提供线程模型，事件循环模型
+  Engine：和底层OS无关了，一般是渲染层包括了 Skia 图形绘制库、Dart VM、Text 等，其中 Skia 和 Text 为上层接口提供了调用底层渲染和排版的能力
+  Framework：是一个用 Dart 实现的 UI SDK，从上之下包括了两大风格组件库（iOS和Android）、基础...</div><p><a href="/flutter/2021/01/14/flutter%E5%BC%80%E5%8F%91%E5%88%9D%E6%8E%A2.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=flutter">flutter</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2021年 01月14日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2021-01-14T08:00:00+00:00">
+    <meta itemprop="keywords" content="flutter"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9.html"><h2 itemprop="headline" class="item__header">一些相关知识点</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">对称加密
+
+定义
+
+对称加密是指加密和解密的密匙为同一个，用来加密数据的密匙也可以用来解密
+
+特点
+
+
+  加密速度快，使用简单
+  对称加密的破解难度是随着钥匙的大小增加而增加的，钥匙越大就越难破解，但是钥匙越大相应的解密的时间也会越长
+
+
+对称加密的问题
+
+
+  双方都必须先约定好加密规则
+  秘钥数目难于管理。因为对于每一个合作者都需要使用不同的秘钥，很难适应开放互联网中的大量的合作者交流。
+  无法适用于陌生的网络的环境，双方都必须是可信任的才可进行。
+
+
+非对称加密
+
+定义
+
+非对称加密的秘钥是成对的（公钥和私钥）。私钥由自己安全保管不外泄，而公钥则可以发给网络中的任何人。
+
+非对称加密适用这对秘钥中的一个进行加密，而解密则需要另一个秘钥。根据公钥是无法推导出私钥的。
+
+特点...</div><p><a href="/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E9%9D%A2%E8%AF%95">面试</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 08月18日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2020-08-18T07:39:00+00:00">
+    <meta itemprop="keywords" content="面试"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/interview/2020/08/11/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95.html"><h2 itemprop="headline" class="item__header">面试总结</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">一些iOS的面试记录
+
+如何访问并修改一个类的私有属性
+
+
+  KVC
+  runtime
+
+
+创建一个Father类,声明一个私有属性name,并重写description打印name的值,在另外一个类中通过runtime来获取并修改Father中的属性
+
+#import &lt;objc/runtime.h&gt;
+
+@interface Father : NSObject
+@property(nonatomic, copy) NSString *name;
+@end
+
+@implementation Father
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"name: %@", _nam...</div><p><a href="/interview/2020/08/11/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E9%9D%A2%E8%AF%95">面试</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 08月11日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2020-08-11T14:01:00+00:00">
+    <meta itemprop="keywords" content="面试"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2020/07/19/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.html"><h2 itemprop="headline" class="item__header">基础算法</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">基础算法介绍
+
+时间复杂度分析
+算法思想
+贪心算法
+分治
+动态规划
+回溯法
+枚举法
+元算法
+排序算法
+排序算法是一种元算法。
+
+O(N^2)
+
+  插入排序
+  选择排序
+  希尔排序
+  冒泡排序
+
+
+O(nlogn)
+
+  快排
+  归并排序
+  堆排序
+
+
+O(n)
+
+  桶排序
+  计数排序
+  基数排序
+
+
+查找算法
+
+  线性查找
+  树查找
+  散列表查找
+
+
+二叉树的遍历算法
+概述
+二叉树作为一个基础的数据结构，遍历算法作为一个基础的算法，两者结合当然是经典的组合了。有直接问二叉树的遍历的，有间接问的。比如要你找到书中满足条件的节点，就是间接考察树的遍历，因为你要找到书中满足条件的点，就需要遍历。
+
+  如果掌握了二叉树的遍历，那么其他复杂的树相对于你来说，也并不遥远了...</div><p><a href="/algorithm/2020/07/19/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 07月19日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2020-07-19T06:24:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/algorithm/2020/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"><h2 itemprop="headline" class="item__header">数据结构的简单介绍</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">简单介绍一下这次模块化实践以及所遇到的一些问题
+
+数据结构
+分类
+数据结构是算法基础，线性结构有 数组，栈，链表等，非线性结构有树，图等（树可以被看作半线性的）
+需要注意的湿，线性和非线性不代表存储结构湿线性和非线性的，这两者没有任何关系，它只是一种逻辑上的划分。比如我们可以用数组去存储二叉树
+一般而言，有前驱和后继的就是线性数据结构比如数组和链表。其实一叉树就是链表
+几种特殊数据结构的简单讲解
+默认大家是有一定基础的，所以讲的比较简单
+
+
+  队列
+  队列是一种受限的序列，它只能操作队首和队尾，并且只能在队尾添加元素，在队首删除元素
+    
+      “队列”这个名称,可类比为现实生活中排队（不插队的那种）
+    
+  
+  
+    栈
+  栈也是一种受限的序列，它只能够操...</div><p><a href="/algorithm/2020/07/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E7%AE%97%E6%B3%95">算法</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2020年 07月16日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2020-07-16T07:41:00+00:00">
+    <meta itemprop="keywords" content="算法"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/ios/2018/02/15/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9E%E8%B7%B5%E4%BB%A5%E5%8F%8A%E7%A7%81%E6%9C%89%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D.html"><h2 itemprop="headline" class="item__header">模块化实践以及私有库相关介绍</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">简单介绍一下这次模块化实践以及所遇到的一些问题
+
+楔子
+任何一个工程都会经历从无到有，从小到大的过程，这其中会遇到种种问题。譬如，工程成长到一定的阶段，势必想要进行模块化，一来可以让自己的工程看起来层次更清晰，不同模块独立性也更好，同时等工程到了一定规模，想要对外开放，实现开放平台，那么模块化就是必经之路。本文选择的模块化是cocoapods私有库+spec，同样也提供了二进制化方案，方便2中方式，一种是源码形式，一直是framework形式。
+本文简洁明了，适合已近对cocoapods有一定基础的读者，如何安装，怎样使用，这边就不赘述了，直接进入主题，一切都是从简单实用为出发点，都是本人自己实践过的。
+
+Podspec以及一些常用命令
+
+  pod lib lint –allow-w...</div><p><a href="/ios/2018/02/15/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9E%E8%B7%B5%E4%BB%A5%E5%8F%8A%E7%A7%81%E6%9C%89%E5%BA%93%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E6%A8%A1%E5%9D%97%E5%8C%96">模块化</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2018年 02月15日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2018-02-15T12:00:00+00:00">
+    <meta itemprop="keywords" content="模块化"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
+          <header><a href="/ios/2018/01/11/UIWebView%E5%92%8CWKWebView.html"><h2 itemprop="headline" class="item__header">UIWebView和WKWebView的一些比较</h2></a></header>
+          <div class="item__description"><div class="article__content" itemprop="description articleBody">介绍一下UIWebView和WKWebView
+
+楔子
+在我们使用UIWebView的过程中应该有发现UIWebView可是个吃内存的大户，动辄就是上百兆的内存，虽说现在iPhone的性能越来越好，但是也经不住如此折腾啊，况且，一个APP如果占用的系统内存超过整机内存总数的一半时是会被优先kill掉的。
+WKWebView 是苹果在 WWDC 2014 上推出的新一代 webView 组件，用以替代 UIKit 中笨重难用、内存泄漏的 UIWebView。WKWebView 拥有60fps滚动刷新率、和 safari 相同的 JavaScript 引擎等优势。
+
+下面就简单讲讲
+
+UIWebView的内存问题以及一些改进方式
+部分App（好吧，可能说很多）喜欢将UIWebView的fr...</div><p><a href="/ios/2018/01/11/UIWebView%E5%92%8CWKWebView.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=%E5%AD%A6%E4%B9%A0">学习</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2018年 01月11日</span>
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2018-01-11T10:00:00+00:00">
+    <meta itemprop="keywords" content="学习"></div>
+      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
           <header><a href="/ios/2017/03/29/Weex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"><h2 itemprop="headline" class="item__header">Weex学习笔记</h2></a></header>
           <div class="item__description"><div class="article__content" itemprop="description articleBody">本篇博客记录一下自己对Weex的一些学习过程
 
@@ -294,38 +494,10 @@ Weex编写的页面天然的支持组件化，首先，我们的界面可以是�
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=%E5%AD%A6%E4%B9%A0">学习</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2017年 03月29日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2017-03-29T11:50:00+00:00">
+            </li></ul></div><meta itemprop="author" content="Cambria Yang"/><meta itemprop="datePublished" content="2017-03-29T11:50:00+00:00">
     <meta itemprop="keywords" content="学习"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/ios/2017/03/19/%E5%85%B3%E4%BA%8E-iOS%E6%89%93%E7%82%B9%E6%9D%82%E8%B0%88.html"><h2 itemprop="headline" class="item__header">iOS打点杂谈</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">本篇博客简单的介绍一下埋点以及埋点的一些功用，以及一些粗浅的认识
-
-什么是打点？
-首先简单介绍下什么是打点以及打点有什么作用，打点英文其实就是 Record
-作用其实就是对想要关心的业务或者关键路径进行记录上传到特定的服务器便于后期分析。
-
-打点分类
-
-为了解决前端埋点的准确性、及时性、开发效率等问题，业内各家公司从不同角度，提出了多种技术方案，这些方案大体上可以归为三类：
-
-
-  代码埋点：手动使用 recordEvent 等方式埋点
-  声明式埋点：将代码埋点和业务逻辑解耦
-  无痕埋点：使用 AOP 进行埋点
-
-
-代码埋点是一种典型的命令式编程，因此埋点代码常常要侵入具体的业务逻辑，这使埋点代码变得很繁琐并且容易出错。因此，最直接的做法就是将埋点代码与业务逻辑解耦。
-
-比如：
-
-...</div><p><a href="/ios/2017/03/19/%E5%85%B3%E4%BA%8E-iOS%E6%89%93%E7%82%B9%E6%9D%82%E8%B0%88.html">阅读更多</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive.html?tag=%E4%B8%9A%E5%8A%A1%E5%A4%84%E7%90%86">业务处理</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2017年 03月19日</span>
-            </li></ul></div><meta itemprop="author" content="cambria Yang"/><meta itemprop="datePublished" content="2017-03-19T15:10:00+00:00">
-    <meta itemprop="keywords" content="业务处理"></div>
       </article></div>
-</div><div class="layout--home"><div class="pagination"><p>共计 10 篇文章，2 页。</p>
+</div><div class="layout--home"><div class="pagination"><p>共计 17 篇文章，3 页。</p>
     <div class="pagination__menu">
       <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/">
             <i class="fas fa-angle-left"></i>
@@ -333,9 +505,11 @@ Weex编写的页面天然的支持组件化，首先，我们的界面可以是�
               <a class="button button--secondary button--circle" href="/"><span>1</span></a>
             </li><li>
               <div class="button button--primary button--circle focus"><span>2</span></div>
-            </li><li><div class="button button--secondary button--circle disabled">
+            </li><li>
+                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
+              </li><li><a class="button button--secondary button--circle" href="/page3">
             <i class="fas fa-angle-right"></i>
-          </div></li></ul>
+          </a></li></ul>
     </div>
   </div></div>
 <script>/*(function () {
@@ -352,7 +526,7 @@ Weex编写的页面天然的支持组件化，首先，我们的界面可以是�
             </div></div></div><div class="page__footer d-print-none">
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+      <meta itemprop="name" content="Cambria Yang"><meta itemprop="url" content="https://github.com/cambriayang"><meta itemprop="description" content="I am an Amazing person."><div class="footer__author-links"><div class="author-links">
   <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://github.com/cambriayang"><li title="给我发邮件。">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:cambriayang@qq.com" target="_blank">
         <i class="fas fa-envelope"></i>
@@ -885,7 +1059,34 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  window.Lazyload.js(['https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js', 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js'], function() {
+    var $canvas = null, $this = null, _ctx = null, _text = '';
+    $('.language-chart').each(function(){
+      $this = $(this);
+      $canvas = $('<canvas></canvas>');
+      _text = $this.text();
+      $this.text('').append($canvas);
+      _ctx = $canvas.get(0).getContext('2d');
+      (_ctx && _text) && (new Chart(_ctx, JSON.parse(_text)) && $this.attr('data-processed', true));
+    });
+  });
 </script>
+<script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];
