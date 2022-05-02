@@ -1,175 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hans"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="zh-Hans" /><updated>2022-05-02T03:34:03+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Argost’s Home</title><subtitle>My personal Blog Site
-</subtitle><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><entry><title type="html">杂项算法</title><link href="http://localhost:4000/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95.html" rel="alternate" type="text/html" title="杂项算法" /><published>2022-03-08T07:00:00+00:00</published><updated>2022-03-08T07:00:00+00:00</updated><id>http://localhost:4000/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95.html"><![CDATA[<p>一些算法举例</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-Hans"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="zh-Hans" /><updated>2022-05-02T04:09:01+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Argost’s Home</title><subtitle>My personal Blog Site
+</subtitle><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><entry><title type="html">偶来无聊, 拙笔涂鸦几首</title><link href="http://localhost:4000/poetry/2022/05/01/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html" rel="alternate" type="text/html" title="偶来无聊, 拙笔涂鸦几首" /><published>2022-05-01T02:00:00+00:00</published><updated>2022-05-01T02:00:00+00:00</updated><id>http://localhost:4000/poetry/2022/05/01/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6</id><content type="html" xml:base="http://localhost:4000/poetry/2022/05/01/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html"><![CDATA[<p>此篇博客<em>纯属</em>个人<strong>兴趣爱好</strong>, 突然兴起, 胡乱涂鸦之作, 止增笑耳</p>
 
-<h2 id="杂项">杂项</h2>
-
-<h3 id="产生不重复的随机数">产生不重复的随机数</h3>
-
-<ul>
-  <li>思路</li>
-</ul>
-
-<p>设想一下，有n个苹果，有不同的编号，从1-n，每次拿一个出来。来产生不同的随机数</p>
-
-<ul>
-  <li>实现</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">randomNumberWithoutDuplication</span><span class="p">(</span><span class="n">_</span> <span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span>
-  <span class="k">var</span> <span class="nv">resultArr</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
-  <span class="k">var</span> <span class="nv">startArr</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="mi">1</span><span class="o">...</span><span class="n">number</span><span class="p">)</span>
-
-  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">startArr</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">currentCount</span> <span class="o">=</span> <span class="kt">UInt32</span><span class="p">(</span><span class="n">startArr</span><span class="o">.</span><span class="n">count</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">arc4random_uniform</span><span class="p">(</span><span class="n">currentCount</span><span class="p">))</span>
-    <span class="n">resultArr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">startArr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="n">startArr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">startArr</span><span class="p">[</span><span class="kt">Int</span><span class="p">(</span><span class="n">currentCount</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="n">resultArr</span>
-<span class="p">}</span>
+<h2 id="灼夏">灼夏</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>灼，夏日，炎炎；
+受，东风，徐徐；
+漫，杠彴，慢慢；
+看，卷云，片片；
+回思昨日穿林打叶声，
+竹杖芒鞋轻胜马，
+管他风雨管他晴。
 </code></pre></div></div>
 
-<ul>
-  <li>测试</li>
-</ul>
-
-<blockquote>
-  <p>let aaa = solution.randomNumberWithoutDuplication(10)</p>
-
-  <p>[1, 5, 8, 9, 4, 3, 10, 2, 6, 7]</p>
-</blockquote>
-
-<h3 id="求解n的结果中有多少个0">求解n！的结果中有多少个0</h3>
-
-<ul>
-  <li>
-    <p>思路</p>
-
-    <p>首先我们知道10=2<em>5，所以有多少个0取决于有多少个2</em>5。而n！中包含5的因子的个数，可以用下面的表达式来计算</p>
-
-    <p>k= n/5+n/5^2+n/5^3+…</p>
-
-    <p>同样的n！包含2的因子的个数可以用下面的表达式来计算</p>
-
-    <p>m= n/2+n/2^2+n/2^3+…</p>
-
-    <p>很显然m&gt;k。所以末尾0的个数是min(m,k)也就是k了。</p>
-  </li>
-  <li>
-    <p>实现</p>
-
-    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">trailing_zero_num</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
-  <span class="k">var</span> <span class="nv">num</span> <span class="o">=</span> <span class="mi">0</span>
-  <span class="k">var</span> <span class="nv">n</span> <span class="o">=</span> <span class="n">number</span>
-  <span class="k">while</span> <span class="kt">Bool</span><span class="p">(</span><span class="nv">truncating</span><span class="p">:</span> <span class="n">n</span> <span class="k">as</span> <span class="kt">NSNumber</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">num</span> <span class="o">+=</span> <span class="n">n</span><span class="o">/</span><span class="mi">5</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="mi">5</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="n">num</span>
-<span class="p">}</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<h3 id="多线程交替打印ab分别10次">多线程交替打印A，B分别10次</h3>
-
-<ul>
-  <li>实现</li>
-</ul>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">outABWithGCD</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">let</span> <span class="nv">queue1</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="s">"com.queue1.a"</span><span class="p">,</span> <span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">utility</span><span class="p">)</span>
-  <span class="k">let</span> <span class="nv">queue2</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="s">"com.queue2.b"</span><span class="p">,</span> <span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">utility</span><span class="p">)</span>
-
-  <span class="k">var</span> <span class="nv">change</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span>
-
-  <span class="n">queue1</span><span class="o">.</span><span class="k">async</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">count1</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="kc">true</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="n">change</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"queue1:A"</span><span class="p">)</span>
-        <span class="n">change</span> <span class="o">=</span> <span class="kc">false</span>
-        <span class="n">count1</span><span class="o">+=</span><span class="mi">1</span>
-      <span class="p">}</span>
-
-      <span class="k">if</span> <span class="n">count1</span> <span class="o">==</span> <span class="mi">10</span> <span class="p">{</span>
-        <span class="k">break</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="n">queue2</span><span class="o">.</span><span class="k">async</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">count2</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">while</span> <span class="kc">true</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="o">!</span><span class="n">change</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"queue2:B"</span><span class="p">)</span>
-        <span class="n">change</span> <span class="o">=</span> <span class="kc">true</span>
-        <span class="n">count2</span><span class="o">+=</span><span class="mi">1</span>
-      <span class="p">}</span>
-
-      <span class="k">if</span> <span class="n">count2</span> <span class="o">==</span> <span class="mi">10</span> <span class="p">{</span>
-        <span class="k">break</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<h2 id="窗外">窗外</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>窗外马路等压，
+小桥流水人家，
+电脑书桌代码，
+妖风阵阵，
+BUG何时得挂。
 </code></pre></div></div>
 
-<ul>
-  <li>示例</li>
-</ul>
+<p><img src="http://localhost:4000/assets/images/posts/out.jpeg" alt="out" class="rounded border shadow circle" /></p>
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">solution</span><span class="o">.</span><span class="nf">outABWithGCD</span><span class="p">()</span>
+<h2 id="酒翁">酒翁</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>酒自穿肠过，言从口中出;
+情在心中留，意比磐石坚;
+若卿有踟蹰，便倚胸中听;
+绝无二三意，自始终如一。
+酒乃前世药，来解今时忧;
+无论今前世，不管酒前后；
+铮铮铁板书，片字不得改。
+
+
+人生在世几十载，失了智，又何妨；
+离了爹妈断了奶，赢了你，夫何求。
 </code></pre></div></div>
 
-<ul>
-  <li>结果</li>
-</ul>
+<h2 id="以梦为马不负韶华">以梦为马，不负韶华</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>十年望飘影，踟蹰未前行，后母方穷转银河，
+断了金盾，知了冷暖，梦已难成，
+风雨故人情，一载难稳定，云滇船头倾沧海，
+不奢霸气，不舍金戈，不满冠樱，
+可堪持觞劝君停，何妨征战且徐行，
+刃了戎戍，攘了太清！
+</code></pre></div></div>
 
-<blockquote>
-  <p><strong>queue1:A</strong></p>
+<p>— <em>没有成绩，呼吸都是错的 ———–DAC BurNing 夺冠（2017-04-05  21：41）</em></p>
 
-  <p><strong>queue2:B</strong></p>
+<h2 id="无题">无题</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>天高, 风清, 云淡, 鸟空鸣;
+水明, 山秀, 民善, 人自行;
+蜀道虽难, 有佳人作伴;
+古韵犹藏, 引才俊尽赞;
+栈道龙眠, 问功业何成.
+</code></pre></div></div>
 
-  <p><strong>queue1:A</strong></p>
+<h2 id="不足惜">不足惜</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>龙腾万里雾,
+岂顾尺寸兔.
+雨泽天下步,
+安敢惜一物.
+</code></pre></div></div>
 
-  <p><strong>queue2:B</strong></p>
+<h2 id="白蛇传">白蛇传</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>缘未到, 情未深, 人未老, 心已死;
+却看断桥犹在;
+西湖凭栏听雨, 雷锋塔下扫落叶, 金山寺外撑旧伞;
+千年修行, 只为与君同船渡, 共枕眠;
+月下听蛙鸣, 田间闻潺溪;
+天若有情, 便叫那雷锋塔倒, 西湖水干;
+续前缘, 延旧情;
+塔尖比翼鸟, 湖底连理枝.
+</code></pre></div></div>
 
-  <p><strong>queue1:A</strong></p>
+<h2 id="流星天空">流星·天空</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>夜深了,天黑了.
+一道流星耀眼地划过天空.
+好美,天空说,
+流星笑而不语.
+留下来陪我吧,让我平凡的生活增添一道亮丽的风景吧.
+天空说,
+你应该找月亮!
+天空默默无声.
+流星对天空说,忘了我吧,我只是个匆匆过客.
+天空对流星说,
+我怎能忘记你的温度?
+</code></pre></div></div>
 
-  <p><strong>queue2:B</strong></p>
+<h2 id="雨中拙笔涂鸦">雨中拙笔涂鸦</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>凭栏听雨声,倚窗拂清风.
+思量前日事,惴惴不敢言.
+渐闻雨婆远,佳人何所事.
+心中繁杂陈,不可明言壮.
+天公倾盆雨,必有彩虹日.
+若知西子心,雷锋塔前汀.
+便叫雷公停,他日七彩云.
+</code></pre></div></div>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Poetry" /><category term="Poetry" /><summary type="html"><![CDATA[此篇博客纯属个人兴趣爱好, 突然兴起, 胡乱涂鸦之作, 止增笑耳 灼夏 灼，夏日，炎炎； 受，东风，徐徐； 漫，杠彴，慢慢； 看，卷云，片片； 回思昨日穿林打叶声， 竹杖芒鞋轻胜马， 管他风雨管他晴。 窗外 窗外马路等压， 小桥流水人家， 电脑书桌代码， 妖风阵阵， BUG何时得挂。 酒翁 酒自穿肠过，言从口中出; 情在心中留，意比磐石坚; 若卿有踟蹰，便倚胸中听; 绝无二三意，自始终如一。 酒乃前世药，来解今时忧; 无论今前世，不管酒前后； 铮铮铁板书，片字不得改。 人生在世几十载，失了智，又何妨； 离了爹妈断了奶，赢了你，夫何求。 以梦为马，不负韶华 十年望飘影，踟蹰未前行，后母方穷转银河， 断了金盾，知了冷暖，梦已难成， 风雨故人情，一载难稳定，云滇船头倾沧海， 不奢霸气，不舍金戈，不满冠樱， 可堪持觞劝君停，何妨征战且徐行， 刃了戎戍，攘了太清！ — 没有成绩，呼吸都是错的 ———–DAC BurNing 夺冠（2017-04-05 21：41） 无题 天高, 风清, 云淡, 鸟空鸣; 水明, 山秀, 民善, 人自行; 蜀道虽难, 有佳人作伴; 古韵犹藏, 引才俊尽赞; 栈道龙眠, 问功业何成. 不足惜 龙腾万里雾, 岂顾尺寸兔. 雨泽天下步, 安敢惜一物. 白蛇传 缘未到, 情未深, 人未老, 心已死; 却看断桥犹在; 西湖凭栏听雨, 雷锋塔下扫落叶, 金山寺外撑旧伞; 千年修行, 只为与君同船渡, 共枕眠; 月下听蛙鸣, 田间闻潺溪; 天若有情, 便叫那雷锋塔倒, 西湖水干; 续前缘, 延旧情; 塔尖比翼鸟, 湖底连理枝. 流星·天空 夜深了,天黑了. 一道流星耀眼地划过天空. 好美,天空说, 流星笑而不语. 留下来陪我吧,让我平凡的生活增添一道亮丽的风景吧. 天空说, 你应该找月亮! 天空默默无声. 流星对天空说,忘了我吧,我只是个匆匆过客. 天空对流星说, 我怎能忘记你的温度? 雨中拙笔涂鸦 凭栏听雨声,倚窗拂清风. 思量前日事,惴惴不敢言. 渐闻雨婆远,佳人何所事. 心中繁杂陈,不可明言壮. 天公倾盆雨,必有彩虹日. 若知西子心,雷锋塔前汀. 便叫雷公停,他日七彩云.]]></summary></entry><entry><title type="html">动态规划</title><link href="http://localhost:4000/algorithm/2022/04/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" rel="alternate" type="text/html" title="动态规划" /><published>2022-04-30T07:00:00+00:00</published><updated>2022-04-30T07:00:00+00:00</updated><id>http://localhost:4000/algorithm/2022/04/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/04/30/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html"><![CDATA[<p>一些算法举例</p>
 
-  <p><strong>queue1:A</strong></p>
-
-  <p><strong>queue2:B</strong></p>
-
-  <p><strong>queue1:A</strong></p>
-
-  <p><strong>queue2:B</strong></p>
-
-  <p><strong>queue1:A</strong></p>
-
-  <p><strong>queue2:B</strong></p>
-
-  <p><strong>queue1:A</strong></p>
-
-  <p><strong>queue2:B</strong></p>
-
-  <p><strong>queue1:A</strong></p>
-
-  <p><strong>queue2:B</strong></p>
-
-  <p><strong>queue1:A</strong></p>
-
-  <p><strong>queue2:B</strong></p>
-
-  <p><strong>queue1:A</strong></p>
-
-  <p>queue2:B</p>
-</blockquote>
-
-<h2 id="动态或贪心">动态或贪心</h2>
+<h2 id="动态规划">动态规划</h2>
 
 <h3 id="买卖股票的最佳时机">买卖股票的最佳时机</h3>
 
@@ -405,7 +332,175 @@
   <p>print(r16)</p>
 
   <p><strong>[”((()))”, “(()())”, “(())()”, “()(())”, “()()()”]</strong></p>
-</blockquote>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Algorithm" /><category term="算法" /><summary type="html"><![CDATA[一些算法举例 杂项 产生不重复的随机数 思路 设想一下，有n个苹果，有不同的编号，从1-n，每次拿一个出来。来产生不同的随机数 实现 func randomNumberWithoutDuplication(_ number: Int) -&gt; [Int] { var resultArr = Array(repeating: 0, count: number) var startArr = Array(1...number) for i in 0..&lt;startArr.count { let currentCount = UInt32(startArr.count-i) let index = Int(arc4random_uniform(currentCount)) resultArr[i] = startArr[index] startArr[index] = startArr[Int(currentCount) - 1] } return resultArr } 测试 let aaa = solution.randomNumberWithoutDuplication(10) [1, 5, 8, 9, 4, 3, 10, 2, 6, 7] 求解n！的结果中有多少个0 思路 首先我们知道10=25，所以有多少个0取决于有多少个25。而n！中包含5的因子的个数，可以用下面的表达式来计算 k= n/5+n/5^2+n/5^3+… 同样的n！包含2的因子的个数可以用下面的表达式来计算 m= n/2+n/2^2+n/2^3+… 很显然m&gt;k。所以末尾0的个数是min(m,k)也就是k了。 实现 func trailing_zero_num(number: Int) -&gt; Int { var num = 0 var n = number while Bool(truncating: n as NSNumber) { num += n/5 n = n/5 } return num } 多线程交替打印A，B分别10次 实现 func outABWithGCD() { let queue1 = DispatchQueue(label: "com.queue1.a", qos: .utility) let queue2 = DispatchQueue(label: "com.queue2.b", qos: .utility) var change: Bool = true queue1.async { var count1 = 0 while true { if change { print("queue1:A") change = false count1+=1 } if count1 == 10 { break } } } queue2.async { var count2 = 0 while true { if !change { print("queue2:B") change = true count2+=1 } if count2 == 10 { break } } } } 示例 solution.outABWithGCD() 结果 queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B 动态或贪心 买卖股票的最佳时机 给定一个数组，它的第i个元素是一支给定股票第i天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。 注意： 你不能再买入股票前卖出股票。 示例 输入：[7,1,5,3,6,4] 输出： 5 解释： 在第2天（股票价格=1）的时候买入，在第5天（=6），最大利润=6-1=5.注意利润不可能是7-1 输入： [7,6,4,3,1] 输出： 0 解释： 在这种情况下，没有交易完成，所以利润为0. 思路 需要找到最小的谷之后的最大的峰。 我们可以维持两个变量——minprice 和 maxprofit，它们分别对应迄今为止所得到的最小的谷值和最大的利润（卖出价格与最低价格之间的最大差值）。 解法 func maxProfit(_ prices: [Int]) -&gt; Int { var minPrice = Int.max var maxProfit = 0 for i in 0..&lt;prices.count { if prices[i] &lt; minPrice { minPrice = prices[i] } else if prices[i] - minPrice &gt; maxProfit { maxProfit = prices[i]-minPrice } } return maxProfit } 结果 print(solution.maxProfit([7,1,5,3,6,4])) 5 买卖股票的最佳时机II 示例 输入：[7,1,5,3,6,4] 输出：7 解释：在第2天（=1）买入，第三天（=5）卖出，利润4，然后在第4天（=3）买入，第5天（=6）卖出，利润3 总利润3+4=7 思路 在斜坡上爬升并持续增加从交易中获得的利润 解法 func maxProfitII(_ prices: [Int]) -&gt; Int { if prices.count &lt; 2 { return 0 } var maxProfit = 0 for i in 1..&lt;prices.count { if prices[i] &gt; prices[i-1] { maxProfit += prices[i]-prices[i-1] } } return maxProfit } 结果 print(solution.maxProfitII([7,1,5,3,6,4])) 7 滑动窗口最大值 给定一个Int窗口，实时的输出窗口最大的元素 示例 输入：k=3，nums=[1,3,-1,-3,5,3,6] 输出：[3,3,5,5,6] 思路 窗口为3个位置，只要有一个最大值进来，比他早的元素永远没有出头之日，所以可以直接忽略掉。 解法 func findMaxInWindow(_ count: Int, _ nums: [Int]) -&gt; [Int] { var res = [Int]() if nums.count &lt; 0 { return [] } var maxNum = Int.min if nums.count &lt; count { for i in 0..&lt;nums.count { if nums[i] &gt; maxNum { maxNum = nums[i] } } res.append(maxNum) return res } for i in 0..&lt;count { if nums[i] &gt; maxNum { maxNum = nums[i] } } res.append(maxNum) for j in (nums.count-count-1)..&lt;nums.count { if nums[j] &gt; maxNum { maxNum = nums[j] } res.append(maxNum) } return res } 结果 let r15 = solution.findMaxInWindow(3, [1,3,-1,-3,5,3,6]) print(r15) [3, 3, 5, 5, 6] 生成小括号字符串 给定固定长度，比如n，生成所有合法的小括号组成形式 示例 输入: n=3 输出: ["((()))", "(()())", "(())()", "()(())", "()()()"] 思路 采用递归，但是要注意，左右括号肯定都是为n个，并且左括号可以随意加（不超过n），但是右括号必须要在左括号大于右括号的时候才可以输入，然后递归即可 解法 func generateParenthesis(_ count: Int) -&gt; [String] { var res: [String] = [String]() _gen(0, 0, count, "", &amp;res) return res } func _gen(_ left: Int, _ right: Int, _ count: Int, _ result: String, _ res: inout [String]) { //递归出口 if left == count &amp;&amp; right == count { res.append(result) } if left &lt; count { _gen(left+1, right, count, result+"(", &amp;res) } if left &gt; right &amp;&amp; right &lt; count { _gen(left, right+1, count, result+")", &amp;res) } } 结果 let r16 = solution.generateParenthesis(3) print(r16) [”((()))”, “(()())”, “(())()”, “()(())”, “()()()”]]]></summary></entry><entry><title type="html">树算法</title><link href="http://localhost:4000/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95.html" rel="alternate" type="text/html" title="树算法" /><published>2022-03-08T06:00:00+00:00</published><updated>2022-03-08T06:00:00+00:00</updated><id>http://localhost:4000/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95.html"><![CDATA[<p>一些算法举例</p>
+</blockquote>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Algorithm" /><category term="算法" /><summary type="html"><![CDATA[一些算法举例 动态规划 买卖股票的最佳时机 给定一个数组，它的第i个元素是一支给定股票第i天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。 注意： 你不能再买入股票前卖出股票。 示例 输入：[7,1,5,3,6,4] 输出： 5 解释： 在第2天（股票价格=1）的时候买入，在第5天（=6），最大利润=6-1=5.注意利润不可能是7-1 输入： [7,6,4,3,1] 输出： 0 解释： 在这种情况下，没有交易完成，所以利润为0. 思路 需要找到最小的谷之后的最大的峰。 我们可以维持两个变量——minprice 和 maxprofit，它们分别对应迄今为止所得到的最小的谷值和最大的利润（卖出价格与最低价格之间的最大差值）。 解法 func maxProfit(_ prices: [Int]) -&gt; Int { var minPrice = Int.max var maxProfit = 0 for i in 0..&lt;prices.count { if prices[i] &lt; minPrice { minPrice = prices[i] } else if prices[i] - minPrice &gt; maxProfit { maxProfit = prices[i]-minPrice } } return maxProfit } 结果 print(solution.maxProfit([7,1,5,3,6,4])) 5 买卖股票的最佳时机II 示例 输入：[7,1,5,3,6,4] 输出：7 解释：在第2天（=1）买入，第三天（=5）卖出，利润4，然后在第4天（=3）买入，第5天（=6）卖出，利润3 总利润3+4=7 思路 在斜坡上爬升并持续增加从交易中获得的利润 解法 func maxProfitII(_ prices: [Int]) -&gt; Int { if prices.count &lt; 2 { return 0 } var maxProfit = 0 for i in 1..&lt;prices.count { if prices[i] &gt; prices[i-1] { maxProfit += prices[i]-prices[i-1] } } return maxProfit } 结果 print(solution.maxProfitII([7,1,5,3,6,4])) 7 滑动窗口最大值 给定一个Int窗口，实时的输出窗口最大的元素 示例 输入：k=3，nums=[1,3,-1,-3,5,3,6] 输出：[3,3,5,5,6] 思路 窗口为3个位置，只要有一个最大值进来，比他早的元素永远没有出头之日，所以可以直接忽略掉。 解法 func findMaxInWindow(_ count: Int, _ nums: [Int]) -&gt; [Int] { var res = [Int]() if nums.count &lt; 0 { return [] } var maxNum = Int.min if nums.count &lt; count { for i in 0..&lt;nums.count { if nums[i] &gt; maxNum { maxNum = nums[i] } } res.append(maxNum) return res } for i in 0..&lt;count { if nums[i] &gt; maxNum { maxNum = nums[i] } } res.append(maxNum) for j in (nums.count-count-1)..&lt;nums.count { if nums[j] &gt; maxNum { maxNum = nums[j] } res.append(maxNum) } return res } 结果 let r15 = solution.findMaxInWindow(3, [1,3,-1,-3,5,3,6]) print(r15) [3, 3, 5, 5, 6] 生成小括号字符串 给定固定长度，比如n，生成所有合法的小括号组成形式 示例 输入: n=3 输出: ["((()))", "(()())", "(())()", "()(())", "()()()"] 思路 采用递归，但是要注意，左右括号肯定都是为n个，并且左括号可以随意加（不超过n），但是右括号必须要在左括号大于右括号的时候才可以输入，然后递归即可 解法 func generateParenthesis(_ count: Int) -&gt; [String] { var res: [String] = [String]() _gen(0, 0, count, "", &amp;res) return res } func _gen(_ left: Int, _ right: Int, _ count: Int, _ result: String, _ res: inout [String]) { //递归出口 if left == count &amp;&amp; right == count { res.append(result) } if left &lt; count { _gen(left+1, right, count, result+"(", &amp;res) } if left &gt; right &amp;&amp; right &lt; count { _gen(left, right+1, count, result+")", &amp;res) } } 结果 let r16 = solution.generateParenthesis(3) print(r16) [”((()))”, “(()())”, “(())()”, “()(())”, “()()()”]]]></summary></entry><entry><title type="html">杂项算法</title><link href="http://localhost:4000/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95.html" rel="alternate" type="text/html" title="杂项算法" /><published>2022-03-08T07:00:00+00:00</published><updated>2022-03-08T07:00:00+00:00</updated><id>http://localhost:4000/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/03/08/%E6%9D%82%E9%A1%B9%E7%AE%97%E6%B3%95.html"><![CDATA[<p>一些算法举例</p>
+
+<h2 id="杂项">杂项</h2>
+
+<h3 id="产生不重复的随机数">产生不重复的随机数</h3>
+
+<ul>
+  <li>思路</li>
+</ul>
+
+<p>设想一下，有n个苹果，有不同的编号，从1-n，每次拿一个出来。来产生不同的随机数</p>
+
+<ul>
+  <li>实现</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">randomNumberWithoutDuplication</span><span class="p">(</span><span class="n">_</span> <span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">resultArr</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="nv">repeating</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span>
+  <span class="k">var</span> <span class="nv">startArr</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="mi">1</span><span class="o">...</span><span class="n">number</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">startArr</span><span class="o">.</span><span class="n">count</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">currentCount</span> <span class="o">=</span> <span class="kt">UInt32</span><span class="p">(</span><span class="n">startArr</span><span class="o">.</span><span class="n">count</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">arc4random_uniform</span><span class="p">(</span><span class="n">currentCount</span><span class="p">))</span>
+    <span class="n">resultArr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">startArr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">startArr</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">startArr</span><span class="p">[</span><span class="kt">Int</span><span class="p">(</span><span class="n">currentCount</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">resultArr</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>测试</li>
+</ul>
+
+<blockquote>
+  <p>let aaa = solution.randomNumberWithoutDuplication(10)</p>
+
+  <p>[1, 5, 8, 9, 4, 3, 10, 2, 6, 7]</p>
+</blockquote>
+
+<h3 id="求解n的结果中有多少个0">求解n！的结果中有多少个0</h3>
+
+<ul>
+  <li>
+    <p>思路</p>
+
+    <p>首先我们知道10=2<em>5，所以有多少个0取决于有多少个2</em>5。而n！中包含5的因子的个数，可以用下面的表达式来计算</p>
+
+    <p>k= n/5+n/5^2+n/5^3+…</p>
+
+    <p>同样的n！包含2的因子的个数可以用下面的表达式来计算</p>
+
+    <p>m= n/2+n/2^2+n/2^3+…</p>
+
+    <p>很显然m&gt;k。所以末尾0的个数是min(m,k)也就是k了。</p>
+  </li>
+  <li>
+    <p>实现</p>
+
+    <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">trailing_zero_num</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">num</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">var</span> <span class="nv">n</span> <span class="o">=</span> <span class="n">number</span>
+  <span class="k">while</span> <span class="kt">Bool</span><span class="p">(</span><span class="nv">truncating</span><span class="p">:</span> <span class="n">n</span> <span class="k">as</span> <span class="kt">NSNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">num</span> <span class="o">+=</span> <span class="n">n</span><span class="o">/</span><span class="mi">5</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="mi">5</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">num</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="多线程交替打印ab分别10次">多线程交替打印A，B分别10次</h3>
+
+<ul>
+  <li>实现</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">outABWithGCD</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">queue1</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="s">"com.queue1.a"</span><span class="p">,</span> <span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">utility</span><span class="p">)</span>
+  <span class="k">let</span> <span class="nv">queue2</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="p">(</span><span class="nv">label</span><span class="p">:</span> <span class="s">"com.queue2.b"</span><span class="p">,</span> <span class="nv">qos</span><span class="p">:</span> <span class="o">.</span><span class="n">utility</span><span class="p">)</span>
+
+  <span class="k">var</span> <span class="nv">change</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span>
+
+  <span class="n">queue1</span><span class="o">.</span><span class="k">async</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">count1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">true</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="n">change</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"queue1:A"</span><span class="p">)</span>
+        <span class="n">change</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="n">count1</span><span class="o">+=</span><span class="mi">1</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="n">count1</span> <span class="o">==</span> <span class="mi">10</span> <span class="p">{</span>
+        <span class="k">break</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">queue2</span><span class="o">.</span><span class="k">async</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">count2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">true</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="o">!</span><span class="n">change</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"queue2:B"</span><span class="p">)</span>
+        <span class="n">change</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">count2</span><span class="o">+=</span><span class="mi">1</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="n">count2</span> <span class="o">==</span> <span class="mi">10</span> <span class="p">{</span>
+        <span class="k">break</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>示例</li>
+</ul>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">solution</span><span class="o">.</span><span class="nf">outABWithGCD</span><span class="p">()</span>
+</code></pre></div></div>
+
+<ul>
+  <li>结果</li>
+</ul>
+
+<blockquote>
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p><strong>queue2:B</strong></p>
+
+  <p><strong>queue1:A</strong></p>
+
+  <p>queue2:B</p>
+</blockquote>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Algorithm" /><category term="算法" /><summary type="html"><![CDATA[一些算法举例 杂项 产生不重复的随机数 思路 设想一下，有n个苹果，有不同的编号，从1-n，每次拿一个出来。来产生不同的随机数 实现 func randomNumberWithoutDuplication(_ number: Int) -&gt; [Int] { var resultArr = Array(repeating: 0, count: number) var startArr = Array(1...number) for i in 0..&lt;startArr.count { let currentCount = UInt32(startArr.count-i) let index = Int(arc4random_uniform(currentCount)) resultArr[i] = startArr[index] startArr[index] = startArr[Int(currentCount) - 1] } return resultArr } 测试 let aaa = solution.randomNumberWithoutDuplication(10) [1, 5, 8, 9, 4, 3, 10, 2, 6, 7] 求解n！的结果中有多少个0 思路 首先我们知道10=25，所以有多少个0取决于有多少个25。而n！中包含5的因子的个数，可以用下面的表达式来计算 k= n/5+n/5^2+n/5^3+… 同样的n！包含2的因子的个数可以用下面的表达式来计算 m= n/2+n/2^2+n/2^3+… 很显然m&gt;k。所以末尾0的个数是min(m,k)也就是k了。 实现 func trailing_zero_num(number: Int) -&gt; Int { var num = 0 var n = number while Bool(truncating: n as NSNumber) { num += n/5 n = n/5 } return num } 多线程交替打印A，B分别10次 实现 func outABWithGCD() { let queue1 = DispatchQueue(label: "com.queue1.a", qos: .utility) let queue2 = DispatchQueue(label: "com.queue2.b", qos: .utility) var change: Bool = true queue1.async { var count1 = 0 while true { if change { print("queue1:A") change = false count1+=1 } if count1 == 10 { break } } } queue2.async { var count2 = 0 while true { if !change { print("queue2:B") change = true count2+=1 } if count2 == 10 { break } } } } 示例 solution.outABWithGCD() 结果 queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B queue1:A queue2:B]]></summary></entry><entry><title type="html">树算法</title><link href="http://localhost:4000/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95.html" rel="alternate" type="text/html" title="树算法" /><published>2022-03-08T06:00:00+00:00</published><updated>2022-03-08T06:00:00+00:00</updated><id>http://localhost:4000/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95</id><content type="html" xml:base="http://localhost:4000/algorithm/2022/03/08/%E6%A0%91%E7%AE%97%E6%B3%95.html"><![CDATA[<p>一些算法举例</p>
 
 <h2 id="树">树</h2>
 
@@ -1976,102 +2071,7 @@ num1,num2均不以0开头，除非是数字0本身
             <span class="nf">quickSort</span><span class="p">(</span><span class="nv">arr</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">,</span> <span class="nv">left</span><span class="p">:</span> <span class="n">partitionIndex</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nv">right</span><span class="p">:</span> <span class="n">right</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
-</code></pre></div></div>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Algorithm" /><category term="算法" /><summary type="html"><![CDATA[一些算法举例 排序算法 首先看一张图： 这里就不多解释了，下面抽几个排序简单讲下。 成功 信息 Warning Text. Error Text. success info warning error 冒泡排序 算法步骤 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一队到结尾的最后一对。这步做完后，最后的元素会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。 动图演示 代码实现： func bubleSort(source: inout [Int]) -&gt; [Int] { print("bubleSort before: \(source)") for i in 0..&lt;source.count { for j in i..&lt;source.count { if source[j]&lt;source[i] { source.swapAt(i, j) } } } print("bubleSort after: \(source)") return source } i的循环是计数用，j的循环是当次将最大的数放到最后。 插入排序 算法步骤 将第一待排序的第一个元素看过一个有序序列，把第二个元素到最后一个元素当成未排序序列。 从头到位以此扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面） 动图演示 由于很好理解就不放动图演示了。 代码实现 func insertSort(arr: inout [Int]) { for i in 1..&lt;arr.endIndex { let temp = arr[i] for j in (0..&lt;i).reversed() { if arr[j] &gt; temp { arr.swapAt(j, j+1) } } } } 快速排序 平均状况下，排序n个项目要O（nlogn）次比较。在最坏的状况下则需要O（n^2）次比较，但这种状况并不多见。事实上，快排通常明显比其他O（nlogn）算法更快一个，因为它的内部循环可以在大部分的架构上很有效率地被实现出来。 快排使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。 快速排序本质上是冒泡排序基础上的递归分治法。它是处理大数据排序最快的算法之一了。 《算法艺术与信息学竞赛》上说： 快速排序最坏的情况是O（n^2），比如顺序数列额快排。但它的平摊期望时间是O（nlogn），且O（nlogn）记号中隐含的常数因子很小，比复杂度稳定等于O（nlogn）的归并排序要小很多。所以，对绝大多数树顺序性较弱的随机数列而言，快速排序总是优于归并排序。 算法步骤 从数列中挑出一个元素，称为“基准”（pivot）； 重新排序数列，所有元素比基准值小的摆放在基准面前，所有比基准大的摆在基准后面（相同的可以放到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作； 递归的（recursive）把小于基准值的元素的子数列和大于基准值元素的子数列排序。 动图演示 代码实现 //寻找pivot的函数 func partition(arr: inout [Int], left: Int, right: Int) -&gt; Int { let pivot = left var index = pivot+1 for i in index...right { if arr[i] &lt; arr[pivot] { arr.swapAt(i, index) index+=1 //i和index都更新，以pivot为分隔，两边都冒泡，后面再将假设的pivot替换为真正的pivot，然后继续递归 } } //此处相当于pivot需要更新 arr.swapAt(pivot, index-1) return index-1 } func quickSort(arr: inout [Int], left: Int, right: Int) { if arr.count &lt;= 1 { //nothing, live it alone } let left = left let right = right if left &lt; right { let partitionIndex = partition(arr: &amp;arr, left: left, right: right) quickSort(arr: &amp;arr, left: left, right: partitionIndex-1) quickSort(arr: &amp;arr, left: partitionIndex+1, right: right) } }]]></summary></entry><entry><title type="html">偶来无聊, 拙笔涂鸦几首</title><link href="http://localhost:4000/poetry/2022/02/22/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html" rel="alternate" type="text/html" title="偶来无聊, 拙笔涂鸦几首" /><published>2022-02-22T02:00:00+00:00</published><updated>2022-02-22T02:00:00+00:00</updated><id>http://localhost:4000/poetry/2022/02/22/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6</id><content type="html" xml:base="http://localhost:4000/poetry/2022/02/22/%E9%84%99%E4%BA%BA%E6%8B%99%E7%AC%94%E6%B6%82%E9%B8%A6.html"><![CDATA[<p>此篇博客<em>纯属</em>个人<strong>兴趣爱好</strong>, 突然兴起, 胡乱涂鸦之作, 止增笑耳</p>
-
-<h2 id="灼夏">灼夏</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>灼，夏日，炎炎；
-受，东风，徐徐；
-漫，杠彴，慢慢；
-看，卷云，片片；
-回思昨日穿林打叶声，
-竹杖芒鞋轻胜马，
-管他风雨管他晴。
-</code></pre></div></div>
-
-<h2 id="窗外">窗外</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>窗外马路等压，
-小桥流水人家，
-电脑书桌代码，
-妖风阵阵，
-BUG何时得挂。
-</code></pre></div></div>
-
-<p><img src="http://localhost:4000/assets/images/posts/out.jpeg" alt="out" class="rounded border shadow circle" /></p>
-
-<h2 id="酒翁">酒翁</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>酒自穿肠过，言从口中出;
-情在心中留，意比磐石坚;
-若卿有踟蹰，便倚胸中听;
-绝无二三意，自始终如一。
-酒乃前世药，来解今时忧;
-无论今前世，不管酒前后；
-铮铮铁板书，片字不得改。
-
-
-人生在世几十载，失了智，又何妨；
-离了爹妈断了奶，赢了你，夫何求。
-</code></pre></div></div>
-
-<h2 id="以梦为马不负韶华">以梦为马，不负韶华</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>十年望飘影，踟蹰未前行，后母方穷转银河，
-断了金盾，知了冷暖，梦已难成，
-风雨故人情，一载难稳定，云滇船头倾沧海，
-不奢霸气，不舍金戈，不满冠樱，
-可堪持觞劝君停，何妨征战且徐行，
-刃了戎戍，攘了太清！
-</code></pre></div></div>
-
-<p>— <em>没有成绩，呼吸都是错的 ———–DAC BurNing 夺冠（2017-04-05  21：41）</em></p>
-
-<h2 id="无题">无题</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>天高, 风清, 云淡, 鸟空鸣;
-水明, 山秀, 民善, 人自行;
-蜀道虽难, 有佳人作伴;
-古韵犹藏, 引才俊尽赞;
-栈道龙眠, 问功业何成.
-</code></pre></div></div>
-
-<h2 id="不足惜">不足惜</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>龙腾万里雾,
-岂顾尺寸兔.
-雨泽天下步,
-安敢惜一物.
-</code></pre></div></div>
-
-<h2 id="白蛇传">白蛇传</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>缘未到, 情未深, 人未老, 心已死;
-却看断桥犹在;
-西湖凭栏听雨, 雷锋塔下扫落叶, 金山寺外撑旧伞;
-千年修行, 只为与君同船渡, 共枕眠;
-月下听蛙鸣, 田间闻潺溪;
-天若有情, 便叫那雷锋塔倒, 西湖水干;
-续前缘, 延旧情;
-塔尖比翼鸟, 湖底连理枝.
-</code></pre></div></div>
-
-<h2 id="流星天空">流星·天空</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>夜深了,天黑了.
-一道流星耀眼地划过天空.
-好美,天空说,
-流星笑而不语.
-留下来陪我吧,让我平凡的生活增添一道亮丽的风景吧.
-天空说,
-你应该找月亮!
-天空默默无声.
-流星对天空说,忘了我吧,我只是个匆匆过客.
-天空对流星说,
-我怎能忘记你的温度?
-</code></pre></div></div>
-
-<h2 id="雨中拙笔涂鸦">雨中拙笔涂鸦</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>凭栏听雨声,倚窗拂清风.
-思量前日事,惴惴不敢言.
-渐闻雨婆远,佳人何所事.
-心中繁杂陈,不可明言壮.
-天公倾盆雨,必有彩虹日.
-若知西子心,雷锋塔前汀.
-便叫雷公停,他日七彩云.
-</code></pre></div></div>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Poetry" /><category term="Poetry" /><summary type="html"><![CDATA[此篇博客纯属个人兴趣爱好, 突然兴起, 胡乱涂鸦之作, 止增笑耳 灼夏 灼，夏日，炎炎； 受，东风，徐徐； 漫，杠彴，慢慢； 看，卷云，片片； 回思昨日穿林打叶声， 竹杖芒鞋轻胜马， 管他风雨管他晴。 窗外 窗外马路等压， 小桥流水人家， 电脑书桌代码， 妖风阵阵， BUG何时得挂。 酒翁 酒自穿肠过，言从口中出; 情在心中留，意比磐石坚; 若卿有踟蹰，便倚胸中听; 绝无二三意，自始终如一。 酒乃前世药，来解今时忧; 无论今前世，不管酒前后； 铮铮铁板书，片字不得改。 人生在世几十载，失了智，又何妨； 离了爹妈断了奶，赢了你，夫何求。 以梦为马，不负韶华 十年望飘影，踟蹰未前行，后母方穷转银河， 断了金盾，知了冷暖，梦已难成， 风雨故人情，一载难稳定，云滇船头倾沧海， 不奢霸气，不舍金戈，不满冠樱， 可堪持觞劝君停，何妨征战且徐行， 刃了戎戍，攘了太清！ — 没有成绩，呼吸都是错的 ———–DAC BurNing 夺冠（2017-04-05 21：41） 无题 天高, 风清, 云淡, 鸟空鸣; 水明, 山秀, 民善, 人自行; 蜀道虽难, 有佳人作伴; 古韵犹藏, 引才俊尽赞; 栈道龙眠, 问功业何成. 不足惜 龙腾万里雾, 岂顾尺寸兔. 雨泽天下步, 安敢惜一物. 白蛇传 缘未到, 情未深, 人未老, 心已死; 却看断桥犹在; 西湖凭栏听雨, 雷锋塔下扫落叶, 金山寺外撑旧伞; 千年修行, 只为与君同船渡, 共枕眠; 月下听蛙鸣, 田间闻潺溪; 天若有情, 便叫那雷锋塔倒, 西湖水干; 续前缘, 延旧情; 塔尖比翼鸟, 湖底连理枝. 流星·天空 夜深了,天黑了. 一道流星耀眼地划过天空. 好美,天空说, 流星笑而不语. 留下来陪我吧,让我平凡的生活增添一道亮丽的风景吧. 天空说, 你应该找月亮! 天空默默无声. 流星对天空说,忘了我吧,我只是个匆匆过客. 天空对流星说, 我怎能忘记你的温度? 雨中拙笔涂鸦 凭栏听雨声,倚窗拂清风. 思量前日事,惴惴不敢言. 渐闻雨婆远,佳人何所事. 心中繁杂陈,不可明言壮. 天公倾盆雨,必有彩虹日. 若知西子心,雷锋塔前汀. 便叫雷公停,他日七彩云.]]></summary></entry><entry><title type="html">开发过程中的UI差异(flutter版)</title><link href="http://localhost:4000/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88).html" rel="alternate" type="text/html" title="开发过程中的UI差异(flutter版)" /><published>2021-03-08T07:09:00+00:00</published><updated>2021-03-08T07:09:00+00:00</updated><id>http://localhost:4000/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88)</id><content type="html" xml:base="http://localhost:4000/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88).html"><![CDATA[<h2 id="开发过程中的ui差异flutter版">开发过程中的UI差异(flutter版)</h2>
+</code></pre></div></div>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Algorithm" /><category term="算法" /><summary type="html"><![CDATA[一些算法举例 排序算法 首先看一张图： 这里就不多解释了，下面抽几个排序简单讲下。 成功 信息 Warning Text. Error Text. success info warning error 冒泡排序 算法步骤 比较相邻的元素。如果第一个比第二个大，就交换他们两个。 对每一对相邻元素作同样的工作，从开始第一队到结尾的最后一对。这步做完后，最后的元素会是最大的数。 针对所有的元素重复以上的步骤，除了最后一个。 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。 动图演示 代码实现： func bubleSort(source: inout [Int]) -&gt; [Int] { print("bubleSort before: \(source)") for i in 0..&lt;source.count { for j in i..&lt;source.count { if source[j]&lt;source[i] { source.swapAt(i, j) } } } print("bubleSort after: \(source)") return source } i的循环是计数用，j的循环是当次将最大的数放到最后。 插入排序 算法步骤 将第一待排序的第一个元素看过一个有序序列，把第二个元素到最后一个元素当成未排序序列。 从头到位以此扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面） 动图演示 由于很好理解就不放动图演示了。 代码实现 func insertSort(arr: inout [Int]) { for i in 1..&lt;arr.endIndex { let temp = arr[i] for j in (0..&lt;i).reversed() { if arr[j] &gt; temp { arr.swapAt(j, j+1) } } } } 快速排序 平均状况下，排序n个项目要O（nlogn）次比较。在最坏的状况下则需要O（n^2）次比较，但这种状况并不多见。事实上，快排通常明显比其他O（nlogn）算法更快一个，因为它的内部循环可以在大部分的架构上很有效率地被实现出来。 快排使用分治法（Divide and conquer）策略来把一个串行（list）分为两个子串行（sub-lists）。 快速排序本质上是冒泡排序基础上的递归分治法。它是处理大数据排序最快的算法之一了。 《算法艺术与信息学竞赛》上说： 快速排序最坏的情况是O（n^2），比如顺序数列额快排。但它的平摊期望时间是O（nlogn），且O（nlogn）记号中隐含的常数因子很小，比复杂度稳定等于O（nlogn）的归并排序要小很多。所以，对绝大多数树顺序性较弱的随机数列而言，快速排序总是优于归并排序。 算法步骤 从数列中挑出一个元素，称为“基准”（pivot）； 重新排序数列，所有元素比基准值小的摆放在基准面前，所有比基准大的摆在基准后面（相同的可以放到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作； 递归的（recursive）把小于基准值的元素的子数列和大于基准值元素的子数列排序。 动图演示 代码实现 //寻找pivot的函数 func partition(arr: inout [Int], left: Int, right: Int) -&gt; Int { let pivot = left var index = pivot+1 for i in index...right { if arr[i] &lt; arr[pivot] { arr.swapAt(i, index) index+=1 //i和index都更新，以pivot为分隔，两边都冒泡，后面再将假设的pivot替换为真正的pivot，然后继续递归 } } //此处相当于pivot需要更新 arr.swapAt(pivot, index-1) return index-1 } func quickSort(arr: inout [Int], left: Int, right: Int) { if arr.count &lt;= 1 { //nothing, live it alone } let left = left let right = right if left &lt; right { let partitionIndex = partition(arr: &amp;arr, left: left, right: right) quickSort(arr: &amp;arr, left: left, right: partitionIndex-1) quickSort(arr: &amp;arr, left: partitionIndex+1, right: right) } }]]></summary></entry><entry><title type="html">开发过程中的UI差异(flutter版)</title><link href="http://localhost:4000/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88).html" rel="alternate" type="text/html" title="开发过程中的UI差异(flutter版)" /><published>2021-03-08T07:09:00+00:00</published><updated>2021-03-08T07:09:00+00:00</updated><id>http://localhost:4000/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88)</id><content type="html" xml:base="http://localhost:4000/flutter/2021/03/08/%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84UI%E5%B7%AE%E5%BC%82(flutter%E7%89%88).html"><![CDATA[<h2 id="开发过程中的ui差异flutter版">开发过程中的UI差异(flutter版)</h2>
 
 <p>一个App的从无到有一定绕不开UI的还原问题，通常有设计师设计好根据时下主流的机型产出UI稿交于开发人员去还原视觉稿。比如设计稿的规范为：375(width)<em>667(height)。通常开发人员按照设计稿设置的控件（100</em>40）以及字体fontSize：18。但是经常会有设计师来说，怎么Android和iOS上面的表现形式不一样呢？或者怎么oppo上面的字号显得比较大呢？其实，底层逻辑都是由于物理设备到开发语言的映射差异化导致的。</p>
 
@@ -2214,142 +2214,4 @@ BUG何时得挂。
   <li>
     <p>Native 2 Native</p>
   </li>
-</ul>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="flutter" /><category term="flutter" /><summary type="html"><![CDATA[flutter开发初探 作为时下最火的跨端技术，虽然现在才能才入局有点晚的感觉，但是本人是喜欢稳定版的，目前1.22.x也已经官方release了，这篇初探就简单记录下，一枚小白的使用心得和入门吧 国际惯例 摆出这张图，还是简单从整体上来先认识了一下什么是 Flutter，否则容易陷入“盲人摸象”的境地。 Embedder 操作系统适配层，提供线程模型，事件循环模型 Engine：和底层OS无关了，一般是渲染层包括了 Skia 图形绘制库、Dart VM、Text 等，其中 Skia 和 Text 为上层接口提供了调用底层渲染和排版的能力 Framework：是一个用 Dart 实现的 UI SDK，从上之下包括了两大风格组件库（iOS和Android）、基础组件库、图形绘制、手势识别、动画等功能 Flutter绘制 首先是用户操作，触发 Widget Tree 的更新，然后构建 Element Tree，计算重绘区后将信息同步给 RenderObject Tree，之后实现组件布局、组件绘制、图层合成、引擎渲染。 渲染过程中有3棵树比较重要： Widget Tree, Element Tree, RenderObject Tree Widget Tree 基本逻辑单位，是用户对界面 UI 的描述方式。其实Widget是不可变的，只是通过重绘来更新state Element Tree 它是 Widget 的实例化对象，createElement 工厂方法来创建Element。 Element Tree 的重新创建和重新渲染的开销会非常大， 所以 Element Tree 到 RenderObject Tree 也有一个 Diff 环节，来计算最小重绘区域。 需要注意的是，Element 同时持有 Widget 和 RenderObject， 但无论是 Widget 还是 Element，其实都不负责最后的渲染，它们只是“发号施令”，真正对配置信息进行渲染的是 RenderObject。 RenderObject Tree RenderObject Tree 在 Flutter 的展示过程分为四个阶段： 布局 绘制 合成 渲染 其中，布局和绘制在 RenderObject 中完成，Flutter 采用深度优先机制遍历渲染对象树，确定树中各个对象的位置和尺寸，并把它们绘制到不同的图层上。绘制完毕后，合成和渲染的工作则交给 Skia 处理。 理论上可以直接让Widget和RenderObject通信，不过因为Widget设计为不可变的，但是最终在屏幕上的object不可能一直不变。如果每次改变都去全局渲染object，会损耗大量性能。所以Element实际上是对Widget做了抽象，只将变化的部分通知Render层，由此最大程度去降低重绘区域，提高渲染效率。 Flutter绘制流程拆解 Build Diff Layout Paint Composite Render 自绘引擎 通过Skia直接调用OpenGL渲染，保证性能同时抹平差异。 Dart同时支持JIT和AOT。 Flutter混合开发 混合模式 统一管理模式 所谓统一管理模式，就是一个标准的 Flutter Application 工程，而其中 Flutter 的产物工程目录（ ios/ 和 android/ ）是可以进行原生混编的工程，如 React Native 进行混合开发那般，在工程项目中进行混合开发就好。但是这样的缺点是当原生项目业务庞大起来时，Flutter 工程对于原生工程的耦合就会非常严重，当工程进行升级时会比较麻烦。因此这种混合模式只适用于 Flutter 业务主导、原生功能为辅的项目。 三端分离模式 后来 Google 对混合开发有了更好的支持，除了 Flutter Application，还支持 Flutter Module。所谓 Flutter Module，恰如其名，就是支持以模块化的方式将 Flutter 引入原生工程中， 它的产物就是 iOS 下的 Framework 或 Pods、Android 下的 AAR，原生工程就像引入其他第三方 SDK 那样，使用 Maven 和 Cocoapods 引入 Flutter Module 即可。 从而实现真正意义上的三端分离的开发模式。 混合栈原理 混合导航栈主要需要解决以下四种场景下的问题： Native 2 Native 这种情况比较简单，Flutter Engine 已经为我们提供了现成的 Plugin，即 iOS 下的 FlutterViewController 与 Android 下的 FlutterView（自行包装一下可以实现 FlutterActivity），所以这种场景我们直接使用启动了的 Flutter Engine 来初始化 Flutter 容器，为其设置初始路由页面之后，就可以以原生的方式跳转至 Flutter 页面了。 Flutter 2 Flutter 使用 Flutter 本身的 Navigator 导航栈 创建新的 Flutter 容器后，使用原生导航栈 Flutter 2 Native 这里的跳转其实是包含了两种情况，一是打开原生页面（open，包括但不限于 push），二是回退到原生页面（close，包括但不限于 pop）。 Native 2 Native]]></summary></entry><entry><title type="html">一些相关知识点</title><link href="http://localhost:4000/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9.html" rel="alternate" type="text/html" title="一些相关知识点" /><published>2020-08-18T07:39:00+00:00</published><updated>2020-08-18T07:39:00+00:00</updated><id>http://localhost:4000/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9</id><content type="html" xml:base="http://localhost:4000/interview/2020/08/18/%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9.html"><![CDATA[<h2 id="对称加密">对称加密</h2>
-
-<h3 id="定义">定义</h3>
-
-<p class="success">对称加密是指加密和解密的密匙为同一个，用来加密数据的密匙也可以用来解密</p>
-
-<h3 id="特点">特点</h3>
-
-<ul>
-  <li>加密速度快，使用简单</li>
-  <li>对称加密的破解难度是随着钥匙的大小增加而增加的，钥匙越大就越难破解，但是钥匙越大相应的解密的时间也会越长</li>
-</ul>
-
-<h3 id="对称加密的问题">对称加密的问题</h3>
-
-<ol>
-  <li>双方都必须先约定好加密规则</li>
-  <li>秘钥数目难于管理。因为对于每一个合作者都需要使用不同的秘钥，很难适应开放互联网中的大量的合作者交流。</li>
-  <li>无法适用于陌生的网络的环境，双方都必须是可信任的才可进行。</li>
-</ol>
-
-<h2 id="非对称加密">非对称加密</h2>
-
-<h3 id="定义-1">定义</h3>
-
-<p class="info">非对称加密的秘钥是成对的（公钥和私钥）。私钥由自己安全保管不外泄，而公钥则可以发给网络中的任何人。</p>
-
-<p>非对称加密适用这对秘钥中的一个进行加密，而解密则需要另一个秘钥。根据公钥是无法推导出私钥的。</p>
-
-<h3 id="特点-1">特点</h3>
-
-<ol>
-  <li>比对称加密安全：使用不同的钥匙，非对称加密的私钥是由自己保管，不会外泄的。</li>
-  <li>更方便，可扩展：公钥可以在公布在网络中，任何人都可以拿着公钥和你进行通信，而对称加密密钥是不可能公布在网络中的，只能通过私下约定密钥规则。</li>
-</ol>
-
-<h3 id="非对称加密的问题">非对称加密的问题</h3>
-
-<p>虽然非对称加密很安全，但是和对称加密比起来，它的解密速度非常慢，所以通常会用混合加密的方式进行通信，混合加密是用非对称加密的方式交换双方的对称加密密钥，交换对称加密密钥之后再用对称加密的方式进行通信。</p>
-
-<h2 id="数字签名">数字签名</h2>
-
-<h3 id="信息被篡改的风险">信息被篡改的风险</h3>
-
-<p>对称加密和非对称加密已经解决了信息传输中的安全问题了，进过加密的数据黑客截取了也无法解密。但是还有一个问题，虽然黑客无法解密通信的内容，但是黑客可以篡改数据双方的通信数据，那么这种情况下我们如何识别数据经过网络传输之后是否被别人篡改过呢？数字签名</p>
-
-<ol>
-  <li>首先把需要发送的信息进行哈希得到信息摘要</li>
-  <li>然后对信息内容和摘要进行签名得到数字签名</li>
-  <li>然后用对称加密密钥把信息内容和数字签名进行对称加密</li>
-  <li>最后再把对称加密的秘钥进行加密</li>
-</ol>
-
-<h3 id="数字证书">数字证书</h3>
-
-<h4 id="身份确认证的问题">身份确认证的问题</h4>
-
-<p>数字签名解决了信息可能会被篡改的问题，但是还有另外一个问题就是如何确定当前给我发信息的人就是A呢？黑客也可以伪装成A的身份然后把A的公钥替换成自己的公钥，这样B就无法分辨出来了。</p>
-
-<p>这样就衍生了一个身份认证的问题，显然这个身份证明不能由当事人自己发出来，只能由一个大家都信任的公开机构（CA）来发行证书，大家先要到CA去申请一个数字证书（证书信息包括发布机构，所属人，公钥，过期时间等信息）</p>
-
-<p>通信流程如下：</p>
-
-<ol>
-  <li>A首先去CA申请一个数字证书</li>
-  <li>A把信息加密后+加上签名的数字证书发送给B</li>
-  <li>B收到A的信息后，拿着A传过来的数字证书到CA去验证</li>
-  <li>如果查询到对应的数字证书里的所属人的确为A，那么身份真实，可以通讯</li>
-  <li>然后B根据数字证书信息生成一个专属于A和B的加密方式（这里为对称加密），两个人通过此加密方式进行通讯</li>
-</ol>
-
-<h2 id="https">HTTPS</h2>
-
-<h3 id="不足">不足</h3>
-
-<ol>
-  <li>不能验证身份，可能被伪装</li>
-  <li>明文通信，数据可能被窃取</li>
-  <li>无法验证报文的完整性，内容可能被篡改</li>
-</ol>
-
-<h3 id="ssltsl协议的解决方案">SSL/TSL协议的解决方案</h3>
-
-<p>通常的https是http+ssl或者http+tsl，ssl主要针对http存在的三个问题逐一实现了对应的解决方案</p>
-
-<h3 id="通信加密解决数据被窃取问题">通信加密（解决数据被窃取问题）</h3>
-
-<p>ssl采用了<strong>混合加密</strong>（同时使用非对称加密和对称加密）的方式建立起安全的http通信，经过加密后的内容即是被窃听了，窃听的人也无法解密对应的数据。</p>
-
-<h3 id="数字证书解决身份伪装问题">数字证书（解决身份伪装问题）</h3>
-
-<h3 id="数字签名解决数据篡改问题">数字签名（解决数据篡改问题）</h3>
-
-<p>数字签名主要有两个作用，一是验证数据是否为意料中的对象所发出的，二是对数据的完整性进行验证，验证数据是否被篡改过。</p>
-
-<h3 id="https通信流程">https通信流程</h3>
-
-<p>https通信主要包括几个节点，发起请求，验证身份，协商秘钥，加密会话，具体流程如下（此例子只有客户端对服务端的单向验证）：</p>
-
-<ol>
-  <li>客户端向服务端发起，建立https请求。</li>
-  <li>服务器向客户端发送数字证书。</li>
-  <li>客户端验证数字证书，证书验证通过后客户端生成会话密钥（双向验证则此处客户端也会向服务器发送证书）。</li>
-  <li>服务器生成会话密钥（双向验证此处服务端也会对客户端的证书验证）。</li>
-  <li>客户端与服务端开始进行加密会话。</li>
-</ol>
-
-<ul>
-  <li>客户端向服务器发起请求
-    <ul>
-      <li>客户端生成随机r1发送给服务端</li>
-      <li>告诉服务端自己支持哪些加密算法</li>
-    </ul>
-  </li>
-  <li>服务器向客户端发送数字证书
-    <ul>
-      <li>服务端生成随机数r2</li>
-      <li>从客户端支持的加密算法中选择一种双方都支持的加密算法（此算法用于后面的会话密钥生成）</li>
-      <li>服务端生成把证书，随机数r2，会话密钥生成算法，一同发给客户端</li>
-    </ul>
-  </li>
-  <li>客户端验证数字证书
-    <ul>
-      <li>验证证书的可靠性</li>
-      <li>验证证书合法性，包括证书是否吊销，是否到期，域名是否匹配等等</li>
-      <li>获得证书的公钥，会话密钥生成算法，随机数r2</li>
-      <li>生成一个随机数r3</li>
-      <li>根据会话密钥算法使用r1，r2，r3生成会话密钥</li>
-      <li>用服务端证书的公钥加密随机数r3并发送给服务端</li>
-    </ul>
-  </li>
-  <li>服务器得到会话密钥
-    <ul>
-      <li>服务器用私钥解密客户端发过来的r3</li>
-      <li>根据会话密钥算法使用r1，r2，r3生成会话密钥</li>
-    </ul>
-  </li>
-  <li>客户端与服务器进行加密会话</li>
-</ul>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="Interview" /><category term="面试" /><summary type="html"><![CDATA[对称加密 定义 对称加密是指加密和解密的密匙为同一个，用来加密数据的密匙也可以用来解密 特点 加密速度快，使用简单 对称加密的破解难度是随着钥匙的大小增加而增加的，钥匙越大就越难破解，但是钥匙越大相应的解密的时间也会越长 对称加密的问题 双方都必须先约定好加密规则 秘钥数目难于管理。因为对于每一个合作者都需要使用不同的秘钥，很难适应开放互联网中的大量的合作者交流。 无法适用于陌生的网络的环境，双方都必须是可信任的才可进行。 非对称加密 定义 非对称加密的秘钥是成对的（公钥和私钥）。私钥由自己安全保管不外泄，而公钥则可以发给网络中的任何人。 非对称加密适用这对秘钥中的一个进行加密，而解密则需要另一个秘钥。根据公钥是无法推导出私钥的。 特点 比对称加密安全：使用不同的钥匙，非对称加密的私钥是由自己保管，不会外泄的。 更方便，可扩展：公钥可以在公布在网络中，任何人都可以拿着公钥和你进行通信，而对称加密密钥是不可能公布在网络中的，只能通过私下约定密钥规则。 非对称加密的问题 虽然非对称加密很安全，但是和对称加密比起来，它的解密速度非常慢，所以通常会用混合加密的方式进行通信，混合加密是用非对称加密的方式交换双方的对称加密密钥，交换对称加密密钥之后再用对称加密的方式进行通信。 数字签名 信息被篡改的风险 对称加密和非对称加密已经解决了信息传输中的安全问题了，进过加密的数据黑客截取了也无法解密。但是还有一个问题，虽然黑客无法解密通信的内容，但是黑客可以篡改数据双方的通信数据，那么这种情况下我们如何识别数据经过网络传输之后是否被别人篡改过呢？数字签名 首先把需要发送的信息进行哈希得到信息摘要 然后对信息内容和摘要进行签名得到数字签名 然后用对称加密密钥把信息内容和数字签名进行对称加密 最后再把对称加密的秘钥进行加密 数字证书 身份确认证的问题 数字签名解决了信息可能会被篡改的问题，但是还有另外一个问题就是如何确定当前给我发信息的人就是A呢？黑客也可以伪装成A的身份然后把A的公钥替换成自己的公钥，这样B就无法分辨出来了。 这样就衍生了一个身份认证的问题，显然这个身份证明不能由当事人自己发出来，只能由一个大家都信任的公开机构（CA）来发行证书，大家先要到CA去申请一个数字证书（证书信息包括发布机构，所属人，公钥，过期时间等信息） 通信流程如下： A首先去CA申请一个数字证书 A把信息加密后+加上签名的数字证书发送给B B收到A的信息后，拿着A传过来的数字证书到CA去验证 如果查询到对应的数字证书里的所属人的确为A，那么身份真实，可以通讯 然后B根据数字证书信息生成一个专属于A和B的加密方式（这里为对称加密），两个人通过此加密方式进行通讯 HTTPS 不足 不能验证身份，可能被伪装 明文通信，数据可能被窃取 无法验证报文的完整性，内容可能被篡改 SSL/TSL协议的解决方案 通常的https是http+ssl或者http+tsl，ssl主要针对http存在的三个问题逐一实现了对应的解决方案 通信加密（解决数据被窃取问题） ssl采用了混合加密（同时使用非对称加密和对称加密）的方式建立起安全的http通信，经过加密后的内容即是被窃听了，窃听的人也无法解密对应的数据。 数字证书（解决身份伪装问题） 数字签名（解决数据篡改问题） 数字签名主要有两个作用，一是验证数据是否为意料中的对象所发出的，二是对数据的完整性进行验证，验证数据是否被篡改过。 https通信流程 https通信主要包括几个节点，发起请求，验证身份，协商秘钥，加密会话，具体流程如下（此例子只有客户端对服务端的单向验证）： 客户端向服务端发起，建立https请求。 服务器向客户端发送数字证书。 客户端验证数字证书，证书验证通过后客户端生成会话密钥（双向验证则此处客户端也会向服务器发送证书）。 服务器生成会话密钥（双向验证此处服务端也会对客户端的证书验证）。 客户端与服务端开始进行加密会话。 客户端向服务器发起请求 客户端生成随机r1发送给服务端 告诉服务端自己支持哪些加密算法 服务器向客户端发送数字证书 服务端生成随机数r2 从客户端支持的加密算法中选择一种双方都支持的加密算法（此算法用于后面的会话密钥生成） 服务端生成把证书，随机数r2，会话密钥生成算法，一同发给客户端 客户端验证数字证书 验证证书的可靠性 验证证书合法性，包括证书是否吊销，是否到期，域名是否匹配等等 获得证书的公钥，会话密钥生成算法，随机数r2 生成一个随机数r3 根据会话密钥算法使用r1，r2，r3生成会话密钥 用服务端证书的公钥加密随机数r3并发送给服务端 服务器得到会话密钥 服务器用私钥解密客户端发过来的r3 根据会话密钥算法使用r1，r2，r3生成会话密钥 客户端与服务器进行加密会话]]></summary></entry></feed>
+</ul>]]></content><author><name>Cambria Yang</name><email>cambriayang@qq.com</email></author><category term="flutter" /><category term="flutter" /><summary type="html"><![CDATA[flutter开发初探 作为时下最火的跨端技术，虽然现在才能才入局有点晚的感觉，但是本人是喜欢稳定版的，目前1.22.x也已经官方release了，这篇初探就简单记录下，一枚小白的使用心得和入门吧 国际惯例 摆出这张图，还是简单从整体上来先认识了一下什么是 Flutter，否则容易陷入“盲人摸象”的境地。 Embedder 操作系统适配层，提供线程模型，事件循环模型 Engine：和底层OS无关了，一般是渲染层包括了 Skia 图形绘制库、Dart VM、Text 等，其中 Skia 和 Text 为上层接口提供了调用底层渲染和排版的能力 Framework：是一个用 Dart 实现的 UI SDK，从上之下包括了两大风格组件库（iOS和Android）、基础组件库、图形绘制、手势识别、动画等功能 Flutter绘制 首先是用户操作，触发 Widget Tree 的更新，然后构建 Element Tree，计算重绘区后将信息同步给 RenderObject Tree，之后实现组件布局、组件绘制、图层合成、引擎渲染。 渲染过程中有3棵树比较重要： Widget Tree, Element Tree, RenderObject Tree Widget Tree 基本逻辑单位，是用户对界面 UI 的描述方式。其实Widget是不可变的，只是通过重绘来更新state Element Tree 它是 Widget 的实例化对象，createElement 工厂方法来创建Element。 Element Tree 的重新创建和重新渲染的开销会非常大， 所以 Element Tree 到 RenderObject Tree 也有一个 Diff 环节，来计算最小重绘区域。 需要注意的是，Element 同时持有 Widget 和 RenderObject， 但无论是 Widget 还是 Element，其实都不负责最后的渲染，它们只是“发号施令”，真正对配置信息进行渲染的是 RenderObject。 RenderObject Tree RenderObject Tree 在 Flutter 的展示过程分为四个阶段： 布局 绘制 合成 渲染 其中，布局和绘制在 RenderObject 中完成，Flutter 采用深度优先机制遍历渲染对象树，确定树中各个对象的位置和尺寸，并把它们绘制到不同的图层上。绘制完毕后，合成和渲染的工作则交给 Skia 处理。 理论上可以直接让Widget和RenderObject通信，不过因为Widget设计为不可变的，但是最终在屏幕上的object不可能一直不变。如果每次改变都去全局渲染object，会损耗大量性能。所以Element实际上是对Widget做了抽象，只将变化的部分通知Render层，由此最大程度去降低重绘区域，提高渲染效率。 Flutter绘制流程拆解 Build Diff Layout Paint Composite Render 自绘引擎 通过Skia直接调用OpenGL渲染，保证性能同时抹平差异。 Dart同时支持JIT和AOT。 Flutter混合开发 混合模式 统一管理模式 所谓统一管理模式，就是一个标准的 Flutter Application 工程，而其中 Flutter 的产物工程目录（ ios/ 和 android/ ）是可以进行原生混编的工程，如 React Native 进行混合开发那般，在工程项目中进行混合开发就好。但是这样的缺点是当原生项目业务庞大起来时，Flutter 工程对于原生工程的耦合就会非常严重，当工程进行升级时会比较麻烦。因此这种混合模式只适用于 Flutter 业务主导、原生功能为辅的项目。 三端分离模式 后来 Google 对混合开发有了更好的支持，除了 Flutter Application，还支持 Flutter Module。所谓 Flutter Module，恰如其名，就是支持以模块化的方式将 Flutter 引入原生工程中， 它的产物就是 iOS 下的 Framework 或 Pods、Android 下的 AAR，原生工程就像引入其他第三方 SDK 那样，使用 Maven 和 Cocoapods 引入 Flutter Module 即可。 从而实现真正意义上的三端分离的开发模式。 混合栈原理 混合导航栈主要需要解决以下四种场景下的问题： Native 2 Native 这种情况比较简单，Flutter Engine 已经为我们提供了现成的 Plugin，即 iOS 下的 FlutterViewController 与 Android 下的 FlutterView（自行包装一下可以实现 FlutterActivity），所以这种场景我们直接使用启动了的 Flutter Engine 来初始化 Flutter 容器，为其设置初始路由页面之后，就可以以原生的方式跳转至 Flutter 页面了。 Flutter 2 Flutter 使用 Flutter 本身的 Navigator 导航栈 创建新的 Flutter 容器后，使用原生导航栈 Flutter 2 Native 这里的跳转其实是包含了两种情况，一是打开原生页面（open，包括但不限于 push），二是回退到原生页面（close，包括但不限于 pop）。 Native 2 Native]]></summary></entry></feed>
