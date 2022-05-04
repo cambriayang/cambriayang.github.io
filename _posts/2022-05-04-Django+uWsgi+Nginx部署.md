@@ -30,12 +30,15 @@ uwsgi是一种线路协议而不是通信协议，在此常用于在uWSGI服务�
 
 ### 安装uWsgi
 建议使用pip3安装最新的uwsgi
-笔者homebrew安装的uWsgi不完，执行测试代码：
+笔者homebrew安装的uWsgi不完整，执行测试代码：
+
 ```shell
 uwsgi --http xxx
 ```
+
 会报 `--http is ambiguous`
 换用pip3后OK，装好之后，检测：
+
 ```shell
 uwsgi --version
 
@@ -59,6 +62,7 @@ setuptools 58.1.0
 sqlparse   0.4.2
 uWSGI      2.0.20
 ```
+
 ### 安装Nginx
 笔者是用homebrew安装的nginx
 
@@ -68,14 +72,17 @@ conf文件位于`/opt/homebrew/etc/nginx`目录下
 每个人安装的方式不同，可能路径也不同，各位需要记住，尤其是*conf*这个目录，因为后续会改到配置文件
 
 有个简单的法子只读自己的conf在哪，执行下面的命令：
+
 `nginx -t`
 ![nginx1]({{site.url}}/assets/images/posts/nginx1.png)
+
 这个命令是用于验证我们的conf是否合法的。
 
 ## 创建你的第一个Django项目
 打开命令行，cd 到一个你想放置你代码的目录，然后运行以下命令：
 `django-admin startproject DjangoHelloWorld`
 然后cd到自己的项目目录下创建自己的app`python manage.py startapp helloworld`。根目录下创建static（用于存放静态资源）和templates（模板，如一些html）文件夹。完成后，整个项目目录如下：
+
 ![nginx2]({{site.url}}/assets/images/posts/nginx2.png)
 
 其中**uwsgi.ini**和**helloworld.conf**uWsgi和nginx的配置文件，下文会说到。
@@ -87,6 +94,7 @@ conf文件位于`/opt/homebrew/etc/nginx`目录下
 首先项目工程下settings里面的`ALLOWED_HOSTS`需要设置，笔者为了方便，直接使用了
 `ALLOWED_HOSTS = ['*']`
 当然读者也可以使用具体的配置，精细化管理。静态文件夹配置也在settings.py里面，见上图的目录中的static。
+
 ```python
 STATIC_URL = 'static/'
 STATIC_ROOT = './static'
@@ -101,6 +109,7 @@ STATICFILES_DIRS = (
 配置好可以使用`python manage.py collectstatic`，会将静态资源收集在上面的static文件夹下。
 
 然后在urls.py里面配置入口：
+
 ```python
 from django.contrib import admin
 from django.urls import path, re_path
@@ -111,12 +120,15 @@ urlpatterns = [
     re_path('^$', views.index, name='index'),  # 添加的路由
 ]
 ```
+
 helloworld下面的views.py就是本次的测试代码：
+
 ```python
 def index(request):
     return render(request, "helloworld/index.html")
 ```
 html的实现如下：
+
 ```html
 <h1>Test Django Server</h1>
 <h2>Done</h2>
@@ -157,7 +169,8 @@ vacuum = true
 
 ### 配置Nginx
 首先配置自己App的conf：
-```unix
+
+```shell
 server {
         listen       80;
         server_name  localhost;
@@ -173,13 +186,15 @@ server {
         }
     }
 ```
+
 核心部分如上所示。
 
 **注意**：`include`{:.error}处需要找到uwsgi_params所在目录，上图是用的笔者的uwsgi_params目录，读者需要自行替换。`uwsgi_passs`{:.error}和上面的uwsgi.ini配置要一致。
 
 最后，将自己的App的conf加入的nginx的conf（笔者的目录在：`/opt/homebrew/etc/nginx/nginx.conf`）中去，如下所示：
 可以在nginx.conf中加入include语句：
-```unix
+
+```shell
 include path/to/your/helloworld.conf;
 ```
 
@@ -188,9 +203,11 @@ include path/to/your/helloworld.conf;
 ![nginx3]({{site.url}}/assets/images/posts/nginx3.png)
 
 然后执行`nginx`就可以在浏览器里输入我们配置好的url+port+path的方式访问啦。如(笔者这里测试nginx使用的默认端口80，所以后面没带port)：
+
 ```shell
 http://localhost/
 ```
+
 ![nginx4]({{site.url}}/assets/images/posts/nginx3.png)
 
 可以看到，我们的测试html如期显示在服务器上了（笔者使用的是自己机器，部署到各种云也是一样的）。
