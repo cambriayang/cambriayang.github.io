@@ -199,14 +199,13 @@ http://localhost/
 ## 语法糖
 
 {:.success} 
-启动
-nginx
+启动: nginx
 
-判断配置文件是否有效
-nginx -t
+{:.info}
+判断配置文件是否有效: nginx -t
 
-关闭nginx
-pkill -9 nginx
+{:.warning}
+关闭nginx: pkill -9 nginx
 
-修改了配置文件重新load
-nginx -s reload
+{:.error}
+修改了配置文件重新load: nginx -s reload
