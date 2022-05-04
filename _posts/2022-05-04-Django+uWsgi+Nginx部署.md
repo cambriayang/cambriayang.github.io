@@ -74,6 +74,7 @@ conf文件位于`/opt/homebrew/etc/nginx`目录下
 有个简单的法子只读自己的conf在哪，执行下面的命令：
 
 `nginx -t`
+
 ![nginx1]({{site.url}}/assets/images/posts/nginx1.png)
 
 这个命令是用于验证我们的conf是否合法的。
