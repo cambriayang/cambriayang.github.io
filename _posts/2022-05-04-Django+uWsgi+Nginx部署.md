@@ -1,6 +1,7 @@
 ---
 layout: article
 mathjax: true
+mathjax_autoNumber: true
 title: Django+uWsgi+Nginx部署
 category: Algorithm
 date: 2022-05-04 10:00:00 +0800
@@ -227,3 +228,25 @@ http://localhost/
 
 {:.error}
 修改了配置文件重新load: nginx -s reload
+
+
+{:.warning}
+$$nlog_2n^2$$
+
+{:.info}
+When $$a \ne 0$$, there are two solutions to $$ax^2 + bx + c = 0$$ and they are
+$$x_1 = {-b + \sqrt{b^2-4ac} \over 2a}$$
+$$x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag$$
+
+{:.success}
+比如行内公式： 
+$$E=mc^2$$ is a inline formula
+
+比如行间公式(Lorentz方程)：
+
+$$
+\begin{aligned} \dot{x} &= \sigma(y-x) \\ 
+\dot{y} &= \rho x - y - xz \\ 
+\dot{z} &= -\beta z + xy \end{aligned} 
+$$
+
