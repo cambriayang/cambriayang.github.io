@@ -85,7 +85,7 @@ conf文件位于`/opt/homebrew/etc/nginx`目录下
 
 ![nginx2]({{site.url}}/assets/images/posts/nginx2.png)
 
-其中**uwsgi.ini**和**helloworld.conf**uWsgi和nginx的配置文件，下文会说到。
+其中**uwsgi.ini**和**helloworld.conf**是uWsgi和nginx的配置文件，下文会说到。
 
 ## 配置
 需要配置uWsgi和nginx
