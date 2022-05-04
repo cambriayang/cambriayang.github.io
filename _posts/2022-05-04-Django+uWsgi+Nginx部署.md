@@ -76,6 +76,137 @@ conf文件位于`/opt/homebrew/etc/nginx`目录下
 打开命令行，cd 到一个你想放置你代码的目录，然后运行以下命令：
 `django-admin startproject DjangoHelloWorld`
 然后cd到自己的项目目录下创建自己的app`python manage.py startapp helloworld`。根目录下创建static（用于存放静态资源）和templates（模板，如一些html）文件夹。完成后，整个项目目录如下：
-![nginx1]({{site.url}}/assets/images/posts/nginx1.png)
+![nginx2]({{site.url}}/assets/images/posts/nginx2.png)
 
 其中**uwsgi.ini**和**helloworld.conf**uWsgi和nginx的配置文件，下文会说到。
+
+## 配置
+需要配置uWsgi和nginx
+
+### 工程配置
+首先项目工程下settings里面的`ALLOWED_HOSTS`需要设置，笔者为了方便，直接使用了
+`ALLOWED_HOSTS = ['*']`
+当然读者也可以使用具体的配置，精细化管理。静态文件夹配置也在settings.py里面，见上图的目录中的static。
+```python
+STATIC_URL = 'static/'
+STATIC_ROOT = './static'
+
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    STATIC_URL,
+)
+```
+
+配置好可以使用`python manage.py collectstatic`，会将静态资源收集在上面的static文件夹下。
+
+然后在urls.py里面配置入口：
+```python
+from django.contrib import admin
+from django.urls import path, re_path
+from helloworld import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    re_path('^$', views.index, name='index'),  # 添加的路由
+]
+```
+helloworld下面的views.py就是本次的测试代码：
+```python
+def index(request):
+    return render(request, "helloworld/index.html")
+```
+html的实现如下：
+```html
+<h1>Test Django Server</h1>
+<h2>Done</h2>
+<h2>Haha</h2>
+```
+
+*都是很简单的测试代码，大家可以自由发挥*
+
+### 配置uWsgi
+其实uWsgin可以通过命令行参数传入，但是笔者觉得还是写个配置文件比较好，起码以后有据可查。
+
+```python
+[uwsgi]
+#使用nginx连接时使用
+socket=127.0.0.1:9000
+#直接做web服务器使用
+#http=127.0.0.1:9000
+
+master = true         //主进程
+#项目目录
+chdir=./
+#项目中wsgi.py文件的目录，相对于项目目录
+wsgi-file=./DjangoHelloWorld/wsgi.py
+module = DjangoHelloWorld.wsgi:application
+processes=4
+threads=2
+post-buffering = 65535
+buffer-size = 65535
+harakiri-verbose = true
+harakiri = 300
+max-requests = 2000
+vacuum = true
+#uid = nginx
+#gid = nginx
+```
+
+**具体参数定义和解释大家可以上网查阅，就不赘述了**
+
+### 配置Nginx
+首先配置自己App的conf：
+```unix
+server {
+        listen       80;
+        server_name  localhost;
+
+        #静态文件的位置
+        location /static {
+            alias /Users/argost/Codes/cambriayang/DjangoHelloWorld/static;
+        }
+
+        location / {            
+            include  /opt/homebrew/etc/nginx/uwsgi_params;
+            uwsgi_pass  127.0.0.1:9000;             
+        }
+    }
+```
+核心部分如上所示。
+
+**注意**：`include`{:.error}处需要找到uwsgi_params所在目录，上图是用的笔者的uwsgi_params目录，读者需要自行替换。`uwsgi_passs`{:.error}和上面的uwsgi.ini配置要一致。
+
+最后，将自己的App的conf加入的nginx的conf（笔者的目录在：`/opt/homebrew/etc/nginx/nginx.conf`）中去，如下所示：
+可以在nginx.conf中加入include语句：
+```unix
+include path/to/your/helloworld.conf;
+```
+
+## 运行
+在`uwsgi.ini`所在目录（或者带目录执行也OK）执行` uwsgi --ini uwsgi.ini `，成功之后的截图如下：
+![nginx3]({{site.url}}/assets/images/posts/nginx3.png)
+
+然后执行`nginx`就可以在浏览器里输入我们配置好的url+port+path的方式访问啦。如(笔者这里测试nginx使用的默认端口80，所以后面没带port)：
+```shell
+http://localhost/
+```
+![nginx4]({{site.url}}/assets/images/posts/nginx3.png)
+
+可以看到，我们的测试html如期显示在服务器上了（笔者使用的是自己机器，部署到各种云也是一样的）。
+后续如果项目代码有更改，只需要改好代码，上传服务器就可以啦。
+
+## 语法糖
+
+{:.success} 
+启动
+nginx
+
+判断配置文件是否有效
+nginx -t
+
+关闭nginx
+pkill -9 nginx
+
+修改了配置文件重新load
+nginx -s reload
