@@ -229,6 +229,8 @@ http://localhost/
 {:.error}
 修改了配置文件重新load: nginx -s reload
 
+{:.success} 
+sudo lsof -t -i tcp:9000 | xargs kill -9
 
 {:.warning}
 $$nlog_2n^2$$
