@@ -5,7 +5,7 @@ mathjax_autoNumber: true
 title: Django+uWsgi+Nginx部署
 category: Algorithm
 date: 2022-05-04 10:00:00 +0800
-tags: [后端]
+tags: [Server]
 ---
 一份Django+uWsgi+Nginx部署流程笔记
 

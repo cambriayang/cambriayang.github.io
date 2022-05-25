@@ -25,3 +25,9 @@ Gemfile.lock
 _site/
 .jekyll-metadata
 .jekyll-cache/
+.idea/.gitignore
+.idea/misc.xml
+.idea/modules.xml
+.idea/MyBlog.iml
+.idea/vcs.xml
+.idea/workspace.xml
